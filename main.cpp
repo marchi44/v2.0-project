@@ -44,7 +44,7 @@ int main() {
         cout << "Įveskite mokinio " <<  S[i].Vardas << " " << S[i].Pavarde  << " egzamino rezultatą: \n";
         cin >> S[i].egz_rez;
     }
-    for (const auto& s : S) {
+    for (auto& s : S) {
         int paz_suma = 0;
         for (int paz : s.nd_rez) {
             paz_suma += paz;
@@ -52,12 +52,13 @@ int main() {
         paz_suma += s.egz_rez;
         s.vidurkis = paz_suma / (paz_sk + 1.0);
     }
-    cout << std::left << std::setw(25) << "Pavardė" << std::left << std::setw(15) << "Vardas" << std::left << std::setw(18) << "Galutinis (Vid.) \n";
+    cout << std::left << std::setw(25) << "Pavardė" << std::left << std::setw(15) << "Vardas" << std::left << std::setw(18) << std::setprecision(2) << "Galutinis (Vid.) \n";
     for (int i = 0; i < 58; i++) {
-        cout << "-\n";
+        cout << "-";
     }
+    cout << std::endl;
     for (auto& s : S) {
-        cout << s.Pavarde << s.Vardas <<
+        cout << std::left << std::setw(25) << s.Pavarde << std::left << std::setw(15) << s.Vardas << std::left << std::setw(18) << s.vidurkis << std::endl;
     }
     return 0;
 }

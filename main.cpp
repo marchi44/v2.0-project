@@ -3,6 +3,7 @@
 #include <sstream>
 #include <iomanip>
 #include <algorithm>
+#include <string>
 
 using std::string;
 using std::vector;
@@ -21,13 +22,26 @@ struct Studentas {
 };
 
 int main() {
-    double mok_sk = 0;
+    string input;
+    int mok_sk;
     int paz_sk = 0;
-    cout << "Iveskite kiek yra mokiniu: \n";
-    cin >> mok_sk;
-    if (mok_sk != static_cast<int>(mok_sk)) {
-        cout << "Klaida: ivestas mokiniu kiekis turi buti sveikas skaicius!\n";
-        return 1;
+    while (true) {
+        cout << "Iveskite kiek yra mokiniu: \n";
+        cin >> input;
+        bool valid = !input.empty();
+        for (const char c : input) {
+            if (!isdigit(c)) {
+                valid = false;
+                break;
+            }
+        }
+        if (valid) {
+            mok_sk = stoi(input);
+            break;
+        }
+        cout << "Klaida! Jusu ivestas mokiniu skaicius privalo buti sveikas skaicius. Bandykite is naujo...\n";
+        cin.clear();
+        cin.ignore();
     }
     vector<Studentas> S;
     S.resize(mok_sk);
@@ -65,10 +79,10 @@ int main() {
         }
     }
     string vid_ar_med;
-    while (vid_ar_med != "vid" || vid_ar_med != "med") {
+    while (vid_ar_med != "vid" && vid_ar_med != "med") {
         cout << "Koki metoda norite naudoti galutinio pazymio apskaiciavimui? vid (vidurkio) ar med (medianos)?\n";
         cin >> vid_ar_med;
-        if (vid_ar_med != "vid" || vid_ar_med != "med") {
+        if (vid_ar_med != "vid" && vid_ar_med != "med") {
             cout << "Privalote ivesti vid - jei norite naudoti skaiciavima su vidurkiu, arba med - jei norite naudoti skaiciavima su mediana!\n";
         }
     }

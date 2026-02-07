@@ -2,6 +2,7 @@
 #include <vector>
 #include <sstream>
 #include <iomanip>
+#include <algorithm>
 
 using std::string;
 using std::vector;
@@ -15,6 +16,8 @@ struct Studentas {
     vector<int> nd_rez;
     int egz_rez;
     double vidurkis;
+    double mediana;
+    double galutinis;
 };
 
 int main() {
@@ -22,7 +25,7 @@ int main() {
     int paz_sk = 0;
     cout << "Iveskite kiek yra mokiniu: \n";
     cin >> mok_sk;
-    if (mok_sk != int(mok_sk)) {
+    if (mok_sk != static_cast<int>(mok_sk)) {
         cout << "Klaida: ivestas mokiniu kiekis turi buti sveikas skaicius!\n";
         return 1;
     }
@@ -49,6 +52,11 @@ int main() {
             }
             S[i].nd_rez.push_back(tmp);
         }
+        int paz_suma = 0;
+        for (const int paz : S[i].nd_rez) {
+            paz_suma += paz;
+        }
+        S[i].vidurkis = static_cast<double>(paz_suma) / static_cast<double>(paz_sk);
         cout << "Iveskite mokinio " <<  S[i].Vardas << " " << S[i].Pavarde  << " egzamino rezultata: \n";
         cin >> S[i].egz_rez;
         if (S[i].egz_rez < 0 || S[i].egz_rez > 10) {
@@ -56,21 +64,44 @@ int main() {
             return 1;
         }
     }
-    for (auto& s : S) {
-        int paz_suma = 0;
-        for (int paz : s.nd_rez) {
-            paz_suma += paz;
+    string vid_ar_med;
+    while (vid_ar_med != "vid" || vid_ar_med != "med") {
+        cout << "Koki metoda norite naudoti galutinio pazymio apskaiciavimui? vid (vidurkio) ar med (medianos)?\n";
+        cin >> vid_ar_med;
+        if (vid_ar_med != "vid" || vid_ar_med != "med") {
+            cout << "Privalote ivesti vid - jei norite naudoti skaiciavima su vidurkiu, arba med - jei norite naudoti skaiciavima su mediana!\n";
         }
-        paz_suma += s.egz_rez;
-        s.vidurkis = paz_suma / (paz_sk + 1.0);
     }
-    cout << std::left << std::setw(25) << "Pavarde" << std::left << std::setw(15) << "Vardas" << std::left << std::setw(18) << std::setprecision(2) << "Galutinis (Vid.) \n";
+    for (auto& s : S) {
+        if (vid_ar_med == "vid") {
+                s.galutinis = 0.4 * s.vidurkis + 0.6 * static_cast<double>(s.egz_rez);
+        }
+        else
+        {
+            std::sort(s.nd_rez.begin(), s.nd_rez.end());
+            if (s.nd_rez.size() % 2 == 0) {
+                s.mediana = (s.nd_rez[s.nd_rez.size() / 2] + s.nd_rez[s.nd_rez.size() / 2 - 1]) / 2.0;
+            }
+            else {
+                s.mediana = s.nd_rez[s.nd_rez.size() / 2];
+            }
+            for (auto& nd : s.nd_rez) {
+                s.galutinis = 0.4 * s.mediana + 0.6 * static_cast<double>(s.egz_rez);
+            }
+        }
+    }
+    if (vid_ar_med == "vid") {
+        cout << std::left << std::setw(25) << "Pavarde" << std::left << std::setw(15) << "Vardas" << std::left << std::setw(18) << "Galutinis (Vid.)\n";
+    }
+    else {
+        cout << std::left << std::setw(25) << "Pavarde" << std::left << std::setw(15) << "Vardas" << std::left << std::setw(18) << "Galutinis (Med.)\n";
+    }
     for (int i = 0; i < 58; i++) {
         cout << "-";
     }
     cout << std::endl;
     for (auto& s : S) {
-        cout << std::left << std::setw(25) << s.Pavarde << std::left << std::setw(15) << s.Vardas << std::left << std::setw(18) << s.vidurkis << std::endl;
+        cout << std::left << std::setw(25) << s.Pavarde << std::left << std::setw(15) << s.Vardas << std::left << std::setw(18) << std::setprecision(2) << s.galutinis << std::endl;
     }
     return 0;
 }

@@ -18,31 +18,43 @@ struct Studentas {
 };
 
 int main() {
-    int mok_sk = 0;
+    double mok_sk = 0;
     int paz_sk = 0;
-    cout << "Įveskite kiek yra mokinių: \n";
+    cout << "Iveskite kiek yra mokiniu: \n";
     cin >> mok_sk;
+    if (mok_sk != int(mok_sk)) {
+        cout << "Klaida: ivestas mokiniu kiekis turi buti sveikas skaicius!\n";
+        return 1;
+    }
     vector<Studentas> S;
     S.resize(mok_sk);
     for (int i = 0; i < mok_sk; i++) {
-        cout << "Įveskite " << i+1 << "-ojo mokinio vardą ir pavardę: \n";
+        cout << "Iveskite " << i+1 << "-ojo mokinio varda ir pavarde: \n";
         stringstream ss;
         string eil;
         cin.ignore();
         std::getline(cin, eil, '\n');
         ss << eil;
         ss >> S[i].Vardas >> S[i].Pavarde;
-        cout << "Kiek mokinys turi pažymių iš namų darbų? \n";
+        cout << "Kiek mokinys turi pazymiu is namu darbu? \n";
         cin >> paz_sk;
         S[i].nd_rez.resize(paz_sk);
-        cout << "Įveskite mokinio " << S[i].Vardas << " " << S[i].Pavarde << " tarpinius namų darbų rezultatus: \n";
+        cout << "Iveskite mokinio " << S[i].Vardas << " " << S[i].Pavarde << " tarpinius namu darbu rezultatus: \n";
         for (int j = 0; j < paz_sk; j++) {
             int tmp;
             cin >> tmp;
+            if (tmp < 0 || tmp > 10) {
+                cout << "Klaida: pazymys turi buti desimbaleje skaleje!\n";
+                return 1;
+            }
             S[i].nd_rez.push_back(tmp);
         }
-        cout << "Įveskite mokinio " <<  S[i].Vardas << " " << S[i].Pavarde  << " egzamino rezultatą: \n";
+        cout << "Iveskite mokinio " <<  S[i].Vardas << " " << S[i].Pavarde  << " egzamino rezultata: \n";
         cin >> S[i].egz_rez;
+        if (S[i].egz_rez < 0 || S[i].egz_rez > 10) {
+            cout << "Klaida: pazymys turi buti desimbaleje skaleje!\n";
+            return 1;
+        }
     }
     for (auto& s : S) {
         int paz_suma = 0;
@@ -52,7 +64,7 @@ int main() {
         paz_suma += s.egz_rez;
         s.vidurkis = paz_suma / (paz_sk + 1.0);
     }
-    cout << std::left << std::setw(25) << "Pavardė" << std::left << std::setw(15) << "Vardas" << std::left << std::setw(18) << std::setprecision(2) << "Galutinis (Vid.) \n";
+    cout << std::left << std::setw(25) << "Pavarde" << std::left << std::setw(15) << "Vardas" << std::left << std::setw(18) << std::setprecision(2) << "Galutinis (Vid.) \n";
     for (int i = 0; i < 58; i++) {
         cout << "-";
     }

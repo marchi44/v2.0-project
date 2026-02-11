@@ -35,11 +35,11 @@ int main() {
                 break;
             }
         }
-        if (valid) {
+        if (valid && (stoi(input) > 0)) {
             mok_sk = stoi(input);
             break;
         }
-        cout << "Klaida! Jusu ivestas mokiniu skaicius privalo buti sveikas skaicius. Bandykite is naujo...\n";
+        cout << "Klaida! Jusu ivestas mokiniu skaicius privalo buti sveikas skaicius didesnis uz nuli. Bandykite is naujo...\n";
         cin.clear();
         cin.ignore();
     }
@@ -63,13 +63,13 @@ int main() {
                     break;
                 }
             }
-            if (valid) {
+            if (valid && (stoi(input) > 0)) {
                 paz_sk = stoi(input);
                 break;
             }
             cout << "Klaida! Jusu ivestas pazymiu skaicius privalo buti sveikas skaicius. Bandykite is naujo...\n";
             cin.clear();
-            cin.ignore();
+            cin.ignore(10000,'\n');
         }
         S[i].nd_rez.resize(paz_sk);
             cout << "Iveskite mokinio " << S[i].Vardas << " " << S[i].Pavarde << " tarpinius namu darbu rezultatus: \n";
@@ -84,7 +84,7 @@ int main() {
                         }
                     }
                     if (valid && (stoi(input) > 0) && (stoi(input) <= 10)) {
-                        S[i].nd_rez.push_back(stoi(input));
+                        S[i].nd_rez[j] = stoi(input);
                         break;
                     }
                         cout << "Klaida! Jusu ivestas pazymys privalo buti sveikas skaicius (1-10). Bandykite is naujo...\n";
@@ -113,7 +113,7 @@ int main() {
             }
             cout << "Klaida! Jusu ivestas pazymys privalo buti sveikas skaicius (1-10). Bandykite is naujo...\n";
             cin.clear();
-            cin.ignore();
+            cin.ignore(10000, '\n');
         }
     }
     string vid_ar_med;
@@ -137,9 +137,7 @@ int main() {
             else {
                 s.mediana = s.nd_rez[s.nd_rez.size() / 2];
             }
-            for (auto& nd : s.nd_rez) {
                 s.galutinis = 0.4 * s.mediana + 0.6 * static_cast<double>(s.egz_rez);
-            }
         }
     }
     if (vid_ar_med == "vid") {

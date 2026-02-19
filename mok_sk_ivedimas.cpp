@@ -2,20 +2,18 @@
 #include <string>
 #include <iostream>
 
-void mok_sk_ivedimas(string input, int& mok_sk){
+int mok_sk_ivedimas(){
+    std::string input;
     while (true) {
         std::cout << "Iveskite kiek yra mokiniu (jei is anksto nezinote paspauskite ENTER) \n";
-        getline(std::cin, input);
+        getline(std::cin, input, '\n');
         if(input.empty()){
-            break;
+            return 0;
         }
         bool valid = ar_valid(input);
         if (valid && (stoi(input) > 0)) {
-            mok_sk = stoi(input);
-            break;
+            return stoi(input);
         }
         std::cout << "Klaida! Jusu ivestas mokiniu skaicius privalo buti sveikas skaicius didesnis uz nuli. Bandykite is naujo...\n";
-        std::cin.clear();
-        std::cin.ignore();
     }
 }

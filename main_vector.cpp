@@ -4,55 +4,37 @@
 #include <iomanip>
 #include <algorithm>
 #include <string>
+#include "funkcijos.h"
 
 using std::string;
 using std::vector;
 using std::cout;
 using std::cin;
 using std::stringstream;
-
-struct Studentas {
-    string Vardas;
-    string Pavarde;
-    vector<int> nd_rez;
-    int egz_rez;
-    double vidurkis;
-    double mediana;
-    double galutinis;
-};
+using std::getline;
 
 int main() {
     string input;
-    int mok_sk;
-    int paz_sk;
-    while (true) {
-        cout << "Iveskite kiek yra mokiniu: \n";
-        cin >> input;
-        bool valid = !input.empty();
-        for (const char c : input) {
-            if (!isdigit(c)) {
-                valid = false;
-                break;
-            }
-        }
-        if (valid && (stoi(input) > 0)) {
-            mok_sk = stoi(input);
-            break;
-        }
-        cout << "Klaida! Jusu ivestas mokiniu skaicius privalo buti sveikas skaicius didesnis uz nuli. Bandykite is naujo...\n";
-        cin.clear();
-        cin.ignore();
+    int paz_sk = 0;
+    int meniu_pasirinkimas = meniu();
+    if(meniu_pasirinkimas == 4){
+        cout << "Programa baigta...\n";
+        return 0;
     }
+    int mok_sk = mok_sk_ivedimas();
     vector<Studentas> S;
-    S.resize(mok_sk);
     for (int i = 0; i < mok_sk; i++) {
         cout << "Iveskite " << i+1 << "-ojo mokinio varda ir pavarde: \n";
         stringstream ss;
-        string eil;
-        cin.ignore();
+        string eil, vrd, pvrd;
+        cin >> std::ws;
         std::getline(cin, eil, '\n');
         ss << eil;
-        ss >> S[i].Vardas >> S[i].Pavarde;
+        ss >> vrd >> pvrd;
+        Studentas s;
+        s.Vardas = vrd;
+        s.Pavarde = pvrd;
+        S.push_back(s);
         while (true) {
             cout << "Kiek mokinys turi pazymiu is namu darbu? \n";
             cin >> input;

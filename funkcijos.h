@@ -19,5 +19,6 @@ struct Studentas {
 };
 
 bool ar_valid (const string &input);
-void mok_sk_ivedimas(string input, int& mok_sk);
+int meniu();
+int mok_sk_ivedimas();
 #endif

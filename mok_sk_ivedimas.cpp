@@ -6,7 +6,8 @@ int mok_sk_ivedimas(){
     std::string input;
     while (true) {
         std::cout << "Iveskite kiek yra mokiniu (jei is anksto nezinote paspauskite ENTER) \n";
-        getline(std::cin, input, '\n');
+        std::cin.ignore();
+        std::getline(std::cin, input, '\n');
         if(input.empty()){
             return 0;
         }

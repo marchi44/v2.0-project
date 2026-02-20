@@ -1,0 +1,14 @@
+#include "funkcijos.h"
+#include <iostream>
+
+string med_ar_vid(){
+    string vid_ar_med;
+    std::cout << "Koki metoda norite naudoti galutinio pazymio apskaiciavimui? vid (vidurkio) ar med (medianos)?\n";
+    while (true) {
+        std::cin >> vid_ar_med;
+        if(vid_ar_med == "vid" || vid_ar_med == "med"){
+            return vid_ar_med;
+        }
+        std::cout << "Klaida! Privalote ivesti vid arba med... \n";
+    }
+}

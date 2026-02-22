@@ -1,1 +1,2 @@
-main_vector.exe
+*.exe
+.vscode/

@@ -6,10 +6,14 @@
 void pazymiu_ivedimas(vector<Studentas> &S, int i){
     std::string input;
     int paz_sk = paz_sk_ivedimas();
+    if(paz_sk > 0){
+        S[i].nd_rez.reserve(S[i].nd_rez.size() + paz_sk);
+    }
         bool nezinomas_kiek = false;
         bool baigta = false;
         if(paz_sk == 0)
         {
+            S[i].nd_rez.reserve(S[i].nd_rez.size() + 1000);
             nezinomas_kiek = true;
             paz_sk = 1;
         }

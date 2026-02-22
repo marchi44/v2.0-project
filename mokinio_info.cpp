@@ -7,6 +7,12 @@ void mokinio_info_ivedimas(std::vector<Studentas> &S, int mok_sk){
 
     int i = 0;
     std::string eil, vrd, pvrd;
+    if(mok_sk > 0){
+    S.reserve(S.size() + mok_sk);
+    }
+    else {
+        S.reserve(S.size() + 10000);
+    }
 
     while(true){
 

@@ -8,7 +8,14 @@
 #include <algorithm>
 
 void pasirinkimas2(vector<Studentas> &S){
+    std::cin.ignore(10000, '\n');
     int mok_sk = mok_sk_ivedimas();
+    if(mok_sk > 0){
+        S.reserve(S.size() + mok_sk);
+    }
+    else {
+        S.reserve(S.size() + 10000);
+    }
     int i = 0;
     std::string eil, vrd, pvrd;
     std::cin.ignore(10000, '\n');
@@ -42,6 +49,7 @@ void pasirinkimas2(vector<Studentas> &S){
     srand(time(NULL));
     for(auto& s : S){
         int n = rand() % 100 + 1; //pazymiu skaicius nuo 1 iki 100
+        s.nd_rez.reserve(s.nd_rez.size() + n);
         for(int i = 0; i < n; i++){
             int rnd_paz = rand() % 10 + 1;
             s.nd_rez.push_back(rnd_paz);

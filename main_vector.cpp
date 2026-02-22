@@ -17,11 +17,7 @@ int main() {
     int paz_sk;
     int mok_sk;
     int meniu_pasirinkimas = meniu();
-    cout << meniu_pasirinkimas << std::endl;
-    if(meniu_pasirinkimas == 4){
-        cout << "Programa baigta...\n";
-        return 0;
-    }
+    while(meniu_pasirinkimas != 4){
     switch(meniu_pasirinkimas){
         case 1:{
         mok_sk = mok_sk_ivedimas();
@@ -50,9 +46,11 @@ int main() {
         pasirinkimas2(S);
         break;
         case 3:{
-
+        pasirinkimas3(S);
         break;
         }
     }
+    meniu_pasirinkimas = meniu();
+}
     return 0;
 }

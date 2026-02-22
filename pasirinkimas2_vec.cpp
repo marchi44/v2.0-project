@@ -8,7 +8,6 @@
 #include <algorithm>
 
 void pasirinkimas2(vector<Studentas> &S){
-    std::cin.ignore(10000, '\n');
     int mok_sk = mok_sk_ivedimas();
     if(mok_sk > 0){
         S.reserve(S.size() + mok_sk);
@@ -18,7 +17,6 @@ void pasirinkimas2(vector<Studentas> &S){
     }
     int i = 0;
     std::string eil, vrd, pvrd;
-    std::cin.ignore(10000, '\n');
     while(true){
 
         // jei kiekis zinomas ir jau uzpildyta

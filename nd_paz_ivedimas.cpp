@@ -21,6 +21,7 @@ void pazymiu_ivedimas(vector<Studentas> &S, int i){
             for (int j = 0; j < paz_sk; j++) {
                 while (true) {
                     std::cin >> input;
+                    std::cin.ignore(10000, '\n');
                     if(!ar_valid(input))
                     {
                         std::cout << "Klaida! Jusu ivestas pazymys privalo buti sveikas skaicius (1-10). Bandykite is naujo...\n";

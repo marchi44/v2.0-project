@@ -8,6 +8,7 @@ int egz_ivedimas(){
     std::cout << "Iveskite mokinio egzamino rezultata: \n";
             while (true) {
                 std::cin >> input;
+                std::cin.ignore(10000, '\n');
                 bool valid = !input.empty();
                 if(valid){
                     valid = ar_valid(input);

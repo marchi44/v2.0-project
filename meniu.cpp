@@ -12,6 +12,7 @@ int meniu(){
             std::cin.ignore(10000, '\n');
             continue;
         }
+        std::cin.ignore(10000, '\n');
         return meniu_pasirinkimas;
     }
 }

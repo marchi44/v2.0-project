@@ -16,5 +16,6 @@ int mok_sk_ivedimas(){
             return stoi(input);
         }
         std::cout << "Klaida! Jusu ivestas mokiniu skaicius privalo buti sveikas skaicius didesnis uz nuli. Bandykite is naujo...\n";
+        std::cin.clear();
     }
 }

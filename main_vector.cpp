@@ -17,6 +17,7 @@ int main() {
     int paz_sk;
     int mok_sk;
     int meniu_pasirinkimas = meniu();
+    cout << meniu_pasirinkimas << std::endl;
     if(meniu_pasirinkimas == 4){
         cout << "Programa baigta...\n";
         return 0;
@@ -24,7 +25,6 @@ int main() {
     switch(meniu_pasirinkimas){
         case 1:{
         mok_sk = mok_sk_ivedimas();
-        paz_sk = paz_sk_ivedimas();
         mokinio_info_ivedimas(S, mok_sk);
         string metodas = med_ar_vid();
         for (auto& s : S) {
@@ -44,14 +44,10 @@ int main() {
             }
         }
         isvedimas(S, metodas);
-        return 0;
         }
         break;
-        case 2:{
-        mok_sk = mok_sk_ivedimas();
-        paz_sk = paz_sk_ivedimas();
-        
-        }
+        case 2:
+        pasirinkimas2(S);
         break;
         case 3:{
 

@@ -15,7 +15,5 @@ int paz_sk_ivedimas(){
                 return stoi(input);
             }
             std::cout << "Klaida! Jusu ivestas pazymiu skaicius privalo buti sveikas skaicius (>0). Bandykite is naujo...\n";
-            std::cin.clear();
-            std::cin.ignore(10000,'\n');
         }
 }

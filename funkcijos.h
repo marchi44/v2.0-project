@@ -21,8 +21,12 @@ struct Studentas {
 bool ar_valid (const string &input);
 int meniu();
 int mok_sk_ivedimas();
-void mokinio_info_ivedimas(vector<Studentas> &S, int mok_sk, int paz_sk);
+void pazymiu_ivedimas(vector<Studentas> &S, int i);
+int egz_ivedimas();
+double vidurkis(vector<Studentas> &S, int i, int paz_sk);
+void mokinio_info_ivedimas(vector<Studentas> &S, int mok_sk);
 int paz_sk_ivedimas();
 string med_ar_vid();
 void isvedimas(vector<Studentas> S, string metodas);
+void pasirinkimas2(vector<Studentas> &S);
 #endif

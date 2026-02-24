@@ -12,6 +12,8 @@ struct Studentas {
     string Vardas;
     string Pavarde;
     vector<int> nd_rez;
+    int pazymiu_sk;
+    int *nd_paz = nullptr;
     int egz_rez;
     double vidurkis;
     double mediana;
@@ -30,6 +32,9 @@ string med_ar_vid();
 void isvedimas(vector<Studentas> S, string metodas);
 void pasirinkimas2(vector<Studentas> &S);
 void pasirinkimas3(vector<Studentas> &S);
+void pasirinkimas3_arr();
+void pasirinkimas2_arr();
+void pasirinkimas1_arr();
 string rnd_vardas(bool vyras);
 string rnd_pavarde(bool vyras);
 

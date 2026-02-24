@@ -6,9 +6,9 @@
 #include <iomanip>
 
 void pasirinkimas1_arr(){
+    std::string metodas = med_ar_vid();
     int mok_sk = mok_sk_ivedimas();
     int kiek_mok = 0;
-    std::string metodas;
     Studentas *S = nullptr;
     int n = 100;
     if(mok_sk > 0){
@@ -122,7 +122,6 @@ void pasirinkimas1_arr(){
             S[i].vidurkis = 0;
         //egzamino rezultato ivedimas
         S[i].egz_rez = egz_ivedimas();
-        metodas = med_ar_vid();
         if (metodas == "vid") {
                 S[i].galutinis = 0.4 * S[i].vidurkis + 0.6 * static_cast<double>(S[i].egz_rez);
             }

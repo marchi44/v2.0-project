@@ -18,12 +18,13 @@ int main() {
         pasirinkimas1_arr();
         break;
         case 2:
-
+        pasirinkimas2_arr();
         break;
         case 3:
-
+        pasirinkimas3_arr();
         break;
         }
+        meniu_pasirinkimas = meniu();
     }
     return 0;
 }

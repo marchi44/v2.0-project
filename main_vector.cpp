@@ -20,8 +20,16 @@ int main() {
     while(meniu_pasirinkimas != 4){
     switch(meniu_pasirinkimas){
         case 1:{
+        cout << "0 - ivedimas ranka, 1 - ivedimas is failo\n";
+        bool ar_is_failo;
+        cin >> ar_is_failo;
         mok_sk = mok_sk_ivedimas();
-        mokinio_info_ivedimas(S, mok_sk);
+        if(ar_is_failo){
+            ivedimas_is_failo(S);
+        }
+        else{
+            mokinio_info_ivedimas(S, mok_sk);
+        }
         string metodas = med_ar_vid();
         for (auto& s : S) {
             if (metodas == "vid") {
@@ -50,6 +58,7 @@ int main() {
         break;
         }
     }
+    S.clear();
     meniu_pasirinkimas = meniu();
 }
     return 0;

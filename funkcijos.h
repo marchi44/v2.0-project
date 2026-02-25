@@ -1,3 +1,4 @@
+#pragma once
 #ifndef FUNKCIJOS_H
 #define FUNKCIJOS_H
 
@@ -12,8 +13,6 @@ struct Studentas {
     string Vardas;
     string Pavarde;
     vector<int> nd_rez;
-    int pazymiu_sk;
-    int *nd_paz = nullptr;
     int egz_rez;
     double vidurkis;
     double mediana;
@@ -35,5 +34,6 @@ void pasirinkimas3(vector<Studentas> &S);
 string rnd_vardas(bool vyras);
 string rnd_pavarde(bool vyras);
 void failo_generavimas();
+void ivedimas_is_failo(vector<Studentas> &S);
 
 #endif

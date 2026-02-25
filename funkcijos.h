@@ -32,10 +32,8 @@ string med_ar_vid();
 void isvedimas(vector<Studentas> S, string metodas);
 void pasirinkimas2(vector<Studentas> &S);
 void pasirinkimas3(vector<Studentas> &S);
-void pasirinkimas3_arr();
-void pasirinkimas2_arr();
-void pasirinkimas1_arr();
 string rnd_vardas(bool vyras);
 string rnd_pavarde(bool vyras);
+void failo_generavimas();
 
 #endif

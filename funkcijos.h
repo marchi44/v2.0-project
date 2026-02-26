@@ -34,6 +34,6 @@ void pasirinkimas3(vector<Studentas> &S);
 string rnd_vardas(bool vyras);
 string rnd_pavarde(bool vyras);
 void failo_generavimas();
-void ivedimas_is_failo(vector<Studentas> &S);
+void ivedimas_is_failo(vector<Studentas> &S, int meniu_pasirinkimas);
 
 #endif

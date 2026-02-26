@@ -23,11 +23,12 @@ int main() {
         cout << "0 - ivedimas ranka, 1 - ivedimas is failo\n";
         bool ar_is_failo;
         cin >> ar_is_failo;
-        mok_sk = mok_sk_ivedimas();
+        cin.ignore();
         if(ar_is_failo){
-            ivedimas_is_failo(S);
+            ivedimas_is_failo(S, meniu_pasirinkimas);
         }
         else{
+            mok_sk = mok_sk_ivedimas();
             mokinio_info_ivedimas(S, mok_sk);
         }
         string metodas = med_ar_vid();

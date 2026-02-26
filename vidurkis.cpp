@@ -6,5 +6,5 @@ double vidurkis(vector<Studentas> &S, int i, int paz_sk){
         for (const int paz : S[i].nd_rez) {
             paz_suma += paz;
         }
-    return (static_cast<double>(paz_suma) / static_cast<double>(paz_sk));
+    return static_cast<double>(paz_suma) / static_cast<double>(paz_sk);
 }

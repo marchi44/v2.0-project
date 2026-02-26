@@ -76,7 +76,6 @@ void pasirinkimas2(vector<Studentas> &S, int meniu_pasirinkimas){
         i++;
     }
     std::cout << "Generuojami pazymiai...\n";
-    srand(time(NULL));
     for(auto& s : S){
         int n = rand() % 100 + 1; //pazymiu skaicius nuo 1 iki 100
         s.nd_rez.reserve(s.nd_rez.size() + n);
@@ -89,13 +88,8 @@ void pasirinkimas2(vector<Studentas> &S, int meniu_pasirinkimas){
     for(size_t i = 0; i < S.size(); i++){
         S[i].vidurkis = vidurkis(S, i, S[i].nd_rez.size());
     }
-    string metodas = med_ar_vid();
+    //string metodas = med_ar_vid();
     for (auto& s : S) {
-            if (metodas == "vid") {
-                s.galutinis = 0.4 * s.vidurkis + 0.6 * static_cast<double>(s.egz_rez);
-            }
-            else
-            {
                 std::sort(s.nd_rez.begin(), s.nd_rez.end());
                 if (s.nd_rez.size() % 2 == 0) {
                     s.mediana = (s.nd_rez[s.nd_rez.size() / 2] + s.nd_rez[s.nd_rez.size() / 2 - 1]) / 2.0;
@@ -103,8 +97,9 @@ void pasirinkimas2(vector<Studentas> &S, int meniu_pasirinkimas){
                 else {
                 s.mediana = s.nd_rez[s.nd_rez.size() / 2];
                 }
-                s.galutinis = 0.4 * s.mediana + 0.6 * static_cast<double>(s.egz_rez);
-            }
+                s.galutinis_vid = 0.4 * s.vidurkis + 0.6 * static_cast<double>(s.egz_rez);
+                s.galutinis_med = 0.4 * s.mediana + 0.6 * static_cast<double>(s.egz_rez);
         }
-    isvedimas(S, metodas);
+    rusiavimas(S);
+    isvedimas(S);
 }

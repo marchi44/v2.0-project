@@ -16,7 +16,8 @@ struct Studentas {
     int egz_rez;
     double vidurkis;
     double mediana;
-    double galutinis;
+    double galutinis_vid;
+    double galutinis_med;
 };
 
 bool ar_valid (const string &input);
@@ -28,12 +29,13 @@ double vidurkis(vector<Studentas> &S, int i, int paz_sk);
 void mokinio_info_ivedimas(vector<Studentas> &S, int mok_sk);
 int paz_sk_ivedimas();
 string med_ar_vid();
-void isvedimas(vector<Studentas> S, string metodas);
+void isvedimas(vector<Studentas> S);
 void pasirinkimas2(vector<Studentas> &S, int meniu_pasirinkimas);
 void pasirinkimas3(vector<Studentas> &S, int meniu_pasirinkimas);
 string rnd_vardas(bool vyras);
 string rnd_pavarde(bool vyras);
 void failo_generavimas();
 void ivedimas_is_failo(vector<Studentas> &S, int meniu_pasirinkimas);
+void rusiavimas(vector<Studentas> &S);
 
 #endif

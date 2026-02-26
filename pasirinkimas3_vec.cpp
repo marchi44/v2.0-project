@@ -6,8 +6,9 @@
 #include <string>
 #include <algorithm>
 
+using std::string;
+
 void pasirinkimas3(vector<Studentas> &S, int meniu_pasirinkimas){
-    //string metodas = med_ar_vid();
     std::cout << "Generuojami studentu vardai ir pavardes...\n";
     int mok_sk = rand() % 100 + 1;
     S.reserve(S.size() + mok_sk);
@@ -26,18 +27,36 @@ void pasirinkimas3(vector<Studentas> &S, int meniu_pasirinkimas){
         S[i].egz_rez = rand() % 10 + 1;
         int paz_sk = S[i].nd_rez.size();
         S[i].vidurkis = vidurkis(S, i, paz_sk);
-        for (auto& s : S) {
-                std::sort(s.nd_rez.begin(), s.nd_rez.end());
-                if (s.nd_rez.size() % 2 == 0) {
-                    s.mediana = (s.nd_rez[s.nd_rez.size() / 2] + s.nd_rez[s.nd_rez.size() / 2 - 1]) / 2.0;
+        sort(S[i].nd_rez.begin(), S[i].nd_rez.end());
+                if (S[i].nd_rez.size() % 2 == 0) {
+                    S[i].mediana = (S[i].nd_rez[S[i].nd_rez.size() / 2] + S[i].nd_rez[S[i].nd_rez.size() / 2 - 1]) / 2.0;
                 }
                 else {
-                s.mediana = s.nd_rez[s.nd_rez.size() / 2];
+                S[i].mediana = S[i].nd_rez[S[i].nd_rez.size() / 2];
                 }
-                s.galutinis_vid = 0.4 * s.vidurkis + 0.6 * static_cast<double>(s.egz_rez);
-                s.galutinis_med = 0.4 * s.mediana + 0.6 * static_cast<double>(s.egz_rez);
-        }
+                S[i].galutinis_vid = 0.4 * S[i].vidurkis + 0.6 * static_cast<double>(S[i].egz_rez);
+                S[i].galutinis_med = 0.4 * S[i].mediana + 0.6 * static_cast<double>(S[i].egz_rez);
         }
         rusiavimas(S);
+        std::cout << "1 - isvesti i konsole, 2 - isvesti i faila\n";
+        int kur_isvesti;
+        try {
+            std::cin >> kur_isvesti;
+            std::cin.ignore(10000, '\n');
+            if(!std::cin || (kur_isvesti != 1 && kur_isvesti != 2)){
+                throw std::runtime_error("Klaida! Neteisingai ivedete rezultatu isvedimo buda...\n");
+            }
+        }
+        catch (const std::exception& e) {
+            std::cerr << e.what();
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
+            return;
+        }
+        if(kur_isvesti == 1){
         isvedimas(S);
+        }
+        else{
+            isvedimas_i_faila(S);
+        }
 }

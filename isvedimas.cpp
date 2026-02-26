@@ -10,7 +10,7 @@ void isvedimas(std::vector<Studentas> S){
     //     std::cout << std::left << std::setw(25) << "Pavarde" << std::left << std::setw(15) << "Vardas" << std::left << std::setw(18) << "Galutinis (Med.)\n";
     // }
     std::cout << std::left << std::setw(15) << "Vardas" << std::left << std::setw(25) << "Pavarde" << std::left << std::setw(18) << "Galutinis (Vid.)" << std::left << std::setw(18) << "Galutinis (Med.)\n";
-    for (int i = 0; i < 58; i++) {
+    for (int i = 0; i < 76; i++) {
         std::cout << "-";
     }
     std::cout << std::endl;

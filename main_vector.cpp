@@ -68,12 +68,33 @@ int main() {
                 s.galutinis_med = 0.4 * s.mediana + 0.6 * static_cast<double>(s.egz_rez);
         }
         rusiavimas(S);
+        cout << "1 - isvesti i konsole, 2 - isvesti i faila\n";
+        int kur_isvesti;
+        try {
+            cin >> kur_isvesti;
+            cin.ignore(10000, '\n');
+            if(!cin || (kur_isvesti != 1 && kur_isvesti != 2)){
+                throw std::runtime_error("Klaida! Neteisingai ivedete rezultatu isvedimo buda...\n");
+            }
+        }
+        catch (const std::exception& e) {
+            std::cerr << e.what();
+            cin.clear();
+            cin.ignore(10000, '\n');
+            break;
+        }
+        if(kur_isvesti == 1){
         isvedimas(S);
         }
+        else{
+            isvedimas_i_faila(S);
+        }
         break;
-        case 2:
+    }
+        case 2:{
         pasirinkimas2(S, meniu_pasirinkimas);
         break;
+        }
         case 3:{
         pasirinkimas3(S, meniu_pasirinkimas);
         break;
@@ -81,6 +102,6 @@ int main() {
     }
     S.clear();
     meniu_pasirinkimas = meniu();
-}
+    }
     return 0;
 }

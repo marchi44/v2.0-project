@@ -7,20 +7,52 @@
 #include <sstream>
 #include <algorithm>
 
-void pasirinkimas2(vector<Studentas> &S){
-    int mok_sk = mok_sk_ivedimas();
-    if(mok_sk > 0){
-        S.reserve(S.size() + mok_sk);
-    }
-    else {
-        S.reserve(S.size() + 10000);
-    }
+void pasirinkimas2(vector<Studentas> &S, int meniu_pasirinkimas){
+    int mok_sk;
+    std::cout << "0 - ivedimas ranka, 1 - ivedimas is failo\n";
+        int input;
+        try {
+            std::cin >> input;
+            std::cin.ignore(10000, '\n');
+            if(!std::cin || (input != 0 && input != 1)){
+                throw std::runtime_error("Klaida! Turite ivesti 0 arba 1...\n");
+            }
+        }
+        catch (const std::exception& e) {
+            std::cerr << e.what();
+            std::cin.clear();
+            std::cin.ignore(10000, '\n');
+            return;
+        }
+        bool ar_is_failo = (input == 1);
+        if(ar_is_failo){
+            try
+            {
+                ivedimas_is_failo(S, meniu_pasirinkimas);
+                for(int i = 0; i < S.size(); i++){
+                    S[i].nd_rez.clear();
+                }
+            }
+            catch(const std::exception& e)
+            {
+                std::cerr << e.what();
+                return;
+            }
+        }
+        else{
+            int mok_sk = mok_sk_ivedimas();
+            if(mok_sk > 0){
+            S.reserve(S.size() + mok_sk);
+            }
+            else {
+                S.reserve(S.size() + 10000);
+            }
+        }
     int i = 0;
     std::string eil, vrd, pvrd;
     while(true){
-
         // jei kiekis zinomas ir jau uzpildyta
-        if(mok_sk != 0 && i >= mok_sk){
+        if(ar_is_failo || (mok_sk != 0 && i >= mok_sk)){
             break;
         }
 
@@ -35,7 +67,7 @@ void pasirinkimas2(vector<Studentas> &S){
         std::stringstream ss(eil);
 
         if(!(ss >> vrd >> pvrd)){
-            std::cout << "Klaida! Turite ivesti varda ir pavarde...\n";
+            std::cerr << "Klaida! Turite ivesti varda ir pavarde...\n";
             std::cin.clear();
             continue;
         }
@@ -55,8 +87,7 @@ void pasirinkimas2(vector<Studentas> &S){
         s.egz_rez = rand() % 10 + 1;
     }
     for(size_t i = 0; i < S.size(); i++){
-        int paz_sk = S[i].nd_rez.size();
-        S[i].vidurkis = vidurkis(S, i, paz_sk);
+        S[i].vidurkis = vidurkis(S, i, S[i].nd_rez.size());
     }
     string metodas = med_ar_vid();
     for (auto& s : S) {

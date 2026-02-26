@@ -21,11 +21,34 @@ int main() {
     switch(meniu_pasirinkimas){
         case 1:{
         cout << "0 - ivedimas ranka, 1 - ivedimas is failo\n";
-        bool ar_is_failo;
-        cin >> ar_is_failo;
-        cin.ignore();
+        int input;
+        try {
+            cin >> input;
+            cin.ignore(10000, '\n');
+            if(!cin || (input != 0 && input != 1)){
+                throw std::runtime_error("Klaida! Turite ivesti 0 arba 1...\n");
+            }
+        }
+        catch (const std::exception& e) {
+            std::cerr << e.what();
+            cin.clear();
+            cin.ignore(10000, '\n');
+            break;
+        }
+        bool ar_is_failo = (input == 1);
         if(ar_is_failo){
-            ivedimas_is_failo(S, meniu_pasirinkimas);
+            try
+            {
+               ivedimas_is_failo(S, meniu_pasirinkimas);
+               for(int i = 0; i < S.size(); i++){
+                    S[i].vidurkis = vidurkis(S, i, S[i].nd_rez.size());
+               }
+            }
+            catch(const std::exception& e)
+            {
+                std::cerr << e.what();
+                break;
+            }
         }
         else{
             mok_sk = mok_sk_ivedimas();
@@ -52,10 +75,10 @@ int main() {
         }
         break;
         case 2:
-        pasirinkimas2(S);
+        pasirinkimas2(S, meniu_pasirinkimas);
         break;
         case 3:{
-        pasirinkimas3(S);
+        pasirinkimas3(S, meniu_pasirinkimas);
         break;
         }
     }

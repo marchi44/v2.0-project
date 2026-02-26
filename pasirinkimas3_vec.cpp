@@ -6,7 +6,7 @@
 #include <string>
 #include <algorithm>
 
-void pasirinkimas3(vector<Studentas> &S){
+void pasirinkimas3(vector<Studentas> &S, int meniu_pasirinkimas){
     string metodas = med_ar_vid();
     std::cout << "Generuojami studentu vardai ir pavardes...\n";
     srand(time(NULL));

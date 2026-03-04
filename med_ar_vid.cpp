@@ -1,5 +1,5 @@
 #include "funkcijos.h"
-#include <iostream>
+#include "lib.h"
 
 string med_ar_vid(){
     string vid_ar_med;

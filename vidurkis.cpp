@@ -1,5 +1,5 @@
 #include "funkcijos.h"
-#include <vector>
+#include "lib.h"
 
 double vidurkis(vector<Studentas> &S, int i, int paz_sk){
     int paz_suma = 0;

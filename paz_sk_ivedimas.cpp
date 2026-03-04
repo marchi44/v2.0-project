@@ -1,6 +1,5 @@
 #include "funkcijos.h"
-#include <string>
-#include <iostream>
+#include "lib.h"
 
 int paz_sk_ivedimas(){
     while (true) {

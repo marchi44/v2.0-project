@@ -1,5 +1,5 @@
 #include "funkcijos.h"
-#include <iostream>
+#include "lib.h"
 
 int meniu(){
     int meniu_pasirinkimas;

@@ -1,7 +1,5 @@
 #include "funkcijos.h"
-#include <vector>
-#include <string>
-#include <iostream>
+#include "lib.h"
 
 void pazymiu_ivedimas(vector<Studentas> &S, int i){
     std::string input;

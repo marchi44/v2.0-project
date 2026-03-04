@@ -1,7 +1,5 @@
 #include "funkcijos.h"
-#include <sstream>
-#include <string>
-#include <iostream>
+#include "lib.h"
 
 void mokinio_info_ivedimas(std::vector<Studentas> &S, int mok_sk){
 

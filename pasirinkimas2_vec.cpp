@@ -1,11 +1,5 @@
 #include "funkcijos.h"
-#include <string>
-#include <iomanip>
-#include <vector>
-#include <ctime>
-#include <cstdlib>
-#include <sstream>
-#include <algorithm>
+#include "lib.h"
 
 void pasirinkimas2(vector<Studentas> &S, int meniu_pasirinkimas){
     int mok_sk;

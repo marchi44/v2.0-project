@@ -1,7 +1,4 @@
-#include <fstream>
-#include <ctime>
-#include <cstdlib>
-#include <iomanip>
+#include "lib.h"
 #include "funkcijos.h"
 
 void failo_generavimas() {

@@ -1,6 +1,5 @@
 #include "funkcijos.h"
-#include <string>
-#include <iostream>
+#include "lib.h"
 
 int mok_sk_ivedimas(){
     std::string input;

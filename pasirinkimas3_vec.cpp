@@ -1,10 +1,5 @@
 #include "funkcijos.h"
-#include <vector>
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <string>
-#include <algorithm>
+#include "lib.h"
 
 using std::string;
 

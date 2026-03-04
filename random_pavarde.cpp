@@ -1,8 +1,5 @@
 #include "funkcijos.h"
-#include <iostream>
-#include <vector>
-#include <string>
-#include <cstdlib>
+#include "lib.h"
 
 std::string rnd_pavarde(bool vyras){
     vector<string>vyr_pavarde = {

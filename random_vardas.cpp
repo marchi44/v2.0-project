@@ -1,8 +1,5 @@
 #include "funkcijos.h"
-#include <string>
-#include <vector>
-#include <iostream>
-#include <cstdlib>
+#include "lib.h"
 
 std::string rnd_vardas(bool vyras){
     vector<string>vyr_vardai = {"Jonas","Matas","Lukas","Tomas","Paulius",

@@ -1,7 +1,5 @@
 #include "funkcijos.h"
-#include <vector>
-#include <iostream>
-#include <algorithm>
+#include "lib.h"
 
 void rusiavimas(vector<Studentas> &S){
     std::cout << "1 - rusiuoti didejanciai, 2 - rusiuoti mazejanciai\n";

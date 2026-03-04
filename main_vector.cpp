@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
+#include "lib.h"
 #include "funkcijos.h"
 
 using std::string;

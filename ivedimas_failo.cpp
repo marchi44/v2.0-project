@@ -1,17 +1,9 @@
 #include "funkcijos.h"
-#include <fstream>
-#include <sstream>
-#include <string>
-#include <vector>
-#include <iostream>
-
-using std::vector;
-using std::string;
-using std::getline;
+#include "lib.h"
 
 void ivedimas_is_failo(vector<Studentas> &S, int meniu_pasirinkimas){
     S.reserve(S.size() + 10000);
-    std::ifstream in("kursiokai.txt");
+    std::ifstream in("studentai1000000.txt");
     if (!in) {
         throw std::runtime_error("Klaida! Nepavyko atidaryti failo...\n");
     }

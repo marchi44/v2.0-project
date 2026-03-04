@@ -1,7 +1,5 @@
 #include "funkcijos.h"
-#include <iostream>
-#include <iomanip>
-#include <fstream>
+#include "lib.h"
 
 void isvedimas_i_faila(std::vector<Studentas> S){
     // if (metodas == "vid") {

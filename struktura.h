@@ -1,3 +1,6 @@
+#ifndef STRUKTURA_H
+#define STRUKTURA_H
+
 #include "lib.h"
 struct Studentas {
     std::string Vardas;
@@ -9,3 +12,5 @@ struct Studentas {
     double galutinis_vid;
     double galutinis_med;
 };
+
+#endif

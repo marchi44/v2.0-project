@@ -16,7 +16,7 @@ int main() {
     int paz_sk;
     int mok_sk;
     int meniu_pasirinkimas = meniu();
-    while(meniu_pasirinkimas != 4){
+    while(meniu_pasirinkimas != 5){
     switch(meniu_pasirinkimas){
         case 1:{
         cout << "0 - ivedimas ranka, 1 - ivedimas is failo\n";
@@ -95,6 +95,15 @@ int main() {
         }
         case 3:{
         pasirinkimas3(S, meniu_pasirinkimas);
+        break;
+        }
+        case 4:{
+        try{
+            failo_generavimas();
+        }
+        catch(const std::exception& e){
+            std::cerr << e.what();
+        }
         break;
         }
     }

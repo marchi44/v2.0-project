@@ -2,9 +2,26 @@
 #include "funkcijos.h"
 
 void failo_generavimas() {
-    std::ofstream out("kursiokai.txt");
-    srand(time(0));
-    int mok_sk = rand();
+    cout << "Iveskite failo, i kuri norite generuoti duomenis, pavadinima (pvz., kursiokai.txt): ";
+    string path;
+    cin >> path;
+    cin.ignore(10000, '\n');
+    if(path.empty() || path.size() < 4 || path.substr(path.size() - 4) != ".txt"){
+        cin.clear();
+        throw std::runtime_error("Klaida! Failo pavadinimas turi baigtis .txt...\n");
+    }
+    std::ofstream out(path);
+    //srand(time(0));
+    //int mok_sk = rand();
+    cout << "Iveskite mokiniu skaiciu, kuri norite generuoti: ";
+    int mok_sk;
+    cin >> mok_sk;
+    cin.ignore(10000, '\n');
+    if(cin.fail() || mok_sk <= 0){
+        cin.clear();
+        throw std::runtime_error("Klaida! Turite ivesti teigiama sveika skaiciu...\n");
+        return;
+    }
     out << std::left << std::setw(15) << "Vardas" << std::setw(25) << "Pavarde" << std::setw(5) << "ND1" << std::setw(5) << "ND2" << std::setw(5) << "ND3" << std::setw(5) << "ND4" << std::setw(5) << "ND5" << std::setw(10) << "Egzaminas\n";
     for (int i = 0; i < mok_sk; i++) {
         bool lytis = rand() % 2;

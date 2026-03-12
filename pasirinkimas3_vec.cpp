@@ -31,6 +31,12 @@ void pasirinkimas3(vector<Studentas> &S, int meniu_pasirinkimas){
                 }
                 S[i].galutinis_vid = 0.4 * S[i].vidurkis + 0.6 * static_cast<double>(S[i].egz_rez);
                 S[i].galutinis_med = 0.4 * S[i].mediana + 0.6 * static_cast<double>(S[i].egz_rez);
+                if(S[i].galutinis_vid >= 5.0){
+                    S[i].grupe = galvociai;
+                }
+                else{
+                    S[i].grupe = dundukai;
+                }
         }
         rusiavimas(S);
         std::cout << "1 - isvesti i konsole, 2 - isvesti i faila\n";

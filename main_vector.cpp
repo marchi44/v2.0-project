@@ -64,6 +64,12 @@ int main() {
                 }
                 s.galutinis_vid = 0.4 * s.vidurkis + 0.6 * static_cast<double>(s.egz_rez);
                 s.galutinis_med = 0.4 * s.mediana + 0.6 * static_cast<double>(s.egz_rez);
+                if(s.galutinis_vid >= 5.0){
+                    s.grupe = galvociai;
+                }
+                else{
+                    s.grupe = dundukai;
+                }
         }
         rusiavimas(S);
         cout << "1 - isvesti i konsole, 2 - isvesti i faila\n";

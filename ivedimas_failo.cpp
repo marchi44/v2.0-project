@@ -3,7 +3,7 @@
 
 void ivedimas_is_failo(vector<Studentas> &S, int meniu_pasirinkimas){
     S.reserve(S.size() + 10000);
-    std::ifstream in("studentai1000000.txt");
+    std::ifstream in("kursi.txt");
     if (!in) {
         throw std::runtime_error("Klaida! Nepavyko atidaryti failo...\n");
     }

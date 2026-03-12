@@ -1,7 +1,5 @@
 #include "funkcijos.h"
-#include <iostream>
-#include <string>
-#include <vector>
+#include "lib.h"
 
 int egz_ivedimas(){
     std::string input;

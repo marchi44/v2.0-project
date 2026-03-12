@@ -10,6 +10,7 @@ using std::getline;
 
 int main() {
     srand(time(NULL));
+    //failo_generavimas();
     vector<Studentas> S;
     string input;
     int paz_sk;

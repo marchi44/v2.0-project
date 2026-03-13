@@ -10,6 +10,8 @@ using std::getline;
 
 int main() {
     srand(time(NULL));
+    //test_failu_generavimas();
+    //antras_tyrimas();
     //failo_generavimas();
     vector<Studentas> S;
     string input;

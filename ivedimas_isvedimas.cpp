@@ -3,7 +3,14 @@
 
 void ivedimas_is_failo(vector<Studentas> &S, int meniu_pasirinkimas){
     S.reserve(S.size() + 10000);
-    std::ifstream in("stud_1000.txt");
+    string path;
+    cout << "Iveskite failo, is kurio norite nuskaityti, pavadinima (pvz., kursiokai.txt): ";
+    cin >> path;
+    if(path.empty() || path.size() < 4 || path.substr(path.size() - 4) != ".txt"){
+        cin.clear();
+        throw std::runtime_error("Klaida! Failo pavadinimas turi baigtis .txt...\n");
+    }
+    std::ifstream in(path);
     if (!in) {
         throw std::runtime_error("Klaida! Nepavyko atidaryti failo...\n");
     }

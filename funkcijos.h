@@ -22,5 +22,7 @@ void failo_generavimas();
 void ivedimas_is_failo(vector<Studentas> &S, int meniu_pasirinkimas);
 void rusiavimas(vector<Studentas> &S);
 void isvedimas_i_faila(std::vector<Studentas> S);
+void test_failu_generavimas();
+void antras_tyrimas();
 
 #endif

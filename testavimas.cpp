@@ -87,6 +87,7 @@ void antras_tyrimas(){
         std::chrono::duration<double> elapsed_grupe = end_grupe - start_grupe;
         cout << std::fixed << std::setprecision(6) << dydis << " studentu surusiuoti i dvi grupes per " << elapsed_grupe.count() << " s\n";
         auto start_isv = std::chrono::high_resolution_clock::now();
+        rusiavimas(S, 1, 3);
         isvedimas_i_faila(S);
         auto end_isv = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed_isv = end_isv - start_isv;

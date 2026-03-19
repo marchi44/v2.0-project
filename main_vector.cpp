@@ -10,9 +10,8 @@ using std::getline;
 
 int main() {
     srand(time(NULL));
-    //test_failu_generavimas();
+    test_failu_generavimas();
     //antras_tyrimas();
-    //failo_generavimas();
     vector<Studentas> S;
     string input;
     int paz_sk;
@@ -41,9 +40,6 @@ int main() {
             try
             {
                ivedimas_is_failo(S, meniu_pasirinkimas);
-               for(int i = 0; i < S.size(); i++){
-                    S[i].vidurkis = vidurkis(S, i, S[i].nd_rez.size());
-               }
             }
             catch(const std::exception& e)
             {
@@ -73,7 +69,7 @@ int main() {
                     s.grupe = dundukai;
                 }
         }
-        rusiavimas(S);
+        rusiavimo_pasirinkimas(S);
         cout << "1 - isvesti i konsole, 2 - isvesti i faila\n";
         int kur_isvesti;
         try {

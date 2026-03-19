@@ -1,7 +1,7 @@
 #include "funkcijos.h"
 #include "lib.h"
 
-void rusiavimas(vector<Studentas> &S){
+void rusiavimo_pasirinkimas(vector<Studentas> &S){
     std::cout << "1 - rusiuoti didejanciai, 2 - rusiuoti mazejanciai\n";
     int did_ar_maz;
     try {
@@ -32,6 +32,10 @@ void rusiavimas(vector<Studentas> &S){
         std::cin.ignore(10000, '\n');
         return;
     }
+    rusiavimas(S, did_ar_maz, pagal_ka_rusiuoti);
+}
+
+void rusiavimas(vector<Studentas> &S, int did_ar_maz, int pagal_ka_rusiuoti){
     if(did_ar_maz == 1){
         switch(pagal_ka_rusiuoti){
             case 1:

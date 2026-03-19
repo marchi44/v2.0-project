@@ -5,6 +5,8 @@ Tyrimas 1 - Duomenų failo generavimas
 
 <img width="863" height="290" alt="image" src="https://github.com/user-attachments/assets/eeed41a1-4cd3-41e0-8b8a-195475465c51" />
 
+<img width="528" height="178" alt="image" src="https://github.com/user-attachments/assets/74213d40-be62-4aa8-b9c5-de02b81248a7" />
+
 
 Tyrimas 2
 Failas su 1000 įrašų
@@ -45,9 +47,14 @@ Failas su 1000000 įrašų
 Failas su 10000000 įrašų
 
 <img width="1086" height="178" alt="image" src="https://github.com/user-attachments/assets/c24d75ef-0748-4c8c-955c-9a3f9c025060" />
+
 <img width="1057" height="156" alt="image" src="https://github.com/user-attachments/assets/353930c9-60c5-415f-a41d-90540658cfb4" />
 
 <img width="1050" height="156" alt="image" src="https://github.com/user-attachments/assets/9372c8f9-9ba9-4a91-b53d-bc0bc112736f" />
+
+
+<img width="604" height="496" alt="image" src="https://github.com/user-attachments/assets/dd865a60-ad05-467b-ad34-75e8bf411df4" />
+
 
 
 

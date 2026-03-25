@@ -55,6 +55,105 @@ Failas su 10000000 įrašų
 
 <img width="604" height="496" alt="image" src="https://github.com/user-attachments/assets/dd865a60-ad05-467b-ad34-75e8bf411df4" />
 
+Tyrimas 3
+Sistemos informacija:
+WSL:Ubuntu
+CPU - AMD Ryzen 5 8645HS
+RAM - 16GB
+SSD - 512GB NVME PCIe 4.0
+
+ std::vector
+ test_1000.txt
+ 1 - 0.113893 s
+ 2 - 0.110467 s
+ 3 - 0.140469 s
+ Vidurkis - 0.121 s
+
+ test_10000.txt
+ 1 - 0.053908 s
+ 2 - 0.053852 s
+ 3 - 0.058564 s
+ Vidurkis - 0.056 s
+
+ test_100000.txt
+ 1 - 0.579506 s
+ 2 - 0.590213 s
+ 3 - 0.595172 s
+ Vidurkis - 0.588 s
+
+ test_1000000.txt
+ 1 - 6.569682 s
+ 2 - 6.967758 s
+ 3 - 7.039329 s
+ Vidurkis - 6.859 s
+
+ test_10000000.txt
+ 1 - 91.776730 s
+ 2 - 87.465872 s
+ 3 - 86.342231 s
+ Vidurkis - 88.528 s
+
+std::deque
+ test_1000.txt
+ 1 - 2.127309 s
+ 2 - 2.771223 s
+ 3 - 2.155803 s
+ Vidurkis - 2.351445 s
+
+ test_10000.txt
+ 1 - 0.050624 s
+ 2 - 0.065636 s
+ 3 - 0.048987 s
+ Vidurkis - 0.055082 s
+
+ test_100000.txt
+ 1 - 0.604149 s
+ 2 - 0.633011 s
+ 3 - 0.542207 s
+ Vidurkis - 0.593122 s
+
+ test_1000000.txt
+ 1 - 8.604124 s
+ 2 - 6.549174 s
+ 3 - 6.297341 s
+ Vidurkis - 7.150213 s
+
+ test_10000000.txt
+ 1 - 83.687118 s
+ 2 - 83.985311 s
+ 3 - 76.094143 s
+ Vidurkis - 81.255524 s
+
+ std::list
+ test_1000.txt
+ 1 - 1.680508 s
+ 2 - 1.561571 s
+ 3 - 1.467715 s
+ Vidurkis - 1.569931 s
+
+ test_10000.txt
+ 1 - 0.150532 s
+ 2 - 0.142958 s
+ 3 - 0.140435 s
+ Vidurkis - 0.144642 s
+
+ test_100000.txt
+ 1 - 0.322517 s
+ 2 - 0.362596 s
+ 3 - 0.339868 s
+ Vidurkis - 0.341660 s
+
+ test_1000000.txt
+ 1 - 3.898043 s
+ 2 - 3.985849 s
+ 3 - 3.898897 s
+ Vidurkis - 3.927596 s
+
+ test_10000000.txt
+ 1 - 57.251327 s
+ 2 - 51.093084 s
+ 3 - 46.938994 s
+ Vidurkis - 51.761135 s
 
 
 

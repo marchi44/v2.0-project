@@ -3,8 +3,6 @@
 
 int main() {
     srand(time(NULL));
-    //test_failu_generavimas();
-    //antras_tyrimas();
     vector<Studentas> S;
     string input;
     int paz_sk;

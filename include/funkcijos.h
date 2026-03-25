@@ -28,6 +28,7 @@ void rusiavimas(Container &S, int did_ar_maz, int pagal_ka_rusiuoti);
 template<typename Container>
 void isvedimas_i_faila(Container Dundukai, Container Galvociai);
 void test_failu_generavimas();
+template<typename Container>
 void antras_tyrimas();
 template<typename Container>
 void rusiavimo_pasirinkimas(Container &S);
@@ -38,4 +39,5 @@ void rasyti_i_faila(const Container& grupe, const std::string& failo_pavadinimas
 
 #include "funkcijos_temp.h"
 #include "rusiavimas.h"
+#include "testavimas.h"
 #endif

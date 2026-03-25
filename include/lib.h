@@ -9,6 +9,7 @@
 #include <sstream>
 #include <fstream>
 #include <cstdlib>
+#include <list>
 
 using std::string;
 using std::vector;

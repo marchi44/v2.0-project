@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.28)
+project(v1.0_all)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_BUILD_TYPE Debug)
+
+set(SHARED src/shared/ar_valid.cpp src/shared/meniu.cpp src/shared/mokinio_info.cpp src/shared/rnd_generacija.cpp)
+set(VECTOR src/vector/main_vector.cpp)
+set(LIST src/list/main_list.cpp src/list/rusiavimas_list.cpp)
+set(DEQUE src/deque/main_deque.cpp)
+add_executable(v1.0_vector ${SHARED} ${VECTOR} testavimas.cpp)
+target_include_directories(v1.0_vector PRIVATE include)
+add_executable(v1.0_list ${SHARED} ${LIST})
+target_include_directories(v1.0_list PRIVATE include)
+add_executable(v1.0_deque ${SHARED} ${DEQUE})
+target_include_directories(v1.0_deque PRIVATE include)

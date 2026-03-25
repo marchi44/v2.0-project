@@ -1,52 +1,6 @@
 #include "lib.h"
 #include "funkcijos.h"
 
-using std::string;
-using std::vector;
-using std::cout;
-using std::cin;
-using std::stringstream;
-using std::getline;
-
-void mokinio_info_ivedimas(std::vector<Studentas> &S, int mok_sk){
-
-    int i = 0;
-    std::string eil, vrd, pvrd;
-    while(true){
-
-        // jei kiekis zinomas ir jau uzpildyta
-        if(mok_sk != 0 && i >= mok_sk){
-            break;
-        }
-
-        std::cout << "Iveskite " << i+1 << "-ojo mokinio varda ir pavarde. Tuscia eilute - baigti\n";
-        std::getline(std::cin, eil);
-
-        // jei kiekis nezinomas ir ivedimas baigtas su tuscia eilute
-        if(mok_sk == 0 && eil.empty() && i != 0){
-            break;
-        }
-
-        std::stringstream ss(eil);
-
-        if(!(ss >> vrd >> pvrd)){
-            std::cout << "Klaida! Turite ivesti varda ir pavarde...\n";
-            std::cin.clear();
-            continue;
-        }
-
-        S.push_back(Studentas{vrd, pvrd});
-        //mokinio nd pazymiu ivedimas
-        int paz_sk;
-        pazymiu_ivedimas(S.back());
-        //vidurkio apskaiciavimas
-        S.back().vidurkis = vidurkis(S.back(), paz_sk);
-        //egzamino rezultato ivedimas
-        S.back().egz_rez = egz_ivedimas();
-        i++;
-    }
-}
-
 int main() {
     srand(time(NULL));
     //test_failu_generavimas();
@@ -91,6 +45,8 @@ int main() {
             mokinio_info_ivedimas(S, mok_sk);
         }
         //string metodas = med_ar_vid();
+        vector<Studentas> Dundukai;
+        vector<Studentas> Galvociai;
         for (auto& s : S) {
                 std::sort(s.nd_rez.begin(), s.nd_rez.end());
                 if (s.nd_rez.size() % 2 == 0) {
@@ -101,14 +57,16 @@ int main() {
                 }
                 s.galutinis_vid = 0.4 * s.vidurkis + 0.6 * static_cast<double>(s.egz_rez);
                 s.galutinis_med = 0.4 * s.mediana + 0.6 * static_cast<double>(s.egz_rez);
-                if(s.galutinis_vid >= 5.0){
-                    s.grupe = galvociai;
-                }
-                else{
-                    s.grupe = dundukai;
-                }
         }
         rusiavimo_pasirinkimas(S);
+        for(auto& s : S){
+            if(s.galutinis_vid >= 5.0){
+                Galvociai.push_back(s);
+            }
+            else {
+                Dundukai.push_back(s);
+            }
+        }
         cout << "1 - isvesti i konsole, 2 - isvesti i faila\n";
         int kur_isvesti;
         try {
@@ -128,7 +86,7 @@ int main() {
         isvedimas(S);
         }
         else{
-            isvedimas_i_faila(S);
+            isvedimas_i_faila(Dundukai, Galvociai);
         }
         break;
     }

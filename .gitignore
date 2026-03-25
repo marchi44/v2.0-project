@@ -2,4 +2,5 @@
 .vscode/
 .gitignore
 *.txt
+!CMakeLists.txt
 /build/

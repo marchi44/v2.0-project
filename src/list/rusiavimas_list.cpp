@@ -1,7 +1,8 @@
 #include "funkcijos.h"
 #include "lib.h"
+#include <list>
 
-void rusiavimo_pasirinkimas(vector<Studentas> &S){
+void rusiavimo_pasirinkimas_list(std::list<Studentas> &S){
     std::cout << "1 - rusiuoti didejanciai, 2 - rusiuoti mazejanciai\n";
     int did_ar_maz;
     try {
@@ -32,29 +33,29 @@ void rusiavimo_pasirinkimas(vector<Studentas> &S){
         std::cin.ignore(10000, '\n');
         return;
     }
-    rusiavimas(S, did_ar_maz, pagal_ka_rusiuoti);
+    rusiavimas_list(S, did_ar_maz, pagal_ka_rusiuoti);
 }
 
-void rusiavimas(vector<Studentas> &S, int did_ar_maz, int pagal_ka_rusiuoti){
+void rusiavimas_list(std::list<Studentas> &S, int did_ar_maz, int pagal_ka_rusiuoti){
     if(did_ar_maz == 1){
         switch(pagal_ka_rusiuoti){
             case 1:
-                std::sort(S.begin(), S.end(), [](const Studentas& a, const Studentas& b) {
+                S.sort([](const Studentas& a, const Studentas& b) {
                     return a.Vardas < b.Vardas;
                 });
                 break;
             case 2:
-                std::sort(S.begin(), S.end(), [](const Studentas& a, const Studentas& b) {
+                S.sort([](const Studentas& a, const Studentas& b) {
                     return a.Pavarde < b.Pavarde;
                 });
                 break;
             case 3:
-                std::sort(S.begin(), S.end(), [](const Studentas& a, const Studentas& b) {
+                S.sort([](const Studentas& a, const Studentas& b) {
                     return a.galutinis_vid < b.galutinis_vid;
                 });
                 break;
             case 4:
-                std::sort(S.begin(), S.end(), [](const Studentas& a, const Studentas& b) {
+                S.sort([](const Studentas& a, const Studentas& b) {
                     return a.galutinis_med < b.galutinis_med;
                 });
                 break;
@@ -63,22 +64,22 @@ void rusiavimas(vector<Studentas> &S, int did_ar_maz, int pagal_ka_rusiuoti){
     else{
         switch(pagal_ka_rusiuoti){
             case 1:
-                std::sort(S.begin(), S.end(), [](const Studentas& a, const Studentas& b) {
+                S.sort([](const Studentas& a, const Studentas& b) {
                     return a.Vardas > b.Vardas;
                 });
                 break;
             case 2:
-                std::sort(S.begin(), S.end(), [](const Studentas& a, const Studentas& b) {
+                S.sort([](const Studentas& a, const Studentas& b) {
                     return a.Pavarde > b.Pavarde;
                 });
                 break;
             case 3:
-                std::sort(S.begin(), S.end(), [](const Studentas& a, const Studentas& b) {
+                S.sort([](const Studentas& a, const Studentas& b) {
                     return a.galutinis_vid > b.galutinis_vid;
                 });
                 break;
             case 4:
-                std::sort(S.begin(), S.end(), [](const Studentas& a, const Studentas& b) {
+                S.sort([](const Studentas& a, const Studentas& b) {
                     return a.galutinis_med > b.galutinis_med;
                 });
                 break;

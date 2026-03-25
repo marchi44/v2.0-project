@@ -76,19 +76,19 @@ void antras_tyrimas(){
             }
             S[i].galutinis_vid = 0.4 * S[i].vidurkis + 0.6 * static_cast<double>(S[i].egz_rez);
             S[i].galutinis_med = 0.4 * S[i].mediana + 0.6 * static_cast<double>(S[i].egz_rez);
-            if(S[i].galutinis_vid >= 5.0){
-                S[i].grupe = galvociai;
-            }
-            else{
-                S[i].grupe = dundukai;
-            }
+            // if(S[i].galutinis_vid >= 5.0){
+            //     S[i].grupe = galvociai;
+            // }
+            // else{
+            //     S[i].grupe = dundukai;
+            // }
         }
         auto end_grupe = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed_grupe = end_grupe - start_grupe;
         cout << std::fixed << std::setprecision(6) << dydis << " studentu surusiuoti i dvi grupes per " << elapsed_grupe.count() << " s\n";
         auto start_isv = std::chrono::high_resolution_clock::now();
         rusiavimas(S, 1, 3);
-        isvedimas_i_faila(S);
+        //isvedimas_i_faila(S);
         auto end_isv = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed_isv = end_isv - start_isv;
         cout << std::fixed << std::setprecision(6) << dydis << " studentu isvesti i skirtingus failus pagal grupes per " << elapsed_isv.count() << " s\n";

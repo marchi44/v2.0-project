@@ -2,4 +2,4 @@
 .vscode/
 .gitignore
 *.txt
-.build/
+/build/

@@ -21,7 +21,7 @@ void pasirinkimas3(vector<Studentas> &S, int meniu_pasirinkimas){
         }
         S[i].egz_rez = rand() % 10 + 1;
         int paz_sk = S[i].nd_rez.size();
-        S[i].vidurkis = vidurkis(S, i, paz_sk);
+        S[i].vidurkis = vidurkis(S[i], paz_sk);
         sort(S[i].nd_rez.begin(), S[i].nd_rez.end());
                 if (S[i].nd_rez.size() % 2 == 0) {
                     S[i].mediana = (S[i].nd_rez[S[i].nd_rez.size() / 2] + S[i].nd_rez[S[i].nd_rez.size() / 2 - 1]) / 2.0;

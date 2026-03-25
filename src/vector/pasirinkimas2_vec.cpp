@@ -78,12 +78,8 @@ void pasirinkimas2(vector<Studentas> &S, int meniu_pasirinkimas){
             s.nd_rez.push_back(rnd_paz);
         }
         s.egz_rez = rand() % 10 + 1;
-        s.vidurkis = vidurkis(S, &s - &S[0], s.nd_rez.size());
+        s.vidurkis = vidurkis(s, s.nd_rez.size());
     }
-    // for(size_t i = 0; i < S.size(); i++){
-    //     S[i].vidurkis = vidurkis(S, i, S[i].nd_rez.size());
-    // }
-    //string metodas = med_ar_vid();
     for (auto& s : S) {
                 std::sort(s.nd_rez.begin(), s.nd_rez.end());
                 if (s.nd_rez.size() % 2 == 0) {

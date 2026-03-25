@@ -8,9 +8,48 @@ using std::cin;
 using std::stringstream;
 using std::getline;
 
+void mokinio_info_ivedimas(std::vector<Studentas> &S, int mok_sk){
+
+    int i = 0;
+    std::string eil, vrd, pvrd;
+    while(true){
+
+        // jei kiekis zinomas ir jau uzpildyta
+        if(mok_sk != 0 && i >= mok_sk){
+            break;
+        }
+
+        std::cout << "Iveskite " << i+1 << "-ojo mokinio varda ir pavarde. Tuscia eilute - baigti\n";
+        std::getline(std::cin, eil);
+
+        // jei kiekis nezinomas ir ivedimas baigtas su tuscia eilute
+        if(mok_sk == 0 && eil.empty() && i != 0){
+            break;
+        }
+
+        std::stringstream ss(eil);
+
+        if(!(ss >> vrd >> pvrd)){
+            std::cout << "Klaida! Turite ivesti varda ir pavarde...\n";
+            std::cin.clear();
+            continue;
+        }
+
+        S.push_back(Studentas{vrd, pvrd});
+        //mokinio nd pazymiu ivedimas
+        int paz_sk;
+        pazymiu_ivedimas(S.back());
+        //vidurkio apskaiciavimas
+        S.back().vidurkis = vidurkis(S.back(), paz_sk);
+        //egzamino rezultato ivedimas
+        S.back().egz_rez = egz_ivedimas();
+        i++;
+    }
+}
+
 int main() {
     srand(time(NULL));
-    test_failu_generavimas();
+    //test_failu_generavimas();
     //antras_tyrimas();
     vector<Studentas> S;
     string input;

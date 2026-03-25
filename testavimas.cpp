@@ -66,7 +66,7 @@ void antras_tyrimas(){
     cout << std::fixed << std::setprecision(6) << "Failas su " << dydis << " studentu nuskaitytas per " << elapsed_nusk.count() << " s\n";
     auto start_grupe = std::chrono::high_resolution_clock::now();
     for (int i = 0; i < S.size(); i++) {
-        S[i].vidurkis = vidurkis(S, i, S[i].nd_rez.size());
+        S[i].vidurkis = vidurkis(S[i], S[i].nd_rez.size());
         std::sort(S[i].nd_rez.begin(), S[i].nd_rez.end());
         if (S[i].nd_rez.size() % 2 == 0) {
             S[i].mediana = (S[i].nd_rez[S[i].nd_rez.size() / 2] + S[i].nd_rez[S[i].nd_rez.size() / 2 - 1]) / 2.0;

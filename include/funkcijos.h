@@ -7,9 +7,9 @@
 bool ar_valid (const string &input);
 int meniu();
 int mok_sk_ivedimas();
-void pazymiu_ivedimas(vector<Studentas> &S, int i);
+void pazymiu_ivedimas(Studentas &s);
 int egz_ivedimas();
-double vidurkis(vector<Studentas> &S, int i, int paz_sk);
+double vidurkis(Studentas &s, int paz_sk);
 void mokinio_info_ivedimas(vector<Studentas> &S, int mok_sk);
 int paz_sk_ivedimas();
 string med_ar_vid();

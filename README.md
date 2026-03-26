@@ -1,218 +1,202 @@
-Tyrimas 1 - Duomenų failo generavimas
-<img width="868" height="292" alt="image" src="https://github.com/user-attachments/assets/2025384c-51a9-40ae-b507-d965dc28bb4c" />
+📦 Releases
+📌 v.pradinė
 
-<img width="929" height="287" alt="image" src="https://github.com/user-attachments/assets/a195deff-be3e-4f1b-a8b5-7048bd0fd703" />
+Pradinė programos versija.
+Realizuotas studento duomenų įvedimas, galutinio balo skaičiavimas pagal vidurkį ir medianą bei rezultatų išvedimas formatuotu pavidalu.
 
-<img width="863" height="290" alt="image" src="https://github.com/user-attachments/assets/eeed41a1-4cd3-41e0-8b8a-195475465c51" />
+📌 v0.1
 
-<img width="528" height="178" alt="image" src="https://github.com/user-attachments/assets/74213d40-be62-4aa8-b9c5-de02b81248a7" />
+Programa išplėsta darbui su nežinomu studentų ir namų darbų kiekiu įvedimo metu.
+Įgyvendintos dvi realizacijos: naudojant C masyvus ir std::vector. Taip pat pridėta galimybė generuoti pažymius atsitiktinai.
 
+📌 v0.2
 
-Tyrimas 2
-Failas su 1000 įrašų
-<img width="1023" height="162" alt="image" src="https://github.com/user-attachments/assets/62a0ce43-91f7-429f-a85a-6d4f456c77dd" />
+Pridėtas duomenų nuskaitymas iš failo (naudojant std::vector).
+Realizuotas studentų rūšiavimas pagal vartotojo pasirinktą kriterijų (vardą, pavardę arba galutinį balą pagal vidurkį / medianą). Užtikrintas tvarkingas ir išlygintas rezultatų išvedimas. Programa ištestuota su dideliais duomenų failais.
 
-<img width="991" height="164" alt="image" src="https://github.com/user-attachments/assets/fd1881b9-dcc4-4587-a464-3adb476146bb" />
+📌 v0.3
 
-<img width="975" height="155" alt="image" src="https://github.com/user-attachments/assets/13af7b39-e378-44d3-b287-9b1175da9420" />
+Atliktas programos kodo reorganizavimas (refactoring).
+Įdiegta struktūrizuota projekto architektūra, išskaidant kodą į kelis .cpp ir .h failus. Taip pat pridėtas išimčių (exception handling) valdymas patikimesniam veikimui.
 
+📌 v0.4
 
-Failas su 10000 įrašų
-<img width="1051" height="177" alt="image" src="https://github.com/user-attachments/assets/213b2410-6d4f-490c-b626-2ef8e956527e" />
+Sukurta failų generavimo funkcija ir sugeneruoti dideli testiniai duomenų rinkiniai.
+Įgyvendintas studentų skirstymas į dvi kategorijas pagal galutinį balą bei rezultatų išvedimas į atskirus failus. Atlikta programos veikimo spartos analizė, matuojant skirtingus duomenų apdorojimo etapus.
 
-<img width="1015" height="173" alt="image" src="https://github.com/user-attachments/assets/0c3af6e4-3008-42eb-9cba-e3f607a2ca6b" />
+📌 v1.0
 
-<img width="1001" height="151" alt="image" src="https://github.com/user-attachments/assets/0873c936-a8ab-43d6-b68f-c750b84275d0" />
+Galutinė programos versija.
+Atlikta konteinerių (std::vector, std::list, std::deque) veikimo spartos analizė bei jų palyginimas. Optimizuotas studentų skirstymo algoritmas, pritaikant skirtingas strategijas ir STL algoritmus. Pateikti testavimo rezultatai ir išvados README faile.
 
+📊 Tyrimų rezultatai
+💻 Testavimo sistema
+ OS: WSL (Ubuntu)
+ CPU: AMD Ryzen 5 8645HS
+ RAM: 16 GB
+ Diskas: 512 GB NVMe SSD
+⚙️ Tyrimas 3 – konteinerių palyginimas
+📈 Vidutiniai rezultatai (Laikai pateikti apskaičiavus vidurkį iš 3 bandymų)
+Įrašų kiekis	Vector (s)	Deque (s)	List (s)
+1 000	       0.121	     2.351	    1.570
+10 000	      0.056	     0.055	    0.145
+100 000	     0.588	     0.593	    0.342
+1 000 000	   6.859	     7.150	    3.928
+10 000 000	  88.528	    81.256	   51.761
+🧠 Išvados
+Mažiems duomenų kiekiams std::vector yra greičiausias
+Dideliems duomenų kiekiams std::list pasirodė greičiausias šiame teste
 
+⚙️ Tyrimas 4 – skirstymo strategijos
+Testuota su 100 000 įrašų
 
-Failas su 100000 įrašų
-<img width="1023" height="169" alt="image" src="https://github.com/user-attachments/assets/07b1ab55-2899-4eb1-ab10-44cab06a106c" />
+📈 Strategija 1 (kopijavimas į 2 konteinerius)
+Konteineris	Laikas 1 (s)	Laikas 2 (s)	Laikas 3 (s)	Vidurkis (s)
+Vector	     0.0285	      0.0284	      0.0274	      0.0281
+Deque	      0.0196	      0.0218	      0.0204	      0.0206
+List	       0.0278	      0.0292	      0.0293	      0.0288
 
-<img width="1032" height="155" alt="image" src="https://github.com/user-attachments/assets/17d94ceb-1fc8-4662-a27a-97f332dcc275" />
+📈 Strategija 2 (trinant iš pagrindinio)
+Konteineris	Laikas 1 (s)	Laikas 2 (s)	Laikas 3 (s)	Vidurkis (s)
+Vector	     21.1763	     21.9315	     21.6982	     21.6020 ❗
+Deque	      0.0035	      0.0043	      0.0034	      0.0037
+List	       0.0068	      0.0115	      0.0058	      0.0080
 
-<img width="1023" height="155" alt="image" src="https://github.com/user-attachments/assets/2441c132-0550-44d2-bc4f-5258a07a1eb3" />
+📈 Strategija 3 (optimizuota – std::stable_partition)
+Konteineris	Laikas 1 (s)	Laikas 2 (s)	Laikas 3 (s)	Vidurkis (s)
+Vector	     0.0157	      0.0137      	0.0168	      0.0154
+Deque	      0.0046	      0.0049	      0.0052	      0.0049
+List	       0.0278	      0.0247	      0.0272	      0.0266
 
+🧠 Galutinės išvados
+Vector su 2 strategija pasirodė prasčiausiai, nes kopijavimas std::vector yra labai brangus
+Strategija 3 yra optimaliausia visais atvejais
 
+👉 Geriausias pasirinkimas:
+konteineris: std::deque
+strategija: 3 (stable_partition pagrindu)
 
-Failas su 1000000 įrašų
-<img width="1066" height="173" alt="image" src="https://github.com/user-attachments/assets/59fe7c93-b8a4-4943-8262-e93aade837f2" />
+🚀 Naudojimosi instrukcija
 
-<img width="1024" height="154" alt="image" src="https://github.com/user-attachments/assets/36dcfc6b-02d1-45be-903d-4db33ed71ba2" />
+⚙️ CMake ir C++ kompiliatoriaus įdiegimas
+Linux
+1. Atsidarykite Terminal
+2. Susiraskite jūsų naudojamą Linux OS ir įrašykite pateiktas komandas
+🐌 Ubuntu / Debian
 
-<img width="1034" height="152" alt="image" src="https://github.com/user-attachments/assets/15763f8c-68e0-4a5b-98ee-48a3ca922c11" />
+sudo apt update
+sudo apt install cmake g++ make
 
+🎩 Fedora
+sudo dnf install cmake gcc-c++ make
 
+🐉 Arch Linux
+sudo pacman -S cmake gcc make
 
-Failas su 10000000 įrašų
+3. Patikrinkite ar atsisiuntė
+cmake --version
+g++ --version
+make --version
 
-<img width="1086" height="178" alt="image" src="https://github.com/user-attachments/assets/c24d75ef-0748-4c8c-955c-9a3f9c025060" />
+🪟 Windows
 
-<img width="1057" height="156" alt="image" src="https://github.com/user-attachments/assets/353930c9-60c5-415f-a41d-90540658cfb4" />
+1. Įdiek MSYS2
 
-<img width="1050" height="156" alt="image" src="https://github.com/user-attachments/assets/9372c8f9-9ba9-4a91-b53d-bc0bc112736f" />
+Atsisiųsk ir įdiek MSYS2 iš oficialaus puslapio.
+https://www.msys2.org/
 
+2. Atnaujink MSYS2
 
-<img width="604" height="496" alt="image" src="https://github.com/user-attachments/assets/dd865a60-ad05-467b-ad34-75e8bf411df4" />
+MSYS2 terminale paleisk:
 
-Tyrimas 3
-Sistemos informacija:
-WSL:Ubuntu
-CPU - AMD Ryzen 5 8645HS
-RAM - 16GB
-SSD - 512GB NVME PCIe 4.0
+pacman -Syu
 
- std::vector
- test_1000.txt
- 1 - 0.113893 s
- 2 - 0.110467 s
- 3 - 0.140469 s
- Vidurkis - 0.121 s
+Jei paprašys uždaryti langą, atidaryk jį iš naujo ir pakartok:
 
- test_10000.txt
- 1 - 0.053908 s
- 2 - 0.053852 s
- 3 - 0.058564 s
- Vidurkis - 0.056 s
+pacman -Su
+3. Įdiek GCC/G++ ir CMake
 
- test_100000.txt
- 1 - 0.579506 s
- 2 - 0.590213 s
- 3 - 0.595172 s
- Vidurkis - 0.588 s
+Rekomenduojama naudoti mingw64 aplinką:
 
- test_1000000.txt
- 1 - 6.569682 s
- 2 - 6.967758 s
- 3 - 7.039329 s
- Vidurkis - 6.859 s
+pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-cmake make
 
- test_10000000.txt
- 1 - 91.776730 s
- 2 - 87.465872 s
- 3 - 86.342231 s
- Vidurkis - 88.528 s
+Patikrinimui:
 
-std::deque
- test_1000.txt
- 1 - 2.127309 s
- 2 - 2.771223 s
- 3 - 2.155803 s
- Vidurkis - 2.351445 s
+g++ --version
+cmake --version
+make --version
 
- test_10000.txt
- 1 - 0.050624 s
- 2 - 0.065636 s
- 3 - 0.048987 s
- Vidurkis - 0.055082 s
+🍎 macOS
 
- test_100000.txt
- 1 - 0.604149 s
- 2 - 0.633011 s
- 3 - 0.542207 s
- Vidurkis - 0.593122 s
+1. Įdiek Command Line Tools
 
- test_1000000.txt
- 1 - 8.604124 s
- 2 - 6.549174 s
- 3 - 6.297341 s
- Vidurkis - 7.150213 s
+Terminale paleisk:
 
- test_10000000.txt
- 1 - 83.687118 s
- 2 - 83.985311 s
- 3 - 76.094143 s
- Vidurkis - 81.255524 s
+xcode-select --install
 
- std::list
- test_1000.txt
- 1 - 1.680508 s
- 2 - 1.561571 s
- 3 - 1.467715 s
- Vidurkis - 1.569931 s
+Po įdiegimo patikrinimui:
 
- test_10000.txt
- 1 - 0.150532 s
- 2 - 0.142958 s
- 3 - 0.140435 s
- Vidurkis - 0.144642 s
+clang++ --version
+make --version
+2. Įdiek CMake
+ - Atsisiųsti HomeBrew (jei dar neturite)
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+ - brew install cmake
+ - Patikrinimui:
+   cmake --version
 
- test_100000.txt
- 1 - 0.322517 s
- 2 - 0.362596 s
- 3 - 0.339868 s
- Vidurkis - 0.341660 s
+🔧 Programos paleidimas
+- Linux ir macOS naudokite Terminal, Windows aplinkoje MSYS2 MinGW-64
+1. Nuklonuokite projektą:
+   git clone https://github.com/marchi44/vu-cpp.git
+   cd vu-cpp
+2. Susikurkite build aplanką ir sukompiliuokite projektą:
+   mkdir build
+   cd build
+   cmake ..
+   cmake --build .
+3. Paleiskite programą:
+   - ./v1.0_vector (paleidžia programą su std::vector konteineriu, Windows aplinkoje naudokite ./v1.0_vector.exe)
+   - ./v1.0_deque (paleidžia programą su std::deque konteineriu, Windows aplinkoje naudokite ./v1.0_deque.exe)
+   - ./v1.0_list (paleidžia programą su std::list konteineriu, Windows aplinkoje naudokite ./v1.0_list.exe)
 
- test_1000000.txt
- 1 - 3.898043 s
- 2 - 3.985849 s
- 3 - 3.898897 s
- Vidurkis - 3.927596 s
+📥 Duomenų įvedimas
 
- test_10000000.txt
- 1 - 57.251327 s
- 2 - 51.093084 s
- 3 - 46.938994 s
- Vidurkis - 51.761135 s
+Programa palaiko kelis darbo režimus:
 
-Tyrimas 4 (grupavimo strategijos)
-Testavimui naudotas failas su 100000 studentų
+1. Rankinis įvedimas
+Vartotojas įveda:
+vardą ir pavardę
+namų darbų pažymius
+egzamino pažymį
+Pasirenkamas galutinio balo skaičiavimo būdas:
+vidurkis
+mediana
+2. Atsitiktinis duomenų generavimas
+Vartotojas gali pasirinkti automatinį pažymių generavimą
+Pažymiai generuojami intervale [1–10]
+3. Duomenų nuskaitymas iš failo
+Programa nuskaito duomenis iš failo (pvz. kursiokai.txt)
+Failo struktūra:
+Vardas Pavarde ND1 ND2 ND3 ... Egzaminas
+📊 Duomenų apdorojimas
 
-Strategija 1
-std::vector
-1 - 0.0285 s
-2 - 0.0284 s
-3 - 0.0274 s
-Vidurkis - 0.0281 s
+Programa atlieka šiuos veiksmus:
 
-std::deque
-1 - 0.0196 s
-2 - 0.0218 s
-3 - 0.0204 s
-Vidurkis - 0.0206 s
+apskaičiuoja galutinį balą:
+pagal vidurkį arba medianą
+surūšiuoja studentus pagal:
+vardą
+pavardę
+galutinį balą
+padalina studentus į grupes:
+„dundukai“ (balas < 5.0)
+„galvociai“ (balas ≥ 5.0)
+📤 Rezultatų išvedimas
 
-std::list
-1 - 0.0278 s
-2 - 0.0292 s
-3 - 0.0293 s
-Vidurkis - 0.0288 s
+Rezultatai gali būti:
 
-Strategija 2
-std::vector
-1 - 21.1763 s
-2 - 21.9315 s
-3 - 21.6982 s
-Vidurkis - 21.6020 s
-
-std::deque
-1 - 0.0035 s
-2 - 0.0043 s
-3 - 0.0034 s
-Vidurkis - 0.0037 s
-
-std::list
-1 - 0.0068 s
-2 - 0.0115 s
-3 - 0.0058 s
-Vidurkis - 0.0080 s
-
-Strategija 3
-- Naudota std::stable_partition, insert(), erase()
-
-std::vector
-1 - 0.0157 s
-2 - 0.0137 s
-3 - 0.0168 s
-Vidurkis - 0.0154 s
-
-std::deque
-1 - 0.0046 s
-2 - 0.0049 s
-3 - 0.0052 s
-Vidurkis - 0.0049 s
-
-std::list
-1 - 0.0278 s
-2 - 0.0247 s
-3 - 0.0272 s
-Vidurkis - 0.0266 s
+atvaizduojami ekrane
+išvedami į failus:
+dundukai.txt
+galvociai.txt

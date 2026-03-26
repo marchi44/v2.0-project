@@ -26,7 +26,7 @@ void ivedimas_is_failo(Container &S, int meniu_pasirinkimas);
 template<typename Container>
 void rusiavimas(Container &S, int did_ar_maz, int pagal_ka_rusiuoti);
 template<typename Container>
-void isvedimas_i_faila(Container Dundukai, Container Galvociai);
+void isvedimas_i_faila(const Container &Dundukai, const Container &Galvociai);
 void test_failu_generavimas();
 template<typename Container>
 void antras_tyrimas();
@@ -36,8 +36,18 @@ void rusiavimo_pasirinkimas_list(std::list<Studentas> &S);
 void rusiavimas_list(std::list<Studentas> &S, int did_ar_maz, int pagal_ka_rusiuoti);
 template<typename Container>
 void rasyti_i_faila(const Container& grupe, const std::string& failo_pavadinimas);
+template<typename Container>
+void grupavimas_pirm(Container &S, Container &Dundukai, Container &Galvociai);
+template<typename Container>
+void grupavimas_antras(Container &S, Container &Dundukai);
+template<typename Container>
+void nuskaitymas(Container &S, const int& dydis);
+template<typename Container>
+void skaiciavimai(Container &S);
 
 #include "funkcijos_temp.h"
 #include "rusiavimas.h"
 #include "testavimas.h"
+#include "grupavimas.h"
+
 #endif

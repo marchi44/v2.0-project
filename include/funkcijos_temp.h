@@ -113,7 +113,7 @@ void rasyti_i_faila(const Container& grupe, const std::string& failo_pavadinimas
 }
 
 template<typename Container>
-void isvedimas_i_faila(Container Dundukai, Container Galvociai){
+void isvedimas_i_faila(const Container &Dundukai, const Container &Galvociai){
     rasyti_i_faila(Dundukai, "dundukai.txt");
     rasyti_i_faila(Galvociai, "galvociai.txt");
 }

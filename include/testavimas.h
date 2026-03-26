@@ -3,20 +3,15 @@
 
 #include "lib.h"
 #include "struktura.h"
-
 template<typename Container>
-void antras_tyrimas(){
-    int dydziai [] = {1000, 10000, 100000, 1000000, 10000000};
-    for(const int& dydis : dydziai){
+void nuskaitymas(Container &S, const int& dydis){
         string path = "test_" + std::to_string(dydis) + ".txt";
         cout << "Skaitomas failas " << path << "...\n";
-        auto start_nusk = std::chrono::high_resolution_clock::now();
         std::ifstream in(path);
         if(!in){
             std::cerr << "Klaida! Nepavyko atidaryti failo " << path << "...\n";
-            continue;
+            return;
         }
-        Container S;
         string eil;
         getline(in, eil); // praleiziama header
         while(getline(in, eil)){
@@ -39,13 +34,10 @@ void antras_tyrimas(){
         S.push_back(tmp);
     }
     in.close();
-    auto end_nusk = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> elapsed_nusk = end_nusk - start_nusk;
-    cout << std::fixed << std::setprecision(6) << "Failas su " << dydis << " studentu nuskaitytas per " << elapsed_nusk.count() << " s\n";
-    auto start_grupe = std::chrono::high_resolution_clock::now();
-    Container Dundukai;
-    Container Galvociai;
-    for (auto& s : S) {
+}
+template<typename Container>
+void skaiciavimai(Container &S){
+        for (auto& s : S) {
         s.vidurkis = vidurkis(s, s.nd_rez.size());
         std::sort(s.nd_rez.begin(), s.nd_rez.end());
         if (s.nd_rez.size() % 2 == 0) {
@@ -63,25 +55,35 @@ void antras_tyrimas(){
         else {
             rusiavimas(S, 1, 3);
         }
-        for(auto& s : S){
-            if(s.galutinis_vid >= 5.0){
-                Galvociai.push_back(s);
-            }
-            else {
-                Dundukai.push_back(s);
-            }
-        }
-        auto end_grupe = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> elapsed_grupe = end_grupe - start_grupe;
-        cout << std::fixed << std::setprecision(6) << dydis << " studentu surusiuoti i dvi grupes per " << elapsed_grupe.count() << " s\n";
-        auto start_isv = std::chrono::high_resolution_clock::now();
-        isvedimas_i_faila(Dundukai, Galvociai);
-        auto end_isv = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> elapsed_isv = end_isv - start_isv;
+}
 
-        cout << std::fixed << std::setprecision(6) << dydis << " studentu isvesti i skirtingus failus pagal grupes per " << elapsed_isv.count() << " s\n";
-        cout << std::fixed << std::setprecision(6) << "Visas procesas su " << dydis << " studentu uztruko " << elapsed_nusk.count() + elapsed_grupe.count() + elapsed_isv.count() << " s\n";
-        cout << std::endl << std::endl;
+template<typename Container>
+void antras_tyrimas(){
+    int dydziai [] = {1000, 10000, 100000, 1000000, 10000000};
+    for(const int& dydis : dydziai){
+    auto start_nusk = std::chrono::high_resolution_clock::now();
+    Container S;
+    nuskaitymas(S, dydis);
+    auto end_nusk = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed_nusk = end_nusk - start_nusk;
+    cout << std::fixed << std::setprecision(6) << "Failas su " << dydis << " studentu nuskaitytas per " << elapsed_nusk.count() << " s\n";
+    auto start_grupe = std::chrono::high_resolution_clock::now();
+    Container Dundukai;
+    Container Galvociai;
+    skaiciavimai(S);
+    grupavimas_pirm(S, Dundukai, Galvociai);
+    auto end_grupe = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed_grupe = end_grupe - start_grupe;
+    cout << std::fixed << std::setprecision(6) << dydis << " studentu surusiuoti i dvi grupes per " << elapsed_grupe.count() << " s\n";
+    auto start_isv = std::chrono::high_resolution_clock::now();
+    isvedimas_i_faila(Dundukai, Galvociai);
+    auto end_isv = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed_isv = end_isv - start_isv;
+
+    cout << std::fixed << std::setprecision(6) << dydis << " studentu isvesti i skirtingus failus pagal grupes per " << elapsed_isv.count() << " s\n";
+    cout << std::fixed << std::setprecision(6) << "Visas procesas su " << dydis << " studentu uztruko " << elapsed_nusk.count() + elapsed_grupe.count() + elapsed_isv.count() << " s\n";
+    cout << std::endl << std::endl;
     }
 }
+
 #endif

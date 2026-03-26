@@ -148,7 +148,7 @@ make --version
 🔧 Programos paleidimas
 - Linux ir macOS naudokite Terminal, Windows aplinkoje MSYS2 MinGW-64
 1. Nuklonuokite projektą:
-   git clone https://github.com/marchi44/vu-cpp.git
+   git clone -b v1.0 https://github.com/marchi44/vu-cpp.git
    cd vu-cpp
 2. Susikurkite build aplanką ir sukompiliuokite projektą:
    mkdir build

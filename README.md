@@ -155,5 +155,64 @@ std::deque
  3 - 46.938994 s
  Vidurkis - 51.761135 s
 
+Tyrimas 4 (grupavimo strategijos)
+Testavimui naudotas failas su 100000 studentų
 
+Strategija 1
+std::vector
+1 - 0.0285 s
+2 - 0.0284 s
+3 - 0.0274 s
+Vidurkis - 0.0281 s
 
+std::deque
+1 - 0.0196 s
+2 - 0.0218 s
+3 - 0.0204 s
+Vidurkis - 0.0206 s
+
+std::list
+1 - 0.0278 s
+2 - 0.0292 s
+3 - 0.0293 s
+Vidurkis - 0.0288 s
+
+Strategija 2
+std::vector
+1 - 21.1763 s
+2 - 21.9315 s
+3 - 21.6982 s
+Vidurkis - 21.6020 s
+
+std::deque
+1 - 0.0035 s
+2 - 0.0043 s
+3 - 0.0034 s
+Vidurkis - 0.0037 s
+
+std::list
+1 - 0.0068 s
+2 - 0.0115 s
+3 - 0.0058 s
+Vidurkis - 0.0080 s
+
+Strategija 3
+- Naudota std::stable_partition, insert(), erase()
+
+std::vector
+1 - 0.0157 s
+2 - 0.0137 s
+3 - 0.0168 s
+Vidurkis - 0.0154 s
+
+std::deque
+1 - 0.0046 s
+2 - 0.0049 s
+3 - 0.0052 s
+Vidurkis - 0.0049 s
+
+std::list
+1 - 0.0278 s
+2 - 0.0247 s
+3 - 0.0272 s
+Vidurkis - 0.0266 s

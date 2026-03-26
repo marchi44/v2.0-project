@@ -27,4 +27,13 @@ void grupavimas_antras(Container& S, Container& Dundukai){
     }
 }
 
+template<typename Container>
+void grupavimas_trecias(Container& S, Container& Dundukai){
+    auto riba = std::stable_partition(S.begin(), S.end(), [](const Studentas& s){
+        return s.galutinis_vid >= 5.0;
+    });
+    Dundukai.insert(Dundukai.end(), riba, S.end());
+    S.erase(riba, S.end());
+}
+
 #endif

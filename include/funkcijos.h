@@ -44,6 +44,8 @@ template<typename Container>
 void nuskaitymas(Container &S, const int& dydis);
 template<typename Container>
 void skaiciavimai(Container &S);
+template<typename Container>
+void grupavimas_trecias(Container& S, Container& Dundukai);
 
 #include "funkcijos_temp.h"
 #include "rusiavimas.h"

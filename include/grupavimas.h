@@ -1,7 +1,7 @@
 #ifndef GRUPAVIMAS_H
 #define GRUPAVIMAS_H
 #include "lib.h"
-#include "struktura.h"
+#include "class.h"
 
 template<typename Container>
 void grupavimas_pirm(Container &S, Container &Dundukai, Container &Galvociai){

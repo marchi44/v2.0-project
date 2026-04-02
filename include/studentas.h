@@ -1,5 +1,5 @@
-#ifndef CLASS_H
-#define CLASS_H
+#ifndef STUDENTAS_H
+#define STUDENTAS_H
 
 #include "lib.h"
 /*

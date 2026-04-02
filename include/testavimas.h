@@ -2,7 +2,7 @@
 #define TESTAVIMAS_H
 
 #include "lib.h"
-#include "class.h"
+#include "studentas.h"
 template<typename Container>
 void nuskaitymas(Container &S, const int& dydis){
         string path = "test_" + std::to_string(dydis) + ".txt";

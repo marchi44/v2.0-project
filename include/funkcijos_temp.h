@@ -2,7 +2,7 @@
 #define FUNKCIJOS_TEMP_H
 
 #include "lib.h"
-#include "class.h"
+#include "studentas.h"
 
 template<typename Container>
 void mokinio_info_ivedimas(Container &S, int mok_sk){

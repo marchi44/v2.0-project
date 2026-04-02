@@ -1,7 +1,7 @@
 #ifndef GRUPAVIMAS_H
 #define GRUPAVIMAS_H
 #include "lib.h"
-#include "class.h"
+#include "studentas.h"
 
 template<typename Container>
 void grupavimas_pirm(Container &S, Container &Dundukai, Container &Galvociai){
@@ -17,13 +17,10 @@ void grupavimas_pirm(Container &S, Container &Dundukai, Container &Galvociai){
 
 template<typename Container>
 void grupavimas_antras(Container& S, Container& Dundukai){
-    for(auto it = S.begin(); it != S.end(); ){
-        if(it->galutinis_vid < 5.0){
-            Dundukai.push_back(*it);
-            it = S.erase(it);
-        } else {
-            ++it;
-        }
+    rusiavimas(S, 2, 3);
+    while(S.back().galutinis_vid<5){
+        Dundukai.push_back(S.back());
+        S.pop_back();
     }
 }
 

@@ -2,7 +2,7 @@
 #define FUNKCIJOS_H
 
 #include "lib.h"
-#include "struktura.h"
+#include "studentas.h"
 
 bool ar_valid (const string &input);
 int meniu();

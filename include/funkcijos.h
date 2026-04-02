@@ -32,8 +32,6 @@ template<typename Container>
 void antras_tyrimas();
 template<typename Container>
 void rusiavimo_pasirinkimas(Container &S);
-void rusiavimo_pasirinkimas_list(std::list<Studentas> &S);
-void rusiavimas_list(std::list<Studentas> &S, int did_ar_maz, int pagal_ka_rusiuoti);
 template<typename Container>
 void rasyti_i_faila(const Container& grupe, const std::string& failo_pavadinimas);
 template<typename Container>

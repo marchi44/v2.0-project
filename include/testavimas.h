@@ -19,18 +19,23 @@ void nuskaitymas(Container &S, const int& dydis){
                 continue;
             }
             std::istringstream ss(eil);
-            int paz;
+            int paz, pazSuma = 0;
             Studentas tmp;
-            ss >> tmp.Vardas >> tmp.Pavarde;
+            string vrd, pvrd;
+            ss >> vrd >> pvrd;
+            tmp.setVardas(vrd);
+            tmp.setPavarde(pvrd);
             while(ss >> paz){
                 if(paz > 0 && paz <= 10){
-                    tmp.nd_rez.push_back(paz);
+                    tmp.getNdRez().push_back(paz);
+                    pazSuma += paz;
                 }
         }
-        if(!tmp.nd_rez.empty()){
-            tmp.egz_rez = tmp.nd_rez.back();
-            tmp.nd_rez.pop_back();
+        if(!tmp.getNdRez().empty()){
+            tmp.setEgzRez(tmp.getNdRez().back());
+            tmp.getNdRez().pop_back();
         }
+        tmp.setVidurkis(static_cast<double>(pazSuma - tmp.getEgzRez()) / static_cast<double>(tmp.getNdRez().size()));
         S.push_back(tmp);
     }
     in.close();
@@ -38,23 +43,18 @@ void nuskaitymas(Container &S, const int& dydis){
 template<typename Container>
 void skaiciavimai(Container &S){
         for (auto& s : S) {
-        s.vidurkis = vidurkis(s, s.nd_rez.size());
-        std::sort(s.nd_rez.begin(), s.nd_rez.end());
-        if (s.nd_rez.size() % 2 == 0) {
-            s.mediana = (s.nd_rez[s.nd_rez.size() / 2] + s.nd_rez[s.nd_rez.size() / 2 - 1]) / 2.0;
+        //s.setVidurkis(vidurkis(s, s.getNdRez().size()));
+        std::sort(s.getNdRez().begin(), s.getNdRez().end());
+        if (s.getNdRez().size() % 2 == 0) {
+            s.setMediana((s.getNdRez()[s.getNdRez().size() / 2] + s.getNdRez()[s.getNdRez().size() / 2 - 1]) / 2.0);
             }
         else {
-            s.mediana = s.nd_rez[s.nd_rez.size() / 2];
+            s.setMediana(s.getNdRez()[s.getNdRez().size() / 2]);
             }
-            s.galutinis_vid = 0.4 * s.vidurkis + 0.6 * static_cast<double>(s.egz_rez);
-            s.galutinis_med = 0.4 * s.mediana + 0.6 * static_cast<double>(s.egz_rez);
+            s.setGalutinisVid(0.4 * s.getVidurkis() + 0.6 * static_cast<double>(s.getEgzRez()));
+            s.setGalutinisMed(0.4 * s.getMediana() + 0.6 * static_cast<double>(s.getEgzRez()));
         }
-        if constexpr (std::is_same_v<Container, std::list<Studentas>>) {
-            rusiavimas_list(S, 1, 3);
-        }    
-        else {
-            rusiavimas(S, 1, 3);
-        }
+        rusiavimas(S, 1, 3);
 }
 
 template<typename Container>

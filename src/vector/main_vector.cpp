@@ -46,19 +46,19 @@ int main() {
         vector<Studentas> Dundukai;
         vector<Studentas> Galvociai;
         for (auto& s : S) {
-                std::sort(s.nd_rez.begin(), s.nd_rez.end());
-                if (s.nd_rez.size() % 2 == 0) {
-                    s.mediana = (s.nd_rez[s.nd_rez.size() / 2] + s.nd_rez[s.nd_rez.size() / 2 - 1]) / 2.0;
+                std::sort(s.getNdRez().begin(), s.getNdRez().end());
+                if (s.getNdRez().size() % 2 == 0) {
+                    s.setMediana((s.getNdRez()[s.getNdRez().size() / 2] + s.getNdRez()[s.getNdRez().size() / 2 - 1]) / 2.0);
                 }
                 else {
-                s.mediana = s.nd_rez[s.nd_rez.size() / 2];
+                s.setMediana(s.getNdRez()[s.getNdRez().size() / 2]);
                 }
-                s.galutinis_vid = 0.4 * s.vidurkis + 0.6 * static_cast<double>(s.egz_rez);
-                s.galutinis_med = 0.4 * s.mediana + 0.6 * static_cast<double>(s.egz_rez);
+                s.setGalutinisVid(0.4 * s.getVidurkis() + 0.6 * static_cast<double>(s.getEgzRez()));
+                s.setGalutinisMed(0.4 * s.getMediana() + 0.6 * static_cast<double>(s.getEgzRez()));
         }
         rusiavimo_pasirinkimas(S);
         for(auto& s : S){
-            if(s.galutinis_vid >= 5.0){
+            if(s.getGalutinisVid() >= 5.0){
                 Galvociai.push_back(s);
             }
             else {

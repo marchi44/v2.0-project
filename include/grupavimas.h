@@ -6,7 +6,7 @@
 template<typename Container>
 void grupavimas_pirm(Container &S, Container &Dundukai, Container &Galvociai){
     for(auto& s : S){
-        if(s.galutinis_vid >= 5.0){
+        if(s.getGalutinisVid() >= 5.0){
             Galvociai.push_back(s);
         }
         else {
@@ -18,7 +18,7 @@ void grupavimas_pirm(Container &S, Container &Dundukai, Container &Galvociai){
 template<typename Container>
 void grupavimas_antras(Container& S, Container& Dundukai){
     rusiavimas(S, 2, 3);
-    while(S.back().galutinis_vid<5){
+    while(S.back().getGalutinisVid() < 5){
         Dundukai.push_back(S.back());
         S.pop_back();
     }
@@ -27,7 +27,7 @@ void grupavimas_antras(Container& S, Container& Dundukai){
 template<typename Container>
 void grupavimas_trecias(Container& S, Container& Dundukai){
     auto riba = std::stable_partition(S.begin(), S.end(), [](const Studentas& s){
-        return s.galutinis_vid >= 5.0;
+        return s.getGalutinisVid() >= 5.0;
     });
     Dundukai.insert(Dundukai.end(), riba, S.end());
     S.erase(riba, S.end());

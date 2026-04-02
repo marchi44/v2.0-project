@@ -32,14 +32,14 @@ void mokinio_info_ivedimas(Container &S, int mok_sk){
             continue;
         }
 
-        S.push_back(Studentas{vrd, pvrd});
+        S.push_back(Studentas(vrd, pvrd));
         //mokinio nd pazymiu ivedimas
         int paz_sk;
         pazymiu_ivedimas(S.back());
         //vidurkio apskaiciavimas
-        S.back().vidurkis = vidurkis(S.back(), paz_sk);
+        S.back().setVidurkis(vidurkis(S.back(), paz_sk));
         //egzamino rezultato ivedimas
-        S.back().egz_rez = egz_ivedimas();
+        S.back().setEgzRez(egz_ivedimas());
         i++;
     }
 }
@@ -67,11 +67,14 @@ void ivedimas_is_failo(Container &S, int meniu_pasirinkimas){
         std::istringstream ss(eil);
         int paz;
         Studentas tmp;
-        ss >> tmp.Vardas >> tmp.Pavarde;
+        string vrd, pvrd;
+        ss >> vrd >> pvrd;
+        tmp.setVardas(vrd);
+        tmp.setPavarde(pvrd);
         if(meniu_pasirinkimas == 1){
         while(ss >> paz){
             if(paz > 0 && paz <= 10){
-                tmp.nd_rez.push_back(paz);
+                tmp.getNdRez().push_back(paz);
                 paz_suma += paz;
             }
             else{
@@ -79,14 +82,14 @@ void ivedimas_is_failo(Container &S, int meniu_pasirinkimas){
             }
         }
         }
-        if(!tmp.nd_rez.empty()){
-            tmp.egz_rez = tmp.nd_rez.back();
-            tmp.nd_rez.pop_back();
+        if(!tmp.getNdRez().empty()){
+            tmp.setEgzRez(tmp.getNdRez().back());
+            tmp.getNdRez().pop_back();
         }
         else if(meniu_pasirinkimas == 1){
-            throw std::runtime_error("Klaida! Mokinio " + tmp.Vardas + " " + tmp.Pavarde + " namu darbu pazymiai nerasti...\n");
+            throw std::runtime_error("Klaida! Mokinio " + tmp.getVardas() + " " + tmp.getPavarde() + " namu darbu pazymiai nerasti...\n");
         }
-        tmp.vidurkis = static_cast<double>(paz_suma) / static_cast<double>(tmp.nd_rez.size());
+        tmp.setVidurkis(static_cast<double>(paz_suma - tmp.getEgzRez()) / static_cast<double>(tmp.getNdRez().size()));
         S.push_back(tmp);
     }
 }
@@ -104,10 +107,10 @@ void rasyti_i_faila(const Container& grupe, const std::string& failo_pavadinimas
     out << std::string(76, '-') << '\n';
 
     for (const auto& s : grupe) {
-        out << std::left << std::setw(15) << s.Vardas
-            << std::setw(25) << s.Pavarde
-            << std::setw(18) << s.galutinis_vid
-            << std::setw(18) << s.galutinis_med
+        out << std::left << std::setw(15) << s.getVardas()
+            << std::setw(25) << s.getPavarde()
+            << std::setw(18) << s.getGalutinisVid()
+            << std::setw(18) << s.getGalutinisMed()
             << '\n';
     }
 }
@@ -126,7 +129,7 @@ void isvedimas(Container S){
     }
     std::cout << std::endl;
     for (auto& s : S) {
-        std::cout << std::left << std::setw(15) << s.Vardas << std::left << std::setw(25) << s.Pavarde << std::left << std::setw(18) << std::fixed << std::setprecision(2) << s.galutinis_vid << std::left << std::setw(18) << std::fixed << std::setprecision(2) << s.galutinis_med << std::endl;
+        std::cout << std::left << std::setw(15) << s.getVardas() << std::left << std::setw(25) << s.getPavarde() << std::left << std::setw(18) << std::fixed << std::setprecision(2) << s.getGalutinisVid() << std::left << std::setw(18) << std::fixed << std::setprecision(2) << s.getGalutinisMed() << std::endl;
     }
 }
 template<typename Container>
@@ -153,7 +156,7 @@ void pasirinkimas2(Container &S, int meniu_pasirinkimas){
             {
                 ivedimas_is_failo(S, meniu_pasirinkimas);
                 for(auto& s : S){
-                    s.nd_rez.clear();
+                    s.getNdRez().clear();
                 }
             }
             catch(const std::exception& e)
@@ -163,7 +166,7 @@ void pasirinkimas2(Container &S, int meniu_pasirinkimas){
             }
         }
         else{
-            int mok_sk = mok_sk_ivedimas();
+            mok_sk = mok_sk_ivedimas();
         }
     int i = 0;
     std::string eil, vrd, pvrd;
@@ -189,7 +192,7 @@ void pasirinkimas2(Container &S, int meniu_pasirinkimas){
             continue;
         }
 
-        S.push_back(Studentas{vrd, pvrd});
+        S.push_back(Studentas(vrd, pvrd));
         i++;
     }
     std::cout << "Generuojami pazymiai...\n";
@@ -197,32 +200,27 @@ void pasirinkimas2(Container &S, int meniu_pasirinkimas){
         int n = rand() % 100 + 1; //pazymiu skaicius nuo 1 iki 100
         for(int i = 0; i < n; i++){
             int rnd_paz = rand() % 10 + 1;
-            s.nd_rez.push_back(rnd_paz);
+            s.getNdRez().push_back(rnd_paz);
         }
-        s.egz_rez = rand() % 10 + 1;
-        s.vidurkis = vidurkis(s, s.nd_rez.size());
+        s.setEgzRez(rand() % 10 + 1);
+        s.setVidurkis(vidurkis(s, s.getNdRez().size()));
     }
     for (auto& s : S) {
-                std::sort(s.nd_rez.begin(), s.nd_rez.end());
-                if (s.nd_rez.size() % 2 == 0) {
-                    s.mediana = (s.nd_rez[s.nd_rez.size() / 2] + s.nd_rez[s.nd_rez.size() / 2 - 1]) / 2.0;
+                std::sort(s.getNdRez().begin(), s.getNdRez().end());
+                if (s.getNdRez().size() % 2 == 0) {
+                    s.setMediana((s.getNdRez()[s.getNdRez().size() / 2] + s.getNdRez()[s.getNdRez().size() / 2 - 1]) / 2.0);
                 }
                 else {
-                s.mediana = s.nd_rez[s.nd_rez.size() / 2];
+                s.setMediana(s.getNdRez()[s.getNdRez().size() / 2]);
                 }
-                s.galutinis_vid = 0.4 * s.vidurkis + 0.6 * static_cast<double>(s.egz_rez);
-                s.galutinis_med = 0.4 * s.mediana + 0.6 * static_cast<double>(s.egz_rez);
+                s.setGalutinisVid(0.4 * s.getVidurkis() + 0.6 * static_cast<double>(s.getEgzRez()));
+                s.setGalutinisMed(0.4 * s.getMediana() + 0.6 * static_cast<double>(s.getEgzRez()));
         }
-    if constexpr (std::is_same_v<Container, std::list<Studentas>>) {
-        rusiavimo_pasirinkimas_list(S);
-    }    
-    else {
-        rusiavimo_pasirinkimas(S);
-    }
+    rusiavimo_pasirinkimas(S);
     Container Dundukai;
     Container Galvociai;
     for(auto& s : S){
-            if(s.galutinis_vid >= 5.0){
+            if(s.getGalutinisVid() >= 5.0){
                 Galvociai.push_back(s);
             }
             else {
@@ -260,35 +258,30 @@ void pasirinkimas3(Container &S, int meniu_pasirinkimas){
         bool vyras = rand() % 2;
         string vardas = rnd_vardas(vyras);
         string pavarde = rnd_pavarde(vyras);
-        S.push_back(Studentas{vardas, pavarde});
+        S.push_back(Studentas(vardas, pavarde));
         int n = rand() % 100 + 1; //pazymiu skaicius nuo 1 iki 100
         for(int j = 0; j < n; j++){
             int rnd_paz = rand() % 10 + 1;
-            S.back().nd_rez.push_back(rnd_paz);
+            S.back().getNdRez().push_back(rnd_paz);
         }
-        S.back().egz_rez = rand() % 10 + 1;
-        int paz_sk = S.back().nd_rez.size();
-        S.back().vidurkis = vidurkis(S.back(), paz_sk);
-        sort(S.back().nd_rez.begin(), S.back().nd_rez.end());
-                if (S.back().nd_rez.size() % 2 == 0) {
-                    S.back().mediana = (S.back().nd_rez[S.back().nd_rez.size() / 2] + S.back().nd_rez[S.back().nd_rez.size() / 2 - 1]) / 2.0;
+        S.back().setEgzRez(rand() % 10 + 1);
+        int paz_sk = S.back().getNdRez().size();
+        S.back().setVidurkis(vidurkis(S.back(), paz_sk));
+        sort(S.back().getNdRez().begin(), S.back().getNdRez().end());
+                if (S.back().getNdRez().size() % 2 == 0) {
+                    S.back().setMediana((S.back().getNdRez()[S.back().getNdRez().size() / 2] + S.back().getNdRez()[S.back().getNdRez().size() / 2 - 1]) / 2.0);
                 }
                 else {
-                S.back().mediana = S.back().nd_rez[S.back().nd_rez.size() / 2];
+                S.back().setMediana(S.back().getNdRez()[S.back().getNdRez().size() / 2]);
                 }
-                S.back().galutinis_vid = 0.4 * S.back().vidurkis + 0.6 * static_cast<double>(S.back().egz_rez);
-                S.back().galutinis_med = 0.4 * S.back().mediana + 0.6 * static_cast<double>(S.back().egz_rez);
+                S.back().setGalutinisVid(0.4 * S.back().getVidurkis() + 0.6 * static_cast<double>(S.back().getEgzRez()));
+                S.back().setGalutinisMed(0.4 * S.back().getMediana() + 0.6 * static_cast<double>(S.back().getEgzRez()));
         }
-         if constexpr (std::is_same_v<Container, std::list<Studentas>>) {
-        rusiavimo_pasirinkimas_list(S);
-        }    
-        else {
-            rusiavimo_pasirinkimas(S);
-        }
+        rusiavimo_pasirinkimas(S);
         Container Dundukai;
         Container Galvociai;
         for(auto& s : S){
-            if(s.galutinis_vid >= 5.0){
+            if(s.getGalutinisVid() >= 5.0){
                 Galvociai.push_back(s);
             }
             else {
@@ -311,7 +304,7 @@ void pasirinkimas3(Container &S, int meniu_pasirinkimas){
             return;
         }
         if(kur_isvesti == 1){
-        isvedimas(S);
+            isvedimas(S);
         }
         else{
             isvedimas_i_faila(Dundukai, Galvociai);

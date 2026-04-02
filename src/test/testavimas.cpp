@@ -1,6 +1,6 @@
 #include "lib.h"
 #include "funkcijos.h"
-#include "struktura.h"
+#include "studentas.h"
 #include <chrono>
 
 void test_failu_generavimas(){
@@ -33,11 +33,23 @@ void test_failu_generavimas(){
 int main(){
     srand(time(NULL));
     //test_failu_generavimas();
-    cout << "Vector:\n";
-    antras_tyrimas<std::vector<Studentas>>();
-    cout << "List:\n";
-    antras_tyrimas<std::list<Studentas>>();
-    cout << "Deque:\n";
-    antras_tyrimas<std::deque<Studentas>>();
+    //cout << "Vector:\n";
+    //antras_tyrimas<std::vector<Studentas>>();
+    vector<Studentas>S;
+    vector<Studentas>Dundukai;
+    int dydziai[] = {100000, 1000000}; 
+    for(const int& dydis : dydziai){
+        auto start_v1 = std::chrono::high_resolution_clock::now();
+        nuskaitymas(S, dydis);
+        skaiciavimai(S);
+        rusiavimas(S, 1, 3);
+        grupavimas_antras(S, Dundukai);
+        isvedimas_i_faila(Dundukai, S);
+        auto end_v1 = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> elapsed_v1 = end_v1 - start_v1;
+        cout << std::fixed << std::setprecision(4) << "Programa su class su " << S.size() + Dundukai.size()<< " studentu uztruko " << elapsed_v1.count() << " s\n";
+        S.clear();
+        Dundukai.clear();
+    } 
     return 0;
 }

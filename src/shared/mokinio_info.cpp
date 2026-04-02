@@ -62,7 +62,7 @@ void pazymiu_ivedimas(Studentas &s){
                 break;
             }
             if ((stoi(input) > 0) && (stoi(input) <= 10)) {
-                s.nd_rez.push_back(stoi(input));
+                s.getNdRez().push_back(stoi(input));
                 break;
             }
             std::cout << "Klaida! Jusu ivestas pazymys privalo buti sveikas skaicius (1-10). Bandykite is naujo...\n";
@@ -101,7 +101,7 @@ int egz_ivedimas(){
 
 double vidurkis(Studentas &s, int paz_sk){
     int paz_suma = 0;
-    for (const int paz : s.nd_rez) {
+    for (const int paz : s.getNdRez()) {
         paz_suma += paz;
     }
     return static_cast<double>(paz_suma) / static_cast<double>(paz_sk);

@@ -44,22 +44,22 @@ void rusiavimas(Container &S, int did_ar_maz, int pagal_ka_rusiuoti){
         switch(pagal_ka_rusiuoti){
             case 1:
                 std::sort(S.begin(), S.end(), [](const Studentas& a, const Studentas& b) {
-                    return a.Vardas < b.Vardas;
+                    return a.getVardas() < b.getVardas();
                 });
                 break;
             case 2:
                 std::sort(S.begin(), S.end(), [](const Studentas& a, const Studentas& b) {
-                    return a.Pavarde < b.Pavarde;
+                    return a.getPavarde() < b.getPavarde();
                 });
                 break;
             case 3:
                 std::sort(S.begin(), S.end(), [](const Studentas& a, const Studentas& b) {
-                    return a.galutinis_vid < b.galutinis_vid;
+                    return a.getGalutinisVid() < b.getGalutinisVid();
                 });
                 break;
             case 4:
                 std::sort(S.begin(), S.end(), [](const Studentas& a, const Studentas& b) {
-                    return a.galutinis_med < b.galutinis_med;
+                    return a.getGalutinisMed() < b.getGalutinisMed();
                 });
                 break;
         }
@@ -68,22 +68,22 @@ void rusiavimas(Container &S, int did_ar_maz, int pagal_ka_rusiuoti){
         switch(pagal_ka_rusiuoti){
             case 1:
                 std::sort(S.begin(), S.end(), [](const Studentas& a, const Studentas& b) {
-                    return a.Vardas > b.Vardas;
+                    return a.getVardas() > b.getVardas();
                 });
                 break;
             case 2:
                 std::sort(S.begin(), S.end(), [](const Studentas& a, const Studentas& b) {
-                    return a.Pavarde > b.Pavarde;
+                    return a.getPavarde() > b.getPavarde();
                 });
                 break;
             case 3:
                 std::sort(S.begin(), S.end(), [](const Studentas& a, const Studentas& b) {
-                    return a.galutinis_vid > b.galutinis_vid;
+                    return a.getGalutinisVid() > b.getGalutinisVid();
                 });
                 break;
             case 4:
                 std::sort(S.begin(), S.end(), [](const Studentas& a, const Studentas& b) {
-                    return a.galutinis_med > b.galutinis_med;
+                    return a.getGalutinisMed() > b.getGalutinisMed();
                 });
                 break;
         }

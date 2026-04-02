@@ -24,7 +24,23 @@ Palyginimas programos spartos su struktūromis ir klasėmis
 - Struct ir Class našumas yra praktiškai lygiavertis
 - Class rekomenduojama dėl kodo struktūros
 ### Tyrimas 2
+- Tyrimui naudotas 1 000 000 įrašų failas
+Failų dydžiai:
+- -01 -> 130 KB
+- -O2 -> 136 KB
+- -O3 -> 138 KB
 
+Laikai:
+| Flag | -O1      | -O2      | -O3      |
+|------|----------|----------|----------|
+| 1.   | 1.6027 s | 1.6642 s | 1.5093 s |
+| 2.   | 1.5855 s | 1.6890 s | 1.4715 s |
+| 3.   | 1.5214 s | 1.6133 s | 1.5829 s |
+| Avg. | 1.5699 s | 1.6555 s | 1.5212 s |
+
+Išvados:
+- -O1 geriausias, jei tikslas optimizuoti failų dydį
+- -O3 geriausias, jei tikslas optimizuoti programos spartą
 
 ## 🚀 Naudojimosi instrukcija
 

@@ -26,7 +26,7 @@ Palyginimas programos spartos su struktūromis ir klasėmis
 ### Tyrimas 2
 - Tyrimui naudotas 1 000 000 įrašų failas
 Failų dydžiai:
-- -01 -> 130 KB
+- -O1 -> 130 KB
 - -O2 -> 136 KB
 - -O3 -> 138 KB
 

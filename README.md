@@ -25,6 +25,7 @@ Palyginimas programos spartos su struktūromis ir klasėmis
 - Class rekomenduojama dėl kodo struktūros
 ### Tyrimas 2
 - Tyrimui naudotas 1 000 000 įrašų failas
+
 Failų dydžiai:
 - -O1 -> 130 KB
 - -O2 -> 136 KB

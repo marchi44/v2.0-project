@@ -28,7 +28,13 @@ private:
 
 public:
     // Konstruktoriai
-    Studentas() = default;
+    Studentas()
+        : Vardas_(""), Pavarde_(""), nd_rez_(), egz_rez_(0), vidurkis_(0.0), mediana_(0.0),
+        galutinis_vid_(0.0), galutinis_med_(0.0) {}
+    Studentas(const std::string& vardas, const string& pavarde, const vector<int>& nd,
+              const int& egz, const double& vid, const double& med, const double& gv, const double& gm)
+        : Vardas_(vardas), Pavarde_(pavarde), nd_rez_(nd), egz_rez_(egz), vidurkis_(vid), mediana_(med),
+        galutinis_vid_(gv), galutinis_med_(gm) {}
     Studentas(const std::string& vardas, const std::string& pavarde)
         : Vardas_(vardas), Pavarde_(pavarde) {}
 
@@ -51,6 +57,18 @@ public:
     void setMediana(double med) { mediana_ = med; }
     void setGalutinisVid(double gv) { galutinis_vid_ = gv; }
     void setGalutinisMed(double gm) { galutinis_med_ = gm; }
+
+    // Destruktorius
+    ~Studentas() {
+        Vardas_ = "";
+        Pavarde_ = "";
+        nd_rez_.clear();
+        egz_rez_ = 0;
+        vidurkis_ = 0.0;
+        mediana_ = 0.0;
+        galutinis_vid_ = 0.0;
+        galutinis_med_ = 0.0;
+    }
 };
 
 #endif

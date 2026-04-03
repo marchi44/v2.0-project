@@ -3,7 +3,7 @@ project(v2.0_all)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-#set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_BUILD_TYPE Release)
 
 set(SHARED src/shared/ar_valid.cpp src/shared/meniu.cpp src/shared/mokinio_info.cpp src/shared/rnd_generacija.cpp)
 set(VECTOR src/vector/main_vector.cpp)

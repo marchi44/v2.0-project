@@ -69,6 +69,49 @@ public:
         galutinis_vid_ = 0.0;
         galutinis_med_ = 0.0;
     }
+
+    // Kopijavimo konstruktorius
+    Studentas(const Studentas& other)
+        : Vardas_(other.Vardas_), Pavarde_(other.Pavarde_), nd_rez_(other.nd_rez_),
+          egz_rez_(other.egz_rez_), vidurkis_(other.vidurkis_), mediana_(other.mediana_),
+          galutinis_vid_(other.galutinis_vid_), galutinis_med_(other.galutinis_med_) {}
+
+    // Kopijavimo priskyrimo operatorius
+    Studentas& operator=(const Studentas& other) {
+        if (this != &other) {
+            Vardas_ = other.Vardas_;
+            Pavarde_ = other.Pavarde_;
+            nd_rez_ = other.nd_rez_;
+            egz_rez_ = other.egz_rez_;
+            vidurkis_ = other.vidurkis_;
+            mediana_ = other.mediana_;
+            galutinis_vid_ = other.galutinis_vid_;
+            galutinis_med_ = other.galutinis_med_;
+        }
+        return *this;
+    }
+
+    // Perkėlimo konstruktorius
+    Studentas(Studentas&& other) noexcept
+        : Vardas_(std::move(other.Vardas_)), Pavarde_(std::move(other.Pavarde_)),
+          nd_rez_(std::move(other.nd_rez_)), egz_rez_(other.egz_rez_),
+          vidurkis_(other.vidurkis_), mediana_(other.mediana_),
+          galutinis_vid_(other.galutinis_vid_), galutinis_med_(other.galutinis_med_) {}
+
+    // Perkėlimo priskyrimo operatorius
+    Studentas& operator=(Studentas&& other) noexcept {
+        if (this != &other) {
+            Vardas_ = std::move(other.Vardas_);
+            Pavarde_ = std::move(other.Pavarde_);
+            nd_rez_ = std::move(other.nd_rez_);
+            egz_rez_ = other.egz_rez_;
+            vidurkis_ = other.vidurkis_;
+            mediana_ = other.mediana_;
+            galutinis_vid_ = other.galutinis_vid_;
+            galutinis_med_ = other.galutinis_med_;
+        }
+        return *this;
+    }
 };
 
 #endif

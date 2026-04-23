@@ -15,7 +15,7 @@ struct Studentas {
 };
 */
 class Zmogus {
-    private:
+    protected:
     std::string Vardas_;
     std::string Pavarde_;
 
@@ -32,7 +32,7 @@ class Zmogus {
     void setVardas(const std::string& vardas) { Vardas_ = vardas; }
     void setPavarde(const std::string& pavarde) { Pavarde_ = pavarde; }
     // Destruktorius
-    ~Zmogus() {
+    virtual ~Zmogus() {
         Vardas_ = "";
         Pavarde_ = "";
     }
@@ -53,18 +53,16 @@ class Zmogus {
     //Perkelimo priskyrimo operatorius
     Zmogus& operator=(Zmogus&& other) noexcept {
         if(this != &other) {
-            Vardas_ = other.Vardas_;
-            Pavarde_ = other.Pavarde_;
+            Vardas_ = std::move(other.Vardas_);
+            Pavarde_ = std::move(other.Pavarde_);
         }
         return *this;
     }
 
 };
 
-class Studentas {
+class Studentas : public Zmogus {
 private:
-    std::string Vardas_;
-    std::string Pavarde_;
     vector<int> nd_rez_;
     int egz_rez_ = 0;
     double vidurkis_ = 0.0;
@@ -75,18 +73,16 @@ private:
 public:
     // Konstruktoriai
     Studentas()
-        : Vardas_(""), Pavarde_(""), nd_rez_(), egz_rez_(0), vidurkis_(0.0), mediana_(0.0),
+        : Zmogus(), nd_rez_(), egz_rez_(0), vidurkis_(0.0), mediana_(0.0),
         galutinis_vid_(0.0), galutinis_med_(0.0) {}
     Studentas(const std::string& vardas, const string& pavarde, const vector<int>& nd,
               const int& egz, const double& vid, const double& med, const double& gv, const double& gm)
-        : Vardas_(vardas), Pavarde_(pavarde), nd_rez_(nd), egz_rez_(egz), vidurkis_(vid), mediana_(med),
+        : Zmogus(vardas, pavarde), nd_rez_(nd), egz_rez_(egz), vidurkis_(vid), mediana_(med),
         galutinis_vid_(gv), galutinis_med_(gm) {}
-    Studentas(const std::string& vardas, const std::string& pavarde)
-        : Vardas_(vardas), Pavarde_(pavarde) {}
 
     // Getteriai
-    std::string getVardas() const { return Vardas_; }
-    std::string getPavarde() const { return Pavarde_; }
+    // std::string getVardas() const { return Vardas_; }
+    // std::string getPavarde() const { return Pavarde_; }
     const vector<int>& getNdRez() const { return nd_rez_; }
     vector<int>& getNdRez() { return nd_rez_; }
     int getEgzRez() const { return egz_rez_; }
@@ -96,8 +92,8 @@ public:
     double getGalutinisMed() const { return galutinis_med_; }
 
     // Setteriai
-    void setVardas(const std::string& vardas) { Vardas_ = vardas; }
-    void setPavarde(const std::string& pavarde) { Pavarde_ = pavarde; }
+    // void setVardas(const std::string& vardas) { Vardas_ = vardas; }
+    // void setPavarde(const std::string& pavarde) { Pavarde_ = pavarde; }
     void setEgzRez(int egz) { egz_rez_ = egz; }
     void setVidurkis(double vid) { vidurkis_ = vid; }
     void setMediana(double med) { mediana_ = med; }
@@ -106,8 +102,8 @@ public:
 
     // Destruktorius
     ~Studentas() {
-        Vardas_ = "";
-        Pavarde_ = "";
+        //Vardas_ = "";
+        //Pavarde_ = "";
         nd_rez_.clear();
         egz_rez_ = 0;
         vidurkis_ = 0.0;
@@ -118,15 +114,14 @@ public:
 
     // Kopijavimo konstruktorius
     Studentas(const Studentas& other)
-        : Vardas_(other.Vardas_), Pavarde_(other.Pavarde_), nd_rez_(other.nd_rez_),
+        : Zmogus(other), nd_rez_(other.nd_rez_),
           egz_rez_(other.egz_rez_), vidurkis_(other.vidurkis_), mediana_(other.mediana_),
           galutinis_vid_(other.galutinis_vid_), galutinis_med_(other.galutinis_med_) {}
 
     // Kopijavimo priskyrimo operatorius
     Studentas& operator=(const Studentas& other) {
         if (this != &other) {
-            Vardas_ = other.Vardas_;
-            Pavarde_ = other.Pavarde_;
+            Zmogus::operator=(other);
             nd_rez_ = other.nd_rez_;
             egz_rez_ = other.egz_rez_;
             vidurkis_ = other.vidurkis_;
@@ -139,16 +134,14 @@ public:
 
     // Perkėlimo konstruktorius
     Studentas(Studentas&& other) noexcept
-        : Vardas_(std::move(other.Vardas_)), Pavarde_(std::move(other.Pavarde_)),
-          nd_rez_(std::move(other.nd_rez_)), egz_rez_(other.egz_rez_),
+        : Zmogus(std::move(other)), nd_rez_(std::move(other.nd_rez_)), egz_rez_(other.egz_rez_),
           vidurkis_(other.vidurkis_), mediana_(other.mediana_),
           galutinis_vid_(other.galutinis_vid_), galutinis_med_(other.galutinis_med_) {}
 
     // Perkėlimo priskyrimo operatorius
     Studentas& operator=(Studentas&& other) noexcept {
         if (this != &other) {
-            Vardas_ = std::move(other.Vardas_);
-            Pavarde_ = std::move(other.Pavarde_);
+            Zmogus::operator=(std::move(other));
             nd_rez_ = std::move(other.nd_rez_);
             egz_rez_ = other.egz_rez_;
             vidurkis_ = other.vidurkis_;

@@ -14,6 +14,52 @@ struct Studentas {
     double galutinis_med;
 };
 */
+class Zmogus {
+    private:
+    std::string Vardas_;
+    std::string Pavarde_;
+
+    public:
+    //Konstruktoriai
+    Zmogus()
+        : Vardas_(""), Pavarde_("") {}
+    Zmogus(const std::string& vardas, const std::string& pavarde)
+        : Vardas_(vardas), Pavarde_(pavarde) {}
+    //Getteriai
+    std::string getVardas() const { return Vardas_; }
+    std::string getPavarde() const { return Pavarde_; }
+    // Setteriai
+    void setVardas(const std::string& vardas) { Vardas_ = vardas; }
+    void setPavarde(const std::string& pavarde) { Pavarde_ = pavarde; }
+    // Destruktorius
+    ~Zmogus() {
+        Vardas_ = "";
+        Pavarde_ = "";
+    }
+    //Kopijavimo konstruktorius
+    Zmogus(const Zmogus& other)
+        :Vardas_(other.Vardas_), Pavarde_(other.Pavarde_) {}
+    //Kopijavimo priskyrimo operatorius
+    Zmogus& operator=(const Zmogus& other) {
+        if (this != &other) {
+            Vardas_ = other.Vardas_;
+            Pavarde_ = other.Pavarde_;
+        }
+        return *this;
+    }
+    //Perkelimo konstruktorius
+    Zmogus(Zmogus&& other) noexcept
+        : Vardas_(std::move(other.Vardas_)), Pavarde_(std::move(other.Pavarde_)) {}
+    //Perkelimo priskyrimo operatorius
+    Zmogus& operator=(Zmogus&& other) noexcept {
+        if(this != &other) {
+            Vardas_ = other.Vardas_;
+            Pavarde_ = other.Pavarde_;
+        }
+        return *this;
+    }
+
+};
 
 class Studentas {
 private:

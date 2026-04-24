@@ -43,6 +43,62 @@ Išvados:
 - -O1 geriausias, jei tikslas optimizuoti failų dydį
 - -O3 geriausias, jei tikslas optimizuoti programos spartą
 
+### Tyrimas 3
+Testavimo duomenu failas:
+```
+Vardas         Pavarde                  ND1  ND2  ND3  ND4  ND5  Egzaminas
+Emilis         Stankevicius              6    7    3    1    4    7         
+Gabriele       Jankauskaite              4    7    5              4         
+Monika         Paulauskaite              10   3                   4         
+Monika         Jankauskaite              10   3    8              1         
+Gytis          Kavaliauskas              1    9                   10        
+Gytis          Navickas                  4    5    8    1    9    2         
+Juste          Urbonaite                 1    1    7    8         5         
+Laura          Paulauskaite              10                       7         
+Jokubas        Jankauskas                9    2    3    5         3         
+Kamile         Urbonaite                 1    8    6    5         6         
+```
+
+Kopijavimo konstruktoriaus kvietimas 
+```
+vector<Studentas> S;
+vector<Studentas> cp(S);
+```
+Rezultatas:
+| Studentas S                   | Studentas cp                  |
+|-------------------------------|-------------------------------|
+| Gytis Navickas 3.36           | Gytis Navickas 3.36           |
+| Monika Jankauskaite 3.4       | Monika Jankauskaite 3.4       |
+| Jokubas Jankauskas 3.7        | Jokubas Jankauskas 3.7        |
+| Gabriele Jankauskaite 4.53333 | Gabriele Jankauskaite 4.53333 |
+| Juste Urbonaite 4.7           | Juste Urbonaite 4.7           |
+| Monika Paulauskaite 5         | Monika Paulauskaite 5         |
+| Kamile Urbonaite 5.6          | Kamile Urbonaite 5.6          |
+| Emilis Stankevicius 5.88      | Emilis Stankevicius 5.88      |
+| Gytis Kavaliauskas 8          | Gytis Kavaliauskas 8          |
+| Laura Paulauskaite 8.2        | Laura Paulauskaite 8.2        |
+
+Perkėlimo operatoriaus kvietimas
+```
+vector<Studentas> S;
+vector<Studentas> mv = std::move(S);
+```
+Rezultatas:
+| Studentas S | Studentas mv                  |
+|-------------|-------------------------------|
+| -           | Gytis Navickas 3.36           |
+| -           | Monika Jankauskaite 3.4       |
+| -           | Jokubas Jankauskas 3.7        |
+| -           | Gabriele Jankauskaite 4.53333 |
+| -           | Juste Urbonaite 4.7           |
+| -           | Monika Paulauskaite 5         |
+| -           | Kamile Urbonaite 5.6          |
+| -           | Emilis Stankevicius 5.88      |
+| -           | Gytis Kavaliauskas 8          |
+| -           | Laura Paulauskaite 8.2        |
+
+- Destruktorius kvieciamas kiekvienam objekto elementui, kai uzbaigiamas kodo blokas
+
 ## 🚀 Naudojimosi instrukcija
 
 ### ⚙️ CMake ir C++ kompiliatoriaus įdiegimas

@@ -60,6 +60,7 @@ public:
 
     // Destruktorius
     ~Studentas() {
+        cout << "Destruktorius veikia\n";
         Vardas_ = "";
         Pavarde_ = "";
         nd_rez_.clear();

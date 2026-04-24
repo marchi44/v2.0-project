@@ -79,6 +79,9 @@ public:
               const int& egz, const double& vid, const double& med, const double& gv, const double& gm)
         : Zmogus(vardas, pavarde), nd_rez_(nd), egz_rez_(egz), vidurkis_(vid), mediana_(med),
         galutinis_vid_(gv), galutinis_med_(gm) {}
+    Studentas(const std::string& vardas, const std::string& pavarde)
+        : Zmogus(vardas, pavarde) {}
+
 
     // Getteriai
     // std::string getVardas() const { return Vardas_; }

@@ -4,6 +4,13 @@
 - Switched from structures to classes
 - Minor code optimisations
 
+### 📌 v1.2
+- Adjusted Studentas class to fit the rule of 5
+
+### 📌 v1.5
+- Created new abstract class Zmogus with values of name and surname
+- Studentas class is now derived from class Zmogus
+
 ## 📊 Tyrimų rezultatai
 ### 💻 Testavimo sistema
 - OS: WSL (Ubuntu)

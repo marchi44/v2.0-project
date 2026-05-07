@@ -1,0 +1,42 @@
+\doxysection{grupavimas.\+h}
+\hypertarget{grupavimas_8h_source}{}\label{grupavimas_8h_source}\index{include/grupavimas.h@{include/grupavimas.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GRUPAVIMAS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GRUPAVIMAS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}lib.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}studentas.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{void}\ grupavimas\_pirm(Container\ \&S,\ Container\ \&Dundukai,\ Container\ \&Galvociai)\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ s\ :\ S)\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (s.getGalutinisVid()\ >=\ 5.0)\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ Galvociai.push\_back(s);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ Dundukai.push\_back(s);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ grupavimas\_antras(Container\&\ S,\ Container\&\ Dundukai)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ rusiavimas(S,\ 2,\ 3);\ \textcolor{comment}{//\ sort\ descending\ by\ galutinis\_vid\_}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{while}\ (S.back().getGalutinisVid()\ <\ 5)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ Dundukai.push\_back(S.back());}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ S.pop\_back();}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{void}\ grupavimas\_trecias(Container\&\ S,\ Container\&\ Dundukai)\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{auto}\ riba\ =\ std::stable\_partition(S.begin(),\ S.end(),\ [](\textcolor{keyword}{const}\ \mbox{\hyperlink{classStudentas}{Studentas}}\&\ s)\ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ return\ s.getGalutinisVid()\ >=\ 5.0;}
+\DoxyCodeLine{00074\ \ \ \ \ \});}
+\DoxyCodeLine{00075\ \ \ \ \ Dundukai.insert(Dundukai.end(),\ riba,\ S.end());}
+\DoxyCodeLine{00076\ \ \ \ \ S.erase(riba,\ S.end());}
+\DoxyCodeLine{00077\ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

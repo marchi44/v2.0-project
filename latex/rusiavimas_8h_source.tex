@@ -1,0 +1,103 @@
+\doxysection{rusiavimas.\+h}
+\hypertarget{rusiavimas_8h_source}{}\label{rusiavimas_8h_source}\index{include/rusiavimas.h@{include/rusiavimas.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ RUSIAVIMAS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ RUSIAVIMAS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}funkcijos.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}lib.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ rusiavimo\_pasirinkimas(Container\ \&S)\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}1\ -\/\ rusiuoti\ didejanciai,\ 2\ -\/\ rusiuoti\ mazejanciai\(\backslash\)n"{}};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ did\_ar\_maz;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ std::cin\ >>\ did\_ar\_maz;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ std::cin.ignore(10000,\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::cin\ ||\ (did\_ar\_maz\ !=\ 1\ \&\&\ did\_ar\_maz\ !=\ 2))\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Klaida!\ Neteisingai\ pasirinktas\ rusiavimas...\(\backslash\)n"{}});}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\&\ e)\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ std::cerr\ <<\ e.what();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ std::cin.clear();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ std::cin.ignore(10000,\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ pagal\_ka\_rusiuoti;}
+\DoxyCodeLine{00041\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}1\ -\/\ rusiuoti\ pagal\ varda,\ 2\ -\/\ rusiuoti\ pagal\ pavarde,\ "{}}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}3\ -\/\ rusiuoti\ pagal\ galutini\ (Vid.)\ rezultata,\ "{}}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}4\ -\/\ rusiuoti\ pagal\ galutini\ (Med.)\ rezultata\(\backslash\)n"{}};}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ std::cin\ >>\ pagal\_ka\_rusiuoti;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ std::cin.ignore(10000,\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::cin\ ||\ pagal\_ka\_rusiuoti\ <\ 1\ ||\ pagal\_ka\_rusiuoti\ >\ 4)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Klaida!\ Neteisingai\ pasirinkta\ pagal\ ka\ rusiuoti...\(\backslash\)n"{}});}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\&\ e)\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ std::cerr\ <<\ e.what();}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ std::cin.clear();}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ std::cin.ignore(10000,\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ rusiavimas(S,\ did\_ar\_maz,\ pagal\_ka\_rusiuoti);}
+\DoxyCodeLine{00059\ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00079\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00080\ \textcolor{keywordtype}{void}\ rusiavimas(Container\ \&S,\ \textcolor{keywordtype}{int}\ did\_ar\_maz,\ \textcolor{keywordtype}{int}\ pagal\_ka\_rusiuoti)\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordflow}{if}\ (did\_ar\_maz\ ==\ 1)\ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (pagal\_ka\_rusiuoti)\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::sort(S.begin(),\ S.end(),\ [](\textcolor{keyword}{const}\ \mbox{\hyperlink{classStudentas}{Studentas}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classStudentas}{Studentas}}\&\ b)\ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ a.getVardas()\ <\ b.getVardas();}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::sort(S.begin(),\ S.end(),\ [](\textcolor{keyword}{const}\ \mbox{\hyperlink{classStudentas}{Studentas}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classStudentas}{Studentas}}\&\ b)\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ a.getPavarde()\ <\ b.getPavarde();}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::sort(S.begin(),\ S.end(),\ [](\textcolor{keyword}{const}\ \mbox{\hyperlink{classStudentas}{Studentas}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classStudentas}{Studentas}}\&\ b)\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ a.getGalutinisVid()\ <\ b.getGalutinisVid();}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 4:}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::sort(S.begin(),\ S.end(),\ [](\textcolor{keyword}{const}\ \mbox{\hyperlink{classStudentas}{Studentas}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classStudentas}{Studentas}}\&\ b)\ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ a.getGalutinisMed()\ <\ b.getGalutinisMed();}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (pagal\_ka\_rusiuoti)\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::sort(S.begin(),\ S.end(),\ [](\textcolor{keyword}{const}\ \mbox{\hyperlink{classStudentas}{Studentas}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classStudentas}{Studentas}}\&\ b)\ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ a.getVardas()\ >\ b.getVardas();}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::sort(S.begin(),\ S.end(),\ [](\textcolor{keyword}{const}\ \mbox{\hyperlink{classStudentas}{Studentas}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classStudentas}{Studentas}}\&\ b)\ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ a.getPavarde()\ >\ b.getPavarde();}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::sort(S.begin(),\ S.end(),\ [](\textcolor{keyword}{const}\ \mbox{\hyperlink{classStudentas}{Studentas}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classStudentas}{Studentas}}\&\ b)\ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ a.getGalutinisVid()\ >\ b.getGalutinisVid();}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 4:}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::sort(S.begin(),\ S.end(),\ [](\textcolor{keyword}{const}\ \mbox{\hyperlink{classStudentas}{Studentas}}\&\ a,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classStudentas}{Studentas}}\&\ b)\ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ a.getGalutinisMed()\ >\ b.getGalutinisMed();}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

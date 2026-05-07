@@ -1,0 +1,53 @@
+\begin{theindex}
+
+  \item {\texorpdfstring{$\sim$}{\string~}Zmogus}
+    \subitem {Zmogus}, \hyperpage{8}
+
+  \indexspace
+
+  \item {getPavarde}
+    \subitem {Zmogus}, \hyperpage{9}
+  \item {getVardas}
+    \subitem {Zmogus}, \hyperpage{9}
+
+  \indexspace
+
+  \item {include/funkcijos.h}, \hyperpage{13}
+  \item {include/funkcijos\_temp.h}, \hyperpage{14}
+  \item {include/grupavimas.h}, \hyperpage{17}
+  \item {include/lib.h}, \hyperpage{17}
+  \item {include/rusiavimas.h}, \hyperpage{18}
+  \item {include/studentas.h}, \hyperpage{19}
+  \item {include/testavimas.h}, \hyperpage{21}
+
+  \indexspace
+
+  \item {operator=}
+    \subitem {Zmogus}, \hyperpage{9, 10}
+
+  \indexspace
+
+  \item {print}
+    \subitem {Zmogus}, \hyperpage{10}
+
+  \indexspace
+
+  \item {setPavarde}
+    \subitem {Zmogus}, \hyperpage{10}
+  \item {setVardas}
+    \subitem {Zmogus}, \hyperpage{11}
+  \item {Studentas}, \hyperpage{7}
+
+  \indexspace
+
+  \item {Zmogus}, \hyperpage{7}
+    \subitem {\texorpdfstring{$\sim$}{\string~}Zmogus}, \hyperpage{8}
+    \subitem {getPavarde}, \hyperpage{9}
+    \subitem {getVardas}, \hyperpage{9}
+    \subitem {operator=}, \hyperpage{9, 10}
+    \subitem {print}, \hyperpage{10}
+    \subitem {setPavarde}, \hyperpage{10}
+    \subitem {setVardas}, \hyperpage{11}
+    \subitem {Zmogus}, \hyperpage{8, 9}
+
+\end{theindex}

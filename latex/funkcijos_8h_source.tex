@@ -1,0 +1,59 @@
+\doxysection{funkcijos.\+h}
+\hypertarget{funkcijos_8h_source}{}\label{funkcijos_8h_source}\index{include/funkcijos.h@{include/funkcijos.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ FUNKCIJOS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ FUNKCIJOS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}lib.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}studentas.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keywordtype}{bool}\ ar\_valid\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&input);}
+\DoxyCodeLine{00008\ \textcolor{keywordtype}{int}\ meniu();}
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{int}\ mok\_sk\_ivedimas();}
+\DoxyCodeLine{00010\ \textcolor{keywordtype}{void}\ pazymiu\_ivedimas(\mbox{\hyperlink{classStudentas}{Studentas}}\ \&s);}
+\DoxyCodeLine{00011\ \textcolor{keywordtype}{int}\ egz\_ivedimas();}
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{double}\ vidurkis(\mbox{\hyperlink{classStudentas}{Studentas}}\ \&s,\ \textcolor{keywordtype}{int}\ paz\_sk);}
+\DoxyCodeLine{00013\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00014\ \textcolor{keywordtype}{void}\ mokinio\_info\_ivedimas(Container\ \&S,\ \textcolor{keywordtype}{int}\ mok\_sk);}
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{int}\ paz\_sk\_ivedimas();}
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{string}\ med\_ar\_vid();}
+\DoxyCodeLine{00017\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{void}\ pasirinkimas2(Container\ \&S,\ \textcolor{keywordtype}{int}\ meniu\_pasirinkimas);}
+\DoxyCodeLine{00019\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{void}\ pasirinkimas3(Container\ \&S,\ \textcolor{keywordtype}{int}\ meniu\_pasirinkimas);}
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{string}\ rnd\_vardas(\textcolor{keywordtype}{bool}\ vyras);}
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{string}\ rnd\_pavarde(\textcolor{keywordtype}{bool}\ vyras);}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ failo\_generavimas();}
+\DoxyCodeLine{00024\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ ivedimas\_is\_failo(Container\ \&S,\ \textcolor{keywordtype}{int}\ meniu\_pasirinkimas);}
+\DoxyCodeLine{00026\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}\ rusiavimas(Container\ \&S,\ \textcolor{keywordtype}{int}\ did\_ar\_maz,\ \textcolor{keywordtype}{int}\ pagal\_ka\_rusiuoti);}
+\DoxyCodeLine{00028\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ isvedimas\_i\_faila(\textcolor{keyword}{const}\ Container\ \&Dundukai,\ \textcolor{keyword}{const}\ Container\ \&Galvociai);}
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{void}\ test\_failu\_generavimas();}
+\DoxyCodeLine{00031\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}\ antras\_tyrimas();}
+\DoxyCodeLine{00033\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}\ rusiavimo\_pasirinkimas(Container\ \&S);}
+\DoxyCodeLine{00035\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}\ rasyti\_i\_faila(\textcolor{keyword}{const}\ Container\&\ grupe,\ \textcolor{keyword}{const}\ std::string\&\ failo\_pavadinimas);}
+\DoxyCodeLine{00037\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ grupavimas\_pirm(Container\ \&S,\ Container\ \&Dundukai,\ Container\ \&Galvociai);}
+\DoxyCodeLine{00039\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}\ grupavimas\_antras(Container\ \&S,\ Container\ \&Dundukai);}
+\DoxyCodeLine{00041\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}\ nuskaitymas(Container\ \&S,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ dydis);}
+\DoxyCodeLine{00043\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ skaiciavimai(Container\ \&S);}
+\DoxyCodeLine{00045\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{void}\ grupavimas\_trecias(Container\&\ S,\ Container\&\ Dundukai);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#include\ "{}funkcijos\_temp.h"{}}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#include\ "{}rusiavimas.h"{}}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#include\ "{}testavimas.h"{}}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#include\ "{}grupavimas.h"{}}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

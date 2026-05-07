@@ -1,0 +1,243 @@
+\doxysection{Zmogus Class Reference}
+\hypertarget{classZmogus}{}\label{classZmogus}\index{Zmogus@{Zmogus}}
+
+
+Abstract base class representing a person with a first and last name.  
+
+
+
+
+{\ttfamily \#include $<$studentas.\+h$>$}
+
+
+
+Inheritance diagram for Zmogus\+:
+% FIG 0
+
+
+Collaboration diagram for Zmogus\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classZmogus_aa7a8ba4d3c4778f9b35d59eef3e72574}\label{classZmogus_aa7a8ba4d3c4778f9b35d59eef3e72574} 
+{\bfseries Zmogus} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. Initialises name and surname to empty strings. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classZmogus_ae6bfb71e4c8fddf15f3a19b4bcd6fd26}{Zmogus}} (const std\+::string \&vardas, const std\+::string \&pavarde)
+\begin{DoxyCompactList}\small\item\em Parameterised constructor. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classZmogus_a4a580af3507a2d27efe978d5be0075ab}{get\+Vardas}} () const
+\begin{DoxyCompactList}\small\item\em Returns the first name. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classZmogus_ac50d1e325af387bb385eb88bb7ff42b7}{get\+Pavarde}} () const
+\begin{DoxyCompactList}\small\item\em Returns the surname. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZmogus_a6024e8fb5c3a9fbd48ca522f976f8465}{set\+Vardas}} (const std\+::string \&vardas)
+\begin{DoxyCompactList}\small\item\em Sets the first name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classZmogus_ae4c3b02e68af5ed87c68101ba699539c}{set\+Pavarde}} (const std\+::string \&pavarde)
+\begin{DoxyCompactList}\small\item\em Sets the surname. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classZmogus_aa52869cc6a869223fedcb9f7676534fc}{print}} () const =0
+\begin{DoxyCompactList}\small\item\em Pure virtual function that prints information about the person. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classZmogus_ac5615bf607a8f2f1b303ffa04328d24d}{\texorpdfstring{$\sim$}{\string~}\+Zmogus}} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor. Clears name fields before destruction. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classZmogus_a9d2bbeaf83ead87dbb686ee04999885f}{Zmogus}} (const \mbox{\hyperlink{classZmogus}{Zmogus}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy constructor. Creates a deep copy of another \doxylink{classZmogus}{Zmogus}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classZmogus}{Zmogus}} \& \mbox{\hyperlink{classZmogus_a8bc6d11547d75c71a38567f750f02612}{operator=}} (const \mbox{\hyperlink{classZmogus}{Zmogus}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classZmogus_a97c679fdf47100b8d6a9a7e17d4953c2}{Zmogus}} (\mbox{\hyperlink{classZmogus}{Zmogus}} \&\&other) noexcept
+\begin{DoxyCompactList}\small\item\em Move constructor. Transfers ownership of name strings. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classZmogus}{Zmogus}} \& \mbox{\hyperlink{classZmogus_af6745536a52d1e85a49c2680199f9a80}{operator=}} (\mbox{\hyperlink{classZmogus}{Zmogus}} \&\&other) noexcept
+\begin{DoxyCompactList}\small\item\em Move assignment operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classZmogus_aa51c5f86fec6bd661cedcd5c8cd4b843}\label{classZmogus_aa51c5f86fec6bd661cedcd5c8cd4b843} 
+std\+::string {\bfseries Vardas\+\_\+}
+\begin{DoxyCompactList}\small\item\em First name of the person. \end{DoxyCompactList}\item 
+\Hypertarget{classZmogus_a4216d89defd8d0d91826878c83e58761}\label{classZmogus_a4216d89defd8d0d91826878c83e58761} 
+std\+::string {\bfseries Pavarde\+\_\+}
+\begin{DoxyCompactList}\small\item\em Last name (surname) of the person. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class representing a person with a first and last name. 
+
+\doxylink{classZmogus}{Zmogus} (Lithuanian\+: "{}person"{}) serves as an abstract base class in the class hierarchy. It stores a person\textquotesingle{}s name and surname and enforces a pure virtual {\ttfamily \doxylink{classZmogus_aa52869cc6a869223fedcb9f7676534fc}{print()}} function that all derived classes must implement.
+
+It fully satisfies the Rule of Five\+:
+\begin{DoxyItemize}
+\item Default and parameterised constructors
+\item Copy constructor and copy assignment operator
+\item Move constructor and move assignment operator
+\item Virtual destructor (required for safe polymorphic deletion) 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classZmogus_ae6bfb71e4c8fddf15f3a19b4bcd6fd26}\label{classZmogus_ae6bfb71e4c8fddf15f3a19b4bcd6fd26} 
+\index{Zmogus@{Zmogus}!Zmogus@{Zmogus}}
+\index{Zmogus@{Zmogus}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{Zmogus()}{Zmogus()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Zmogus\+::\+Zmogus (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{vardas,  }\item[{const std\+::string \&}]{pavarde }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Parameterised constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vardas} & First name of the person. \\
+\hline
+{\em pavarde} & Surname of the person. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classZmogus_ac5615bf607a8f2f1b303ffa04328d24d}\label{classZmogus_ac5615bf607a8f2f1b303ffa04328d24d} 
+\index{Zmogus@{Zmogus}!````~Zmogus@{\texorpdfstring{$\sim$}{\string~}Zmogus}}
+\index{````~Zmogus@{\texorpdfstring{$\sim$}{\string~}Zmogus}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Zmogus()}{\string~Zmogus()}}
+{\footnotesize\ttfamily virtual Zmogus\+::\texorpdfstring{$\sim$}{\string~}\+Zmogus (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Virtual destructor. Clears name fields before destruction. 
+
+The destructor is virtual so that deleting a {\ttfamily Zmogus\texorpdfstring{$\ast$}{*}} that actually points to a {\ttfamily \doxylink{classStudentas}{Studentas}} will correctly call {\ttfamily \doxylink{classStudentas}{Studentas}}\textquotesingle{}s destructor. \Hypertarget{classZmogus_a9d2bbeaf83ead87dbb686ee04999885f}\label{classZmogus_a9d2bbeaf83ead87dbb686ee04999885f} 
+\index{Zmogus@{Zmogus}!Zmogus@{Zmogus}}
+\index{Zmogus@{Zmogus}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{Zmogus()}{Zmogus()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Zmogus\+::\+Zmogus (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classZmogus}{Zmogus}} \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Copy constructor. Creates a deep copy of another \doxylink{classZmogus}{Zmogus}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The \doxylink{classZmogus}{Zmogus} instance to copy from. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classZmogus_a97c679fdf47100b8d6a9a7e17d4953c2}\label{classZmogus_a97c679fdf47100b8d6a9a7e17d4953c2} 
+\index{Zmogus@{Zmogus}!Zmogus@{Zmogus}}
+\index{Zmogus@{Zmogus}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{Zmogus()}{Zmogus()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Zmogus\+::\+Zmogus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classZmogus}{Zmogus}} \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Move constructor. Transfers ownership of name strings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The \doxylink{classZmogus}{Zmogus} instance to move from. Left in a valid empty state. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classZmogus_ac50d1e325af387bb385eb88bb7ff42b7}\label{classZmogus_ac50d1e325af387bb385eb88bb7ff42b7} 
+\index{Zmogus@{Zmogus}!getPavarde@{getPavarde}}
+\index{getPavarde@{getPavarde}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{getPavarde()}{getPavarde()}}
+{\footnotesize\ttfamily std\+::string Zmogus\+::get\+Pavarde (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the surname. 
+
+\begin{DoxyReturn}{Returns}
+Surname as a string. 
+\end{DoxyReturn}
+\Hypertarget{classZmogus_a4a580af3507a2d27efe978d5be0075ab}\label{classZmogus_a4a580af3507a2d27efe978d5be0075ab} 
+\index{Zmogus@{Zmogus}!getVardas@{getVardas}}
+\index{getVardas@{getVardas}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{getVardas()}{getVardas()}}
+{\footnotesize\ttfamily std\+::string Zmogus\+::get\+Vardas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the first name. 
+
+\begin{DoxyReturn}{Returns}
+First name as a string. 
+\end{DoxyReturn}
+\Hypertarget{classZmogus_a8bc6d11547d75c71a38567f750f02612}\label{classZmogus_a8bc6d11547d75c71a38567f750f02612} 
+\index{Zmogus@{Zmogus}!operator=@{operator=}}
+\index{operator=@{operator=}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classZmogus}{Zmogus}} \& Zmogus\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classZmogus}{Zmogus}} \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Copy assignment operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The \doxylink{classZmogus}{Zmogus} instance to copy from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to this object. 
+\end{DoxyReturn}
+\Hypertarget{classZmogus_af6745536a52d1e85a49c2680199f9a80}\label{classZmogus_af6745536a52d1e85a49c2680199f9a80} 
+\index{Zmogus@{Zmogus}!operator=@{operator=}}
+\index{operator=@{operator=}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classZmogus}{Zmogus}} \& Zmogus\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classZmogus}{Zmogus}} \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+Move assignment operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The \doxylink{classZmogus}{Zmogus} instance to move from. Left in a valid empty state. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to this object. 
+\end{DoxyReturn}
+\Hypertarget{classZmogus_aa52869cc6a869223fedcb9f7676534fc}\label{classZmogus_aa52869cc6a869223fedcb9f7676534fc} 
+\index{Zmogus@{Zmogus}!print@{print}}
+\index{print@{print}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{print()}{print()}}
+{\footnotesize\ttfamily virtual void Zmogus\+::print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual function that prints information about the person. 
+
+Every derived class must provide its own implementation. This makes \doxylink{classZmogus}{Zmogus} an abstract class — you cannot create a plain {\ttfamily \doxylink{classZmogus}{Zmogus}} object directly. 
+
+Implemented in \mbox{\hyperlink{classStudentas_a59c03a8620e7e9b64c49504db66da61e}{Studentas}}.
+
+\Hypertarget{classZmogus_ae4c3b02e68af5ed87c68101ba699539c}\label{classZmogus_ae4c3b02e68af5ed87c68101ba699539c} 
+\index{Zmogus@{Zmogus}!setPavarde@{setPavarde}}
+\index{setPavarde@{setPavarde}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{setPavarde()}{setPavarde()}}
+{\footnotesize\ttfamily void Zmogus\+::set\+Pavarde (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{pavarde }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the surname. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pavarde} & New surname. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classZmogus_a6024e8fb5c3a9fbd48ca522f976f8465}\label{classZmogus_a6024e8fb5c3a9fbd48ca522f976f8465} 
+\index{Zmogus@{Zmogus}!setVardas@{setVardas}}
+\index{setVardas@{setVardas}!Zmogus@{Zmogus}}
+\doxysubsubsection{\texorpdfstring{setVardas()}{setVardas()}}
+{\footnotesize\ttfamily void Zmogus\+::set\+Vardas (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{vardas }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the first name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vardas} & New first name. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/studentas.\+h\end{DoxyCompactItemize}

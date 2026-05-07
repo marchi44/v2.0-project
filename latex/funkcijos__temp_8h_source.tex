@@ -1,0 +1,289 @@
+\doxysection{funkcijos\+\_\+temp.\+h}
+\hypertarget{funkcijos__temp_8h_source}{}\label{funkcijos__temp_8h_source}\index{include/funkcijos\_temp.h@{include/funkcijos\_temp.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ FUNKCIJOS\_TEMP\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ FUNKCIJOS\_TEMP\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}lib.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}studentas.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}\ mokinio\_info\_ivedimas(Container\ \&S,\ \textcolor{keywordtype}{int}\ mok\_sk)\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ i\ =\ 0;}
+\DoxyCodeLine{00028\ \ \ \ \ std::string\ eil,\ vrd,\ pvrd;}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mok\_sk\ !=\ 0\ \&\&\ i\ >=\ mok\_sk)\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Iveskite\ "{}}\ <<\ i\ +\ 1\ <<\ \textcolor{stringliteral}{"{}-\/ojo\ mokinio\ varda\ ir\ pavarde.\ Tuscia\ eilute\ -\/\ baigti\(\backslash\)n"{}};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ std::getline(std::cin,\ eil);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mok\_sk\ ==\ 0\ \&\&\ eil.empty()\ \&\&\ i\ !=\ 0)\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ std::stringstream\ ss(eil);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(ss\ >>\ vrd\ >>\ pvrd))\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Klaida!\ Turite\ ivesti\ varda\ ir\ pavarde...\(\backslash\)n"{}};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ std::cin.clear();}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ S.push\_back(\mbox{\hyperlink{classStudentas}{Studentas}}(vrd,\ pvrd));}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ paz\_sk;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ pazymiu\_ivedimas(S.back());}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ S.back().setVidurkis(vidurkis(S.back(),\ paz\_sk));}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ S.back().setEgzRez(egz\_ivedimas());}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ i++;}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{void}\ ivedimas\_is\_failo(Container\ \&S,\ \textcolor{keywordtype}{int}\ meniu\_pasirinkimas)\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{string}\ path;}
+\DoxyCodeLine{00080\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Iveskite\ failo,\ is\ kurio\ norite\ nuskaityti,\ pavadinima\ (pvz.,\ kursiokai.txt):\ "{}};}
+\DoxyCodeLine{00081\ \ \ \ \ cin\ >>\ path;}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{if}\ (path.empty()\ ||\ path.size()\ <\ 4\ ||\ path.substr(path.size()\ -\/\ 4)\ !=\ \textcolor{stringliteral}{"{}.txt"{}})\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ cin.clear();}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Klaida!\ Failo\ pavadinimas\ turi\ baigtis\ .txt...\(\backslash\)n"{}});}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ std::ifstream\ in(path);}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordflow}{if}\ (!in)\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Klaida!\ Nepavyko\ atidaryti\ failo...\(\backslash\)n"{}});}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{string}\ eil;}
+\DoxyCodeLine{00091\ \ \ \ \ getline(in,\ eil);\ \textcolor{comment}{//\ skip\ header}}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(in,\ eil))\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ paz\_suma\ =\ 0;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (eil.empty())\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ std::istringstream\ ss(eil);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ paz;}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classStudentas}{Studentas}}\ tmp;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ vrd,\ pvrd;}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ ss\ >>\ vrd\ >>\ pvrd;}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ tmp.\mbox{\hyperlink{classZmogus_a6024e8fb5c3a9fbd48ca522f976f8465}{setVardas}}(vrd);}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ tmp.\mbox{\hyperlink{classZmogus_ae4c3b02e68af5ed87c68101ba699539c}{setPavarde}}(pvrd);}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (meniu\_pasirinkimas\ ==\ 1)\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (ss\ >>\ paz)\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (paz\ >\ 0\ \&\&\ paz\ <=\ 10)\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp.\mbox{\hyperlink{classStudentas_a400cfa07c5aaf8a8c9952f504fd2a181}{getNdRez}}().push\_back(paz);}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ paz\_suma\ +=\ paz;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Klaida!\ Pazymiai\ turi\ buti\ desimtbaleje\ sistemoje...\(\backslash\)n"{}});}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!tmp.\mbox{\hyperlink{classStudentas_a400cfa07c5aaf8a8c9952f504fd2a181}{getNdRez}}().empty())\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ tmp.\mbox{\hyperlink{classStudentas_aae7641c381caa4981d6bb92a1d93452b}{setEgzRez}}(tmp.\mbox{\hyperlink{classStudentas_a400cfa07c5aaf8a8c9952f504fd2a181}{getNdRez}}().back());}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ tmp.\mbox{\hyperlink{classStudentas_a400cfa07c5aaf8a8c9952f504fd2a181}{getNdRez}}().pop\_back();}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (meniu\_pasirinkimas\ ==\ 1)\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Klaida!\ Mokinio\ "{}}\ +\ tmp.\mbox{\hyperlink{classZmogus_a4a580af3507a2d27efe978d5be0075ab}{getVardas}}()\ +\ \textcolor{stringliteral}{"{}\ "{}}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ tmp.\mbox{\hyperlink{classZmogus_ac50d1e325af387bb385eb88bb7ff42b7}{getPavarde}}()\ +\ \textcolor{stringliteral}{"{}\ namu\ darbu\ pazymiai\ nerasti...\(\backslash\)n"{}});}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ tmp.\mbox{\hyperlink{classStudentas_a0df8afed44c049bf50a11b022834129d}{setVidurkis}}(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(paz\_suma\ -\/\ tmp.\mbox{\hyperlink{classStudentas_aaa44216cca350e56fd222fe81dd8d659}{getEgzRez}}())}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ /\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(tmp.\mbox{\hyperlink{classStudentas_a400cfa07c5aaf8a8c9952f504fd2a181}{getNdRez}}().size()));}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ S.push\_back(tmp);}
+\DoxyCodeLine{00123\ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00137\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00138\ \textcolor{keywordtype}{void}\ rasyti\_i\_faila(\textcolor{keyword}{const}\ Container\&\ grupe,\ \textcolor{keyword}{const}\ std::string\&\ failo\_pavadinimas)\ \{}
+\DoxyCodeLine{00139\ \ \ \ \ std::ofstream\ out(failo\_pavadinimas);}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordflow}{if}\ (!out)\ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Klaida!\ Nepavyko\ sukurti\ failo\ "{}}\ <<\ failo\_pavadinimas\ <<\ \textcolor{stringliteral}{"{}...\(\backslash\)n"{}};}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00143\ \ \ \ \ \}}
+\DoxyCodeLine{00144\ \ \ \ \ out\ <<\ std::fixed\ <<\ std::setprecision(2);}
+\DoxyCodeLine{00145\ \ \ \ \ out\ <<\ std::left}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ <<\ std::setw(15)\ <<\ \textcolor{stringliteral}{"{}Vardas"{}}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ <<\ std::setw(25)\ <<\ \textcolor{stringliteral}{"{}Pavarde"{}}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ <<\ std::setw(18)\ <<\ \textcolor{stringliteral}{"{}Galutinis\ (Vid.)"{}}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ <<\ std::setw(18)\ <<\ \textcolor{stringliteral}{"{}Galutinis\ (Med.)"{}}\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00150\ \ \ \ \ out\ <<\ std::string(76,\ \textcolor{charliteral}{'-\/'})\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ s\ :\ grupe)\ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ out\ <<\ std::left}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::setw(15)\ <<\ s.getVardas()}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::setw(25)\ <<\ s.getPavarde()}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::setw(18)\ <<\ s.getGalutinisVid()}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::setw(18)\ <<\ s.getGalutinisMed()}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00158\ \ \ \ \ \}}
+\DoxyCodeLine{00159\ \}}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00172\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00173\ \textcolor{keywordtype}{void}\ isvedimas\_i\_faila(\textcolor{keyword}{const}\ Container\ \&Dundukai,\ \textcolor{keyword}{const}\ Container\ \&Galvociai)\ \{}
+\DoxyCodeLine{00174\ \ \ \ \ rasyti\_i\_faila(Dundukai,\ \textcolor{stringliteral}{"{}dundukai.txt"{}});}
+\DoxyCodeLine{00175\ \ \ \ \ rasyti\_i\_faila(Galvociai,\ \textcolor{stringliteral}{"{}galvociai.txt"{}});}
+\DoxyCodeLine{00176\ \}}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00187\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00188\ \textcolor{keywordtype}{void}\ isvedimas(Container\ S)\ \{}
+\DoxyCodeLine{00189\ \ \ \ \ std::cout\ <<\ std::left}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::setw(15)\ <<\ \textcolor{stringliteral}{"{}Vardas"{}}}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::setw(25)\ <<\ \textcolor{stringliteral}{"{}Pavarde"{}}}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::setw(18)\ <<\ \textcolor{stringliteral}{"{}Galutinis\ (Vid.)"{}}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::setw(18)\ <<\ \textcolor{stringliteral}{"{}Galutinis\ (Med.)\(\backslash\)n"{}};}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 76;\ i++)\ std::cout\ <<\ \textcolor{stringliteral}{"{}-\/"{}};}
+\DoxyCodeLine{00195\ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ s\ :\ S)\ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ std::cout\ <<\ std::left}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::setw(15)\ <<\ s.getVardas()}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::setw(25)\ <<\ s.getPavarde()}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::setw(18)\ <<\ std::fixed\ <<\ std::setprecision(2)\ <<\ s.getGalutinisVid()}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::setw(18)\ <<\ std::fixed\ <<\ std::setprecision(2)\ <<\ s.getGalutinisMed()}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::endl;}
+\DoxyCodeLine{00203\ \ \ \ \ \}}
+\DoxyCodeLine{00204\ \}}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00223\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00224\ \textcolor{keywordtype}{void}\ pasirinkimas2(Container\ \&S,\ \textcolor{keywordtype}{int}\ meniu\_pasirinkimas)\ \{}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keywordtype}{int}\ mok\_sk;}
+\DoxyCodeLine{00226\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}0\ -\/\ ivedimas\ ranka,\ 1\ -\/\ ivedimas\ is\ failo\(\backslash\)n"{}};}
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keywordtype}{int}\ input;}
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ std::cin\ >>\ input;}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ std::cin.ignore(10000,\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::cin\ ||\ (input\ !=\ 0\ \&\&\ input\ !=\ 1))\ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Klaida!\ Turite\ ivesti\ 0\ arba\ 1...\(\backslash\)n"{}});}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00234\ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\&\ e)\ \{}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ std::cerr\ <<\ e.what();}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ std::cin.clear();}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ std::cin.ignore(10000,\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00240\ \ \ \ \ \}}
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordtype}{bool}\ ar\_is\_failo\ =\ (input\ ==\ 1);}
+\DoxyCodeLine{00242\ \ \ \ \ \textcolor{keywordflow}{if}\ (ar\_is\_failo)\ \{}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ ivedimas\_is\_failo(S,\ meniu\_pasirinkimas);}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ s\ :\ S)\ s.getNdRez().clear();}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\&\ e)\ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ e.what();}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00251\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ mok\_sk\ =\ mok\_sk\_ivedimas();}
+\DoxyCodeLine{00253\ \ \ \ \ \}}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordtype}{int}\ i\ =\ 0;}
+\DoxyCodeLine{00256\ \ \ \ \ std::string\ eil,\ vrd,\ pvrd;}
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ar\_is\_failo\ ||\ (mok\_sk\ !=\ 0\ \&\&\ i\ >=\ mok\_sk))\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Iveskite\ "{}}\ <<\ i\ +\ 1\ <<\ \textcolor{stringliteral}{"{}-\/ojo\ mokinio\ varda\ ir\ pavarde.\ Tuscia\ eilute\ -\/\ baigti\(\backslash\)n"{}};}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ std::getline(std::cin,\ eil);}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mok\_sk\ ==\ 0\ \&\&\ eil.empty()\ \&\&\ i\ !=\ 0)\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ std::stringstream\ ss(eil);}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(ss\ >>\ vrd\ >>\ pvrd))\ \{}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Klaida!\ Turite\ ivesti\ varda\ ir\ pavarde...\(\backslash\)n"{}};}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ std::cin.clear();}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ S.push\_back(\mbox{\hyperlink{classStudentas}{Studentas}}(vrd,\ pvrd));}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ i++;}
+\DoxyCodeLine{00273\ \ \ \ \ \}}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Generuojami\ pazymiai...\(\backslash\)n"{}};}
+\DoxyCodeLine{00276\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ s\ :\ S)\ \{}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ rand()\ \%\ 100\ +\ 1;}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ i++)\ s.getNdRez().push\_back(rand()\ \%\ 10\ +\ 1);}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ s.setEgzRez(rand()\ \%\ 10\ +\ 1);}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ s.setVidurkis(vidurkis(s,\ s.getNdRez().size()));}
+\DoxyCodeLine{00281\ \ \ \ \ \}}
+\DoxyCodeLine{00282\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ s\ :\ S)\ \{}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ std::sort(s.getNdRez().begin(),\ s.getNdRez().end());}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (s.getNdRez().size()\ \%\ 2\ ==\ 0)\ \{}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ s.setMediana((s.getNdRez()[s.getNdRez().size()\ /\ 2]}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ s.getNdRez()[s.getNdRez().size()\ /\ 2\ -\/\ 1])\ /\ 2.0);}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ s.setMediana(s.getNdRez()[s.getNdRez().size()\ /\ 2]);}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ s.setGalutinisVid(0.4\ *\ s.getVidurkis()\ +\ 0.6\ *\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(s.getEgzRez()));}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ s.setGalutinisMed(0.4\ *\ s.getMediana()\ +\ 0.6\ *\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(s.getEgzRez()));}
+\DoxyCodeLine{00292\ \ \ \ \ \}}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00294\ \ \ \ \ rusiavimo\_pasirinkimas(S);}
+\DoxyCodeLine{00295\ \ \ \ \ Container\ Dundukai,\ Galvociai;}
+\DoxyCodeLine{00296\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ s\ :\ S)\ \{}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (s.getGalutinisVid()\ >=\ 5.0)\ Galvociai.push\_back(s);}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ Dundukai.push\_back(s);}
+\DoxyCodeLine{00299\ \ \ \ \ \}}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00301\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}1\ -\/\ isvesti\ i\ konsole,\ 2\ -\/\ isvesti\ i\ faila\(\backslash\)n"{}};}
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{keywordtype}{int}\ kur\_isvesti;}
+\DoxyCodeLine{00303\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ std::cin\ >>\ kur\_isvesti;}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ std::cin.ignore(10000,\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::cin\ ||\ (kur\_isvesti\ !=\ 1\ \&\&\ kur\_isvesti\ !=\ 2))\ \{}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Klaida!\ Neteisingai\ ivedete\ rezultatu\ isvedimo\ buda...\(\backslash\)n"{}});}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00309\ \ \ \ \ \}}
+\DoxyCodeLine{00310\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\&\ e)\ \{}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ std::cerr\ <<\ e.what();}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ std::cin.clear();}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ std::cin.ignore(10000,\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00315\ \ \ \ \ \}}
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{keywordflow}{if}\ (kur\_isvesti\ ==\ 1)\ isvedimas(S);}
+\DoxyCodeLine{00317\ \ \ \ \ \textcolor{keywordflow}{else}\ isvedimas\_i\_faila(Dundukai,\ Galvociai);}
+\DoxyCodeLine{00318\ \}}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00335\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Container>}
+\DoxyCodeLine{00336\ \textcolor{keywordtype}{void}\ pasirinkimas3(Container\ \&S,\ \textcolor{keywordtype}{int}\ meniu\_pasirinkimas)\ \{}
+\DoxyCodeLine{00337\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Generuojami\ studentu\ vardai\ ir\ pavardes...\(\backslash\)n"{}};}
+\DoxyCodeLine{00338\ \ \ \ \ \textcolor{keywordtype}{int}\ mok\_sk\ =\ rand()\ \%\ 100\ +\ 1;}
+\DoxyCodeLine{00339\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ mok\_sk;\ i++)\ \{}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ vyras\ =\ rand()\ \%\ 2;}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ vardas\ =\ rnd\_vardas(vyras);}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ pavarde\ =\ rnd\_pavarde(vyras);}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ S.push\_back(\mbox{\hyperlink{classStudentas}{Studentas}}(vardas,\ pavarde));}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ rand()\ \%\ 100\ +\ 1;}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ n;\ j++)\ S.back().getNdRez().push\_back(rand()\ \%\ 10\ +\ 1);}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ S.back().setEgzRez(rand()\ \%\ 10\ +\ 1);}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ paz\_sk\ =\ S.back().getNdRez().size();}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ S.back().setVidurkis(vidurkis(S.back(),\ paz\_sk));}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ sort(S.back().getNdRez().begin(),\ S.back().getNdRez().end());}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (S.back().getNdRez().size()\ \%\ 2\ ==\ 0)\ \{}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ S.back().setMediana((S.back().getNdRez()[S.back().getNdRez().size()\ /\ 2]}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ S.back().getNdRez()[S.back().getNdRez().size()\ /\ 2\ -\/\ 1])\ /\ 2.0);}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ S.back().setMediana(S.back().getNdRez()[S.back().getNdRez().size()\ /\ 2]);}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ S.back().setGalutinisVid(0.4\ *\ S.back().getVidurkis()}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ 0.6\ *\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(S.back().getEgzRez()));}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ S.back().setGalutinisMed(0.4\ *\ S.back().getMediana()}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ 0.6\ *\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(S.back().getEgzRez()));}
+\DoxyCodeLine{00360\ \ \ \ \ \}}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ \ \ \ \ rusiavimo\_pasirinkimas(S);}
+\DoxyCodeLine{00363\ \ \ \ \ Container\ Dundukai,\ Galvociai;}
+\DoxyCodeLine{00364\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ s\ :\ S)\ \{}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (s.getGalutinisVid()\ >=\ 5.0)\ Galvociai.push\_back(s);}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ Dundukai.push\_back(s);}
+\DoxyCodeLine{00367\ \ \ \ \ \}}
+\DoxyCodeLine{00368\ }
+\DoxyCodeLine{00369\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}1\ -\/\ isvesti\ i\ konsole,\ 2\ -\/\ isvesti\ i\ faila\(\backslash\)n"{}};}
+\DoxyCodeLine{00370\ \ \ \ \ \textcolor{keywordtype}{int}\ kur\_isvesti;}
+\DoxyCodeLine{00371\ \ \ \ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ std::cin\ >>\ kur\_isvesti;}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ std::cin.ignore(10000,\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!std::cin\ ||\ (kur\_isvesti\ !=\ 1\ \&\&\ kur\_isvesti\ !=\ 2))\ \{}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}Klaida!\ Neteisingai\ ivedete\ rezultatu\ isvedimo\ buda...\(\backslash\)n"{}});}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00377\ \ \ \ \ \}}
+\DoxyCodeLine{00378\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\&\ e)\ \{}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ std::cerr\ <<\ e.what();}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ std::cin.clear();}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ std::cin.ignore(10000,\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00383\ \ \ \ \ \}}
+\DoxyCodeLine{00384\ \ \ \ \ \textcolor{keywordflow}{if}\ (kur\_isvesti\ ==\ 1)\ isvedimas(S);}
+\DoxyCodeLine{00385\ \ \ \ \ \textcolor{keywordflow}{else}\ isvedimas\_i\_faila(Dundukai,\ Galvociai);}
+\DoxyCodeLine{00386\ \}}
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00388\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

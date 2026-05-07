@@ -22,7 +22,7 @@ class Zmogus {
         std::string Pavarde_;  ///< Last name (surname) of the person.
 
     public:
-        // ── Constructors ──────────────────────────────────────────────────
+        
 
         /**
          * @brief Default constructor. Initialises name and surname to empty strings.
@@ -38,7 +38,7 @@ class Zmogus {
         Zmogus(const std::string& vardas, const std::string& pavarde)
             : Vardas_(vardas), Pavarde_(pavarde) {}
 
-        // ── Getters ───────────────────────────────────────────────────────
+        
 
         /**
          * @brief Returns the first name.
@@ -52,7 +52,7 @@ class Zmogus {
          */
         std::string getPavarde() const { return Pavarde_; }
 
-        // ── Setters ───────────────────────────────────────────────────────
+        
 
         /**
          * @brief Sets the first name.
@@ -66,7 +66,7 @@ class Zmogus {
          */
         void setPavarde(const std::string& pavarde) { Pavarde_ = pavarde; }
 
-        // ── Pure virtual ──────────────────────────────────────────────────
+        
 
         /**
          * @brief Pure virtual function that prints information about the person.
@@ -77,7 +77,7 @@ class Zmogus {
          */
         virtual void print() const = 0;
 
-        // ── Rule of Five ──────────────────────────────────────────────────
+        
 
         /**
          * @brief Virtual destructor. Clears name fields before destruction.
@@ -131,7 +131,7 @@ class Zmogus {
         }
 };
 
-// ─────────────────────────────────────────────────────────────────────────────
+
 
 /**
  * @brief Represents a student with homework grades, an exam result, and computed final scores.
@@ -158,7 +158,7 @@ private:
     double galutinis_med_ = 0.0;///< Final grade computed using the median.
 
 public:
-    // ── Constructors ──────────────────────────────────────────────────────
+    
 
     /**
      * @brief Default constructor. Initialises all fields to zero/empty.
@@ -192,7 +192,7 @@ public:
     Studentas(const std::string& vardas, const std::string& pavarde)
         : Zmogus(vardas, pavarde) {}
 
-    // ── Getters ───────────────────────────────────────────────────────────
+    
 
     /**
      * @brief Returns a const reference to the homework grades vector.
@@ -238,7 +238,7 @@ public:
      */
     double getGalutinisMed() const { return galutinis_med_; }
 
-    // ── Setters ───────────────────────────────────────────────────────────
+    
 
     /**
      * @brief Sets the exam result.
@@ -270,7 +270,7 @@ public:
      */
     void setGalutinisMed(double gm) { galutinis_med_ = gm; }
 
-    // ── Virtual override ──────────────────────────────────────────────────
+    
 
     /**
      * @brief Prints the student's name and mean-based final grade to stdout.
@@ -282,7 +282,7 @@ public:
                   << " | Galutinis pazymys: " << galutinis_vid_ << "\n";
     }
 
-    // ── Rule of Five ──────────────────────────────────────────────────────
+    
 
     /**
      * @brief Destructor. Clears all grade data and resets numeric fields.

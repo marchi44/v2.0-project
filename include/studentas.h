@@ -97,7 +97,7 @@ public:
         : Vardas_(std::move(other.Vardas_)), Pavarde_(std::move(other.Pavarde_)),
           nd_rez_(std::move(other.nd_rez_)), egz_rez_(other.egz_rez_),
           vidurkis_(other.vidurkis_), mediana_(other.mediana_),
-          galutinis_vid_(other.galutinis_vid_), galutinis_med_(other.galutinis_med_) {}
+          galutinis_vid_(other.galutinis_vid_), galutinis_med_(other.galutinis_med_)  {}
 
     // Perkėlimo priskyrimo operatorius
     Studentas& operator=(Studentas&& other) noexcept {
@@ -110,8 +110,32 @@ public:
             mediana_ = other.mediana_;
             galutinis_vid_ = other.galutinis_vid_;
             galutinis_med_ = other.galutinis_med_;
+            other.egz_rez_ = 0;
+            other.vidurkis_ = 0;
+            other.mediana_ = 0;
+            other.galutinis_vid_ = 0;
+            other.galutinis_med_ = 0;
         }
         return *this;
+    }
+
+    // Išvedimo operatorius
+    friend std::ostream& operator<<(std::ostream& out, const Studentas& s) {
+        out << std::left << std::setw(15) << s.Vardas_
+        << std::setw(25) << s.Pavarde_
+        << std::setw(18) << std::fixed << std::setprecision(2) << s.galutinis_vid_
+        << std::setw(18) << s.galutinis_med_ << std::endl;
+        return out;
+    }
+
+    // Įvedimo operatorius
+    friend std::istream& operator>>(std::istream& in, Studentas& s) {
+        in >> s.Vardas_ >> s.Pavarde_;
+        int paz;
+        while(in >> paz && paz != 0) {
+            s.nd_rez_.push_back(paz);
+        }
+        return in;
     }
 };
 

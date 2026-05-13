@@ -60,7 +60,6 @@ public:
 
     // Destruktorius
     ~Studentas() {
-        cout << "Destruktorius veikia\n";
         Vardas_ = "";
         Pavarde_ = "";
         nd_rez_.clear();
@@ -131,20 +130,27 @@ public:
     //ivedimo operatorius
     friend std::istream& operator>>(std::istream& in, Studentas& s) {
     std::string eilute;
-    std::getline(in, eilute);
-    if(eilute.empty()) return in;
-
+    if(!std::getline(in, eilute)) return in;
+    if(eilute.empty()) {
+        if(!std::getline(in, eilute)) return in;
+    }
+    
     std::istringstream ss(eilute);
-    ss >> s.Vardas_ >> s.Pavarde_;
-
-    int paz;
+    if(!(ss >> s.Vardas_ >> s.Pavarde_)) return in;
+    
+    int paz, pazSuma = 0;
     while(ss >> paz) {
-        s.nd_rez_.push_back(paz);
+        if(paz > 0 && paz <= 10) {
+            s.nd_rez_.push_back(paz);
+            pazSuma += paz;
+        }
     }
     if(!s.nd_rez_.empty()) {
         s.egz_rez_ = s.nd_rez_.back();
         s.nd_rez_.pop_back();
     }
+    s.vidurkis_ = static_cast<double>(pazSuma - s.egz_rez_)
+                / static_cast<double>(s.nd_rez_.size());
     return in;
 }
 };

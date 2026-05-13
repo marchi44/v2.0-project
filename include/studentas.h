@@ -128,15 +128,25 @@ public:
         return out;
     }
 
-    // Įvedimo operatorius
+    //ivedimo operatorius
     friend std::istream& operator>>(std::istream& in, Studentas& s) {
-        in >> s.Vardas_ >> s.Pavarde_;
-        int paz;
-        while(in >> paz && paz != 0) {
-            s.nd_rez_.push_back(paz);
-        }
-        return in;
+    std::string eilute;
+    std::getline(in, eilute);
+    if(eilute.empty()) return in;
+
+    std::istringstream ss(eilute);
+    ss >> s.Vardas_ >> s.Pavarde_;
+
+    int paz;
+    while(ss >> paz) {
+        s.nd_rez_.push_back(paz);
     }
+    if(!s.nd_rez_.empty()) {
+        s.egz_rez_ = s.nd_rez_.back();
+        s.nd_rez_.pop_back();
+    }
+    return in;
+}
 };
 
 #endif

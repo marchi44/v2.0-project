@@ -3,6 +3,10 @@
 - Removed `std::list` and `std::deque` versions
 - Switched from structures to classes
 - Minor code optimisations
+### 📌 v1.2
+- Adjusted Studentas class to fit the rule of 5
+- Added input and output operators in class Studentas
+- Tested rule of 5 and input/output operators
 
 ## 📊 Tyrimų rezultatai
 ### 💻 Testavimo sistema

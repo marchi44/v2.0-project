@@ -103,6 +103,42 @@ Rezultatas:
 
 - Destruktorius kvieciamas kiekvienam objekto elementui, kai uzbaigiamas kodo blokas
 
+Įvedimo/išvedimo operatoriaus testas
+
+operator<< testas (i konsole) 
+Vardas         Pavarde                  Galutinis (Vid.)  Galutinis (Med.)  
+----------------------------------------------------------------------------
+Arnas          Petrauskas               7.20              7.20              
+Austejus       Navickas                 4.20              4.20              
+Domantas       Stankevicius             8.20              8.20              
+Gintare        Kavaliauskaite           7.60              8.00              
+Gytis          Zukauskas                8.80              8.80              
+Ignas          Petrauskas               5.20              5.20              
+Lukas          Urbonas                  6.00              6.00              
+Martynas       Vasiliauskas             4.60              4.60              
+Mykolas        Kazlauskas               7.20              7.20              
+Ruta           Stankeviciute            2.73              3.40              
+
+operator<< testas (i faila test_output.txt)
+Isvesta i test_output.txt
+
+operator>> testas (is failo) 
+Nuskaityti 10 studentai per operator>>
+----------------------------------------------------------------------------
+Arnas          Petrauskas               7.20              7.20              
+Austejus       Navickas                 4.20              4.20              
+Domantas       Stankevicius             8.20              8.20              
+Gintare        Kavaliauskaite           7.60              8.00              
+Gytis          Zukauskas                8.80              8.80              
+Ignas          Petrauskas               5.20              5.20              
+Lukas          Urbonas                  6.00              6.00              
+Martynas       Vasiliauskas             4.60              4.60              
+Mykolas        Kazlauskas               7.20              7.20              
+Ruta           Stankeviciute            2.73              3.40              
+
+Palyginimas: nuskaitymas() vs operator>> 
+OK: abu metodai nuskaitė tuos pačius studentus
+
 ## 🚀 Naudojimosi instrukcija
 
 ### ⚙️ CMake ir C++ kompiliatoriaus įdiegimas

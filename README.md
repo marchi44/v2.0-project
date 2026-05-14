@@ -13,8 +13,12 @@
 - Studentas class is now derived from class Zmogus
 
 ### 📌 v2.0
--Generated documention (HTML and PDF formats) using doxygen
--Rewritten tests using doctest unit testing framework
+- Generated documention (HTML and PDF formats) using doxygen
+- Rewritten tests using doctest unit testing framework
+
+### 📌 v3.0
+- Added myVector.h
+- std::vector changed with myVector
 
 ## 📊 Tyrimų rezultatai
 ### 💻 Testavimo sistema

@@ -145,7 +145,13 @@ public:
     Studentas(Studentas&& other) noexcept
         : Zmogus(std::move(other)), nd_rez_(std::move(other.nd_rez_)), egz_rez_(other.egz_rez_),
           vidurkis_(other.vidurkis_), mediana_(other.mediana_),
-          galutinis_vid_(other.galutinis_vid_), galutinis_med_(other.galutinis_med_)  {}
+          galutinis_vid_(other.galutinis_vid_), galutinis_med_(other.galutinis_med_)  {
+            other.egz_rez_ = 0;
+            other.vidurkis_ = 0;
+            other.mediana_ = 0;
+            other.galutinis_vid_ = 0;
+            other.galutinis_med_ = 0;
+          }
 
     // Perkėlimo priskyrimo operatorius
     Studentas& operator=(Studentas&& other) noexcept {

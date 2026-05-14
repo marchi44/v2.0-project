@@ -1,35 +1,58 @@
+#include "doctest.h"
 #include "funkcijos.h"
 
-int main() {
+TEST_CASE("Studentas: Copy and Move Semantics") {
+    // 1. SETUP: This code runs fresh for EVERY subcase below
     std::vector<Studentas> S;
     nuskaitymas(S, 10);
     skaiciavimai(S);
 
-    // Kopijavimo konstruktorius
-    Studentas s1(S[0]);
-    cout << "Kopijavimo konstruktorius:\n";
-    cout << "Originalas: " << S[0].getVardas() << " " << S[0].getGalutinisVid() << "\n";
-    cout << "Kopija:     " << s1.getVardas()   << " " << s1.getGalutinisVid()   << "\n\n";
+    // Ensure we actually loaded enough students before running tests
+    // REQUIRE stops the test immediately if it fails, preventing crashes.
+    REQUIRE(S.size() >= 4); 
 
-    // Kopijavimo priskyrimo operatorius
-    Studentas s2;
-    s2 = S[1];
-    cout << "Kopijavimo priskyrimas:\n";
-    cout << "Originalas: " << S[1].getVardas() << " " << S[1].getGalutinisVid() << "\n";
-    cout << "Kopija:     " << s2.getVardas()   << " " << s2.getGalutinisVid()   << "\n\n";
+    SUBCASE("Copy Constructor") {
+        Studentas s1(S[0]);
+        
+        // Assert that the copy matches the original
+        CHECK(s1.getVardas() == S[0].getVardas());
+        CHECK(s1.getGalutinisVid() == doctest::Approx(S[0].getGalutinisVid())); 
+    }
 
-    // Perkėlimo konstruktorius
-    Studentas s3(std::move(S[2]));
-    cout << "Perkėlimo konstruktorius:\n";
-    cout << "Po perkėlimo S[2] vardas: '" << S[2].getVardas() << "' (turėtų būti tuščias)\n";
-    cout << "Perkeltas:  " << s3.getVardas() << " " << s3.getGalutinisVid() << "\n\n";
+    SUBCASE("Copy Assignment") {
+        Studentas s2;
+        s2 = S[1];
+        
+        CHECK(s2.getVardas() == S[1].getVardas());
+        CHECK(s2.getGalutinisVid() == doctest::Approx(S[1].getGalutinisVid()));
+    }
 
-    // Perkėlimo priskyrimo operatorius
-    Studentas s4;
-    s4 = std::move(S[3]);
-    cout << "Perkėlimo priskyrimas:\n";
-    cout << "Po perkėlimo S[3] vardas: '" << S[3].getVardas() << "' (turėtų būti tuščias)\n";
-    cout << "Perkeltas:  " << s4.getVardas() << " " << s4.getGalutinisVid() << "\n\n";
+    SUBCASE("Move Constructor") {
+        // Save the original values BEFORE moving so we can verify them later
+        std::string expectedVardas = S[2].getVardas();
+        double expectedVid = S[2].getGalutinisVid();
 
-    return 0;
+        Studentas s3(std::move(S[2]));
+        
+        // Assert the new object got the data
+        CHECK(s3.getVardas() == expectedVardas);
+        CHECK(s3.getGalutinisVid() == doctest::Approx(expectedVid));
+        
+        // Assert the old object was successfully hollowed out
+        CHECK(S[2].getVardas() == ""); 
+    }
+
+    SUBCASE("Move Assignment") {
+        // Save the original values
+        std::string expectedVardas = S[3].getVardas();
+        double expectedVid = S[3].getGalutinisVid();
+
+        Studentas s4;
+        s4 = std::move(S[3]);
+        
+        CHECK(s4.getVardas() == expectedVardas);
+        CHECK(s4.getGalutinisVid() == doctest::Approx(expectedVid));
+        
+        CHECK(S[3].getVardas() == ""); 
+    }
 }

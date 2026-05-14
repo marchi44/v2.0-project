@@ -8,12 +8,13 @@
 - Added input and output operators in class Studentas
 - Tested rule of 5 and input/output operators
 
-### 📌 v1.2
-- Adjusted Studentas class to fit the rule of 5
-
 ### 📌 v1.5
 - Created new abstract class Zmogus with values of name and surname
 - Studentas class is now derived from class Zmogus
+
+### 📌 v2.0
+-Generated documention (HTML and PDF formats) using doxygen
+-Rewritten tests using doctest unit testing framework
 
 ## 📊 Tyrimų rezultatai
 ### 💻 Testavimo sistema

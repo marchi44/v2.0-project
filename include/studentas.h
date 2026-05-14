@@ -150,7 +150,7 @@ class Zmogus {
  */
 class Studentas : public Zmogus {
 private:
-    vector<int> nd_rez_;        ///< Homework grades (namų darbų rezultatai).
+    myVector<int> nd_rez_;        ///< Homework grades (namų darbų rezultatai).
     int egz_rez_ = 0;           ///< Exam result (egzamino rezultatas), range [1–10].
     double vidurkis_ = 0.0;     ///< Arithmetic mean of homework grades.
     double mediana_ = 0.0;      ///< Median of homework grades.
@@ -178,7 +178,7 @@ public:
      * @param gv      Pre-computed final grade (mean-based).
      * @param gm      Pre-computed final grade (median-based).
      */
-    Studentas(const std::string& vardas, const string& pavarde, const vector<int>& nd,
+    Studentas(const std::string& vardas, const string& pavarde, const myVector<int>& nd,
               const int& egz, const double& vid, const double& med,
               const double& gv, const double& gm)
         : Zmogus(vardas, pavarde), nd_rez_(nd), egz_rez_(egz), vidurkis_(vid),
@@ -198,7 +198,7 @@ public:
      * @brief Returns a const reference to the homework grades vector.
      * @return Const reference to nd_rez_.
      */
-    const vector<int>& getNdRez() const { return nd_rez_; }
+    const myVector<int>& getNdRez() const { return nd_rez_; }
 
     /**
      * @brief Returns a mutable reference to the homework grades vector.
@@ -206,7 +206,7 @@ public:
      * Allows direct modification, e.g. `s.getNdRez().push_back(8)`.
      * @return Reference to nd_rez_.
      */
-    vector<int>& getNdRez() { return nd_rez_; }
+    myVector<int>& getNdRez() { return nd_rez_; }
 
     /**
      * @brief Returns the exam result.

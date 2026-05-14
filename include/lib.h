@@ -12,8 +12,10 @@
 #include <list>
 #include <deque>
 #include <chrono>
+#include "myvector.h"
 
 using std::string;
+using std::sort;
 using std::vector;
 using std::cout;
 using std::cin;

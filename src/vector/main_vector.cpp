@@ -3,7 +3,7 @@
 
 int main() {
     srand(time(NULL));
-    vector<Studentas> S;
+    myVector<Studentas> S;
     string input;
     int paz_sk;
     int mok_sk;
@@ -43,8 +43,8 @@ int main() {
             mokinio_info_ivedimas(S, mok_sk);
         }
         //string metodas = med_ar_vid();
-        vector<Studentas> Dundukai;
-        vector<Studentas> Galvociai;
+        myVector<Studentas> Dundukai;
+        myVector<Studentas> Galvociai;
         for (auto& s : S) {
                 std::sort(s.getNdRez().begin(), s.getNdRez().end());
                 if (s.getNdRez().size() % 2 == 0) {

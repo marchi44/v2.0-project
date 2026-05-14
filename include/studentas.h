@@ -145,7 +145,7 @@ public:
     Studentas(Studentas&& other) noexcept
         : Zmogus(std::move(other)), nd_rez_(std::move(other.nd_rez_)), egz_rez_(other.egz_rez_),
           vidurkis_(other.vidurkis_), mediana_(other.mediana_),
-          galutinis_vid_(other.galutinis_vid_), galutinis_med_(other.galutinis_med_) {}
+          galutinis_vid_(other.galutinis_vid_), galutinis_med_(other.galutinis_med_)  {}
 
     // Perkėlimo priskyrimo operatorius
     Studentas& operator=(Studentas&& other) noexcept {
@@ -157,9 +157,50 @@ public:
             mediana_ = other.mediana_;
             galutinis_vid_ = other.galutinis_vid_;
             galutinis_med_ = other.galutinis_med_;
+            other.egz_rez_ = 0;
+            other.vidurkis_ = 0;
+            other.mediana_ = 0;
+            other.galutinis_vid_ = 0;
+            other.galutinis_med_ = 0;
         }
         return *this;
     }
+
+    // Išvedimo operatorius
+    friend std::ostream& operator<<(std::ostream& out, const Studentas& s) {
+        out << std::left << std::setw(15) << s.Vardas_
+        << std::setw(25) << s.Pavarde_
+        << std::setw(18) << std::fixed << std::setprecision(2) << s.galutinis_vid_
+        << std::setw(18) << s.galutinis_med_ << std::endl;
+        return out;
+    }
+
+    //ivedimo operatorius
+    friend std::istream& operator>>(std::istream& in, Studentas& s) {
+    std::string eilute;
+    if(!std::getline(in, eilute)) return in;
+    if(eilute.empty()) {
+        if(!std::getline(in, eilute)) return in;
+    }
+    
+    std::istringstream ss(eilute);
+    if(!(ss >> s.Vardas_ >> s.Pavarde_)) return in;
+    
+    int paz, pazSuma = 0;
+    while(ss >> paz) {
+        if(paz > 0 && paz <= 10) {
+            s.nd_rez_.push_back(paz);
+            pazSuma += paz;
+        }
+    }
+    if(!s.nd_rez_.empty()) {
+        s.egz_rez_ = s.nd_rez_.back();
+        s.nd_rez_.pop_back();
+    }
+    s.vidurkis_ = static_cast<double>(pazSuma - s.egz_rez_)
+                / static_cast<double>(s.nd_rez_.size());
+    return in;
+}
 };
 
 #endif

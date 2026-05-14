@@ -107,11 +107,7 @@ void rasyti_i_faila(const Container& grupe, const std::string& failo_pavadinimas
     out << std::string(76, '-') << '\n';
 
     for (const auto& s : grupe) {
-        out << std::left << std::setw(15) << s.getVardas()
-            << std::setw(25) << s.getPavarde()
-            << std::setw(18) << s.getGalutinisVid()
-            << std::setw(18) << s.getGalutinisMed()
-            << '\n';
+        out << s;
     }
 }
 

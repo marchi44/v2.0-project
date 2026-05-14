@@ -1,34 +1,35 @@
 #include "funkcijos.h"
 
 int main() {
-    vector<Studentas> S;
+    std::vector<Studentas> S;
     nuskaitymas(S, 10);
     skaiciavimai(S);
-{
-    vector<Studentas> cp(S);
-    cout << "Kopijavimas\n";
-    cout << "Studentas S:" << std::setw(40) << std::right << "Studentas cp:\n";
-    for(int i = 0; i < 10; i++){
-        cout <<  S[i].getVardas() << " " << S[i].getPavarde() << " " << S[i].getGalutinisVid();
-        cout << std::setw(20) << std::right << cp[i].getVardas() << " " << cp[i].getPavarde() << " " << cp[i].getGalutinisVid()<< std::endl;
-    }
-}
-    cout << std::endl << std::endl << "Perkelimas\n";
-{
-    vector<Studentas> mv = std::move(S);
-    if(!S.empty()){
-    for(int i = 0; i < 10; i++){
-        cout << "Studentas S:" << std::setw(40) << std::right << "Studentas cp:\n";
-        cout <<  S[i].getVardas() << " " << S[i].getPavarde() << " " << S[i].getGalutinisVid();
-        cout << std::setw(20) << std::right << mv[i].getVardas() << " " << mv[i].getPavarde() << " " << mv[i].getGalutinisVid()<< std::endl;
-    }
-    }
-    else{
-        cout << "Studentas S is empty after moving\n" << "Studentas cp: \n";
-        for(int i = 0; i < 10; i++)
-        cout << mv[i].getVardas() << " " << mv[i].getPavarde() << " " << mv[i].getGalutinisVid()<< std::endl;
-    }
-}
+
+    // Kopijavimo konstruktorius
+    Studentas s1(S[0]);
+    cout << "Kopijavimo konstruktorius:\n";
+    cout << "Originalas: " << S[0].getVardas() << " " << S[0].getGalutinisVid() << "\n";
+    cout << "Kopija:     " << s1.getVardas()   << " " << s1.getGalutinisVid()   << "\n\n";
+
+    // Kopijavimo priskyrimo operatorius
+    Studentas s2;
+    s2 = S[1];
+    cout << "Kopijavimo priskyrimas:\n";
+    cout << "Originalas: " << S[1].getVardas() << " " << S[1].getGalutinisVid() << "\n";
+    cout << "Kopija:     " << s2.getVardas()   << " " << s2.getGalutinisVid()   << "\n\n";
+
+    // Perkėlimo konstruktorius
+    Studentas s3(std::move(S[2]));
+    cout << "Perkėlimo konstruktorius:\n";
+    cout << "Po perkėlimo S[2] vardas: '" << S[2].getVardas() << "' (turėtų būti tuščias)\n";
+    cout << "Perkeltas:  " << s3.getVardas() << " " << s3.getGalutinisVid() << "\n\n";
+
+    // Perkėlimo priskyrimo operatorius
+    Studentas s4;
+    s4 = std::move(S[3]);
+    cout << "Perkėlimo priskyrimas:\n";
+    cout << "Po perkėlimo S[3] vardas: '" << S[3].getVardas() << "' (turėtų būti tuščias)\n";
+    cout << "Perkeltas:  " << s4.getVardas() << " " << s4.getGalutinisVid() << "\n\n";
 
     return 0;
 }

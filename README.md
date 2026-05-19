@@ -19,6 +19,7 @@
 ### 📌 v3.0
 - Added myVector.h
 - std::vector changed with myVector
+- Created setup files for automatic instalation of the program
 
 ## 📊 Tyrimų rezultatai
 ### 💻 Testavimo sistema
